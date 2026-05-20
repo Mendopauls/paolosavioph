@@ -582,7 +582,7 @@
                 </div>
             </div>
             
-            <div id="portfolio-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <!-- Populated by JS -->
             </div>
             
@@ -816,8 +816,7 @@
     <div onclick="if(event.target.id === 'contact-modal') hideContactModal()" 
          id="contact-modal" 
          class="hidden fixed inset-0 bg-black/70 backdrop-blur z-[9999] flex items-center justify-center">
-        <div onclick="event.stopImmediatePropagation()" 
-             class="modal w-full max-w-lg bg-zinc-900 rounded-3xl">
+        <div onclick="event.stopImmediatePropagation()" class="modal w-full max-w-lg bg-zinc-900 rounded-3xl max-h-[90vh] overflow-y-auto">
             <div class="px-8 pt-8 pb-4">
                 <div class="flex justify-between items-center">
                     <div class="font-medium text-2xl">Parliamo del tuo progetto</div>
@@ -1166,15 +1165,17 @@
             else if (section === "contatti") el = document.getElementById("contatti")
             
             if (el) {
-                const navHeight = 80
+                const navHeight = 70 // Abbassato leggermente per i telefoni
                 const topPos = el.getBoundingClientRect().top + window.scrollY - navHeight
                 window.scrollTo({ top: topPos, behavior: "smooth" })
             }
             
-            // Close mobile menu if open
-            const mobileMenu = document.getElementById("mobile-menu")
-            if (!mobileMenu.classList.contains("hidden")) {
-                toggleMobileMenu()
+            // CORREZIONE MOBILE: Chiude il menu se è aperto
+            const menu = document.getElementById("mobile-menu")
+            const icon = document.getElementById("mobile-menu-btn")
+            if (menu && !menu.classList.contains("hidden")) {
+                menu.classList.add("hidden")
+                icon.innerHTML = `<i class="fa-solid fa-bars"></i>`
             }
         }
         
