@@ -171,6 +171,7 @@
                     
                     <!-- Mobile menu button -->
                     <button id="mobile-menu-btn"
+                        onclick="toggleMobileMenu()"
                             class="md:hidden w-11 h-11 flex items-center justify-center text-2xl">
                         <i class="fa-solid fa-bars"></i>
                     </button>
@@ -220,7 +221,7 @@
                             <span class="text-xs font-mono tracking-[2px] uppercase">Bolzano e provincia</span>
                         </div>
                         
-                        <h1 class="heading-font text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-none font-semibold tracking-tighter mb-4 break-words">
+                        <h1 class="heading-font text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight md:leading-none font-semibold tracking-tighter mb-4 break-words">
       paolosavio.ph
   </h1>
                         
@@ -570,16 +571,12 @@
                 <h2 class="heading-font text-5xl font-semibold tracking-tighter">Ultimi lavori</h2>
                 
                 <!-- Filter tabs -->
-                <div class="flex bg-zinc-900 rounded-3xl p-1 text-sm font-medium">
-                    <button onclick="filterPortfolio('all')" id="filter-all"
-                            class="active-filter px-7 py-3 rounded-3xl transition-all">TUTTO</button>
-                    <button onclick="filterPortfolio('video')" id="filter-video"
-                            class="px-7 py-3 rounded-3xl transition-all">VIDEO</button>
-                    <button onclick="filterPortfolio('photo')" id="filter-photo"
-                            class="px-7 py-3 rounded-3xl transition-all">FOTO</button>
-                    <button onclick="filterPortfolio('social')" id="filter-social"
-                            class="px-7 py-3 rounded-3xl transition-all">SOCIAL</button>
-                </div>
+                <div class="flex bg-zinc-900 rounded-3xl p-1 text-xs sm:text-sm font-medium overflow-x-auto max-w-full">
+    <button onclick="filterPortfolio('all')" id="filter-all" class="active-filter px-4 sm:px-7 py-3 rounded-3xl transition-all whitespace-nowrap">TUTTO</button>
+    <button onclick="filterPortfolio('video')" id="filter-video" class="px-4 sm:px-7 py-3 rounded-3xl transition-all whitespace-nowrap">VIDEO</button>
+    <button onclick="filterPortfolio('photo')" id="filter-photo" class="px-4 sm:px-7 py-3 rounded-3xl transition-all whitespace-nowrap">FOTO</button>
+    <button onclick="filterPortfolio('social')" id="filter-social" class="px-4 sm:px-7 py-3 rounded-3xl transition-all whitespace-nowrap">SOCIAL</button>
+</div>
             </div>
             
             <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -857,7 +854,7 @@
         <div class="max-w-4xl w-full mx-5 bg-zinc-900 rounded-3xl overflow-hidden shadow-2xl border border-white/10">
             <div id="hero-video-container" class="aspect-video bg-black flex items-center justify-center relative"></div>
             
-            <div class="p-8">
+           <div class="p-4 sm:p-8">
                 <div class="text-yellow-400 text-xs tracking-wider mb-2">PROMO REEL</div>
                 <div class="font-semibold text-xl">Paolo Savio Ph • Visual Creator</div>
                 <p class="text-zinc-400 text-sm mt-3">
@@ -1251,10 +1248,6 @@
             
             // Cycle hero
             cycleHeroBackground()
-            
-            // Mobile menu listener
-            const mobileBtn = document.getElementById("mobile-menu-btn")
-            mobileBtn.addEventListener("click", toggleMobileMenu)
             
             // Demo: pre-load one image
             console.log('%c✅ Sito portfolio Paolo Savio caricato con successo!', 'color:#facc15; font-family:monospace')
