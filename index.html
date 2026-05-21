@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paolo Savio Ph • Visual Creator</title>
+    <title>Paolo Savio Ph • Videomaker, Fotografo e Social Strategist a Bolzano</title>
+    <meta name="description" content="Paolo Savio Ph: videomaker, fotografo e social strategist a Bolzano. Video, foto e contenuti social per aziende, sport, eventi e brand locali.">
+    <meta name="theme-color" content="#09090b">
+    <meta property="og:title" content="Paolo Savio Ph • Visual Creator">
+    <meta property="og:description" content="Video, fotografia e social media per raccontare brand, eventi e progetti con immagini professionali.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -14,7 +21,7 @@
         }
         
         .tail-container {
-            font-family: 'Inter', system_ui, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
         }
         
         .heading-font {
@@ -130,6 +137,43 @@
             z-index: 1;
             mix-blend-mode: overlay;
         }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        :focus-visible {
+            outline: 2px solid rgb(234 179 8);
+            outline-offset: 4px;
+            border-radius: 0.75rem;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 9vw, 7.5rem);
+            line-height: 0.9;
+        }
+
+        .active-filter {
+            background-color: rgb(250 204 21);
+            color: rgb(9 9 11);
+        }
+
+        @media (max-width: 767px) {
+            .portfolio-overlay {
+                opacity: 1;
+                background: linear-gradient(to top, rgba(0,0,0,.8), transparent 70%);
+            }
+
+            .service-card:hover {
+                transform: none;
+            }
+        }
     </style>
 </head>
 <body class="tail-container bg-zinc-950 text-white overflow-x-hidden">
@@ -139,7 +183,7 @@
     <!-- NAVBAR -->
     <nav class="bg-zinc-950 border-b border-zinc-800 fixed w-full z-50">
         <div class="max-w-screen-2xl mx-auto">
-            <div class="px-8 py-5 flex items-center justify-between">
+            <div class="px-5 sm:px-8 py-4 sm:py-5 flex items-center justify-between">
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-x-2 md:gap-x-3 group min-w-0 flex-shrink-0">
     <img src="logo.png" alt="Paolo Savio Ph Logo" class="h-7 sm:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-100">
@@ -159,7 +203,7 @@
                 </div>
 
                 <div class="flex items-center gap-x-4">
-                    <a href="https://instagram.com/paolosavioph" target="_blank" 
+                    <a href="https://instagram.com/paolosavioph" target="_blank" rel="noopener noreferrer" aria-label="Instagram Paolo Savio" 
                        class="w-9 h-9 flex items-center justify-center border border-zinc-700 hover:border-yellow-400 rounded-2xl transition-colors">
                         <i class="fa-brands fa-instagram text-lg"></i>
                     </a>
@@ -171,7 +215,6 @@
                     
                     <!-- Mobile menu button -->
                     <button id="mobile-menu-btn"
-                        onclick="toggleMobileMenu()"
                             class="md:hidden w-11 h-11 flex items-center justify-center text-2xl">
                         <i class="fa-solid fa-bars"></i>
                     </button>
@@ -221,22 +264,22 @@
                             <span class="text-xs font-mono tracking-[2px] uppercase">Bolzano e provincia</span>
                         </div>
                         
-                        <h1 class="heading-font text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight md:leading-none font-semibold tracking-tighter mb-4 break-words">
+                        <h1 class="heading-font hero-title font-semibold tracking-tighter mb-5 break-words">
       paolosavio.ph
   </h1>
                         
                         <div class="flex items-center gap-x-4 mb-8">
                             <div class="h-px w-12 bg-yellow-400"></div>
-                            <p class="uppercase text-yellow-400 text-lg tracking-widest font-medium">Videomaker • Fotografo • <br>Social Strategist</p>
+                            <p class="uppercase text-yellow-400 text-lg tracking-widest font-medium">Videomaker • Fotografo •<br>Social Strategist</p>
                         </div>
                         
                         <p class="text-xl md:text-2xl text-zinc-400 max-w-md mb-12">
-                            Catturo emozioni, creo storie e faccio crescere i brand attraverso immagini che restano impresse.
+                            Non creo solo contenuti: costruisco percezione. Video, foto e strategia social per trasformare un progetto in una storia che resta impressa.
                         </p>
                         
                         <div class="flex flex-wrap gap-4">
                             <button onclick="smoothScrollTo('portfolio')" 
-                                    class="group px-8 py-6 bg-white text-zinc-900 rounded-3xl flex items-center gap-x-3 hover:shadow-2xl hover:shadow-yellow-400/30 transition-all">
+                                    class="group px-7 py-5 sm:px-8 sm:py-6 bg-white text-zinc-900 rounded-3xl flex items-center gap-x-3 hover:shadow-2xl hover:shadow-yellow-400/30 transition-all">
                                 <span class="font-semibold text-lg">Vedi il portfolio</span>
                                 <span class="block w-8 h-8 bg-yellow-400 rounded-2xl flex items-center justify-center transition-transform group-active:rotate-45">
                                     →
@@ -244,7 +287,7 @@
                             </button>
                             
                             <button onclick="playHeroVideo()"
-          class="px-8 py-6 border border-white/30 hover:border-white/80 transition-colors rounded-3xl text-lg font-medium flex items-center gap-x-3">
+          class="px-7 py-5 sm:px-8 sm:py-6 border border-white/30 hover:border-white/80 transition-colors rounded-3xl text-lg font-medium flex items-center gap-x-3">
       <i class="fa-solid fa-play text-yellow-400"></i>
       <span>Guarda il Promo</span>
   </button>
@@ -289,7 +332,7 @@
                             
                         
                         <!-- Stats floating -->
-                        <div class="absolute -right-4 bottom-12 bg-zinc-900 border border-yellow-400/30 backdrop-blur rounded-3xl p-5 shadow-2xl">
+                        <div class="hidden lg:block absolute -right-4 bottom-12 bg-zinc-900 border border-yellow-400/30 backdrop-blur rounded-3xl p-5 shadow-2xl">
                             <div class="flex items-center gap-x-6">
                                 <div>
                                     <div class="text-4xl font-semibold text-yellow-400">124</div>
@@ -345,12 +388,12 @@
                             Ciao, sono Paolo
                         </h2>
                         
-                        <div class="prose prose-invert max-w-xs">
+                        <div class="prose prose-invert max-w-md">
                             <p class="text-lg text-zinc-300">
-                                Con oltre 10 anni di esperienza, ho aiutato società sportive, aziende e associazioni a distinguersi nel mondo dei media attraverso immagini potenti e narrazioni autentiche.
+                                Da oltre 10 anni aiuto società sportive, aziende e professionisti a comunicare meglio attraverso immagini curate, video efficaci e contenuti pensati per i social.
                             </p>
                             <p class="text-zinc-400">
-                                La mia passione per la luce, il movimento e la connessione umana guida ogni progetto che realizzo.
+                                Il mio lavoro parte da una domanda semplice: cosa deve provare chi guarda? Da lì costruisco ritmo, immagine e messaggio.
                             </p>
                         </div>
                         
@@ -366,7 +409,7 @@
                                     <div class="text-amber-300">★</div>
                                     <div class="text-amber-300">★</div>
                                     <div class="text-amber-300">★</div>
-                                    <div class="text-white-300">★</div>
+                                    <div class="text-white">★</div>
                                 </div>
                                 <div class="text-xs text-zinc-400 mt-1">4.5 MEDIA</div>
                             </div>
@@ -464,7 +507,7 @@
             <div class="flex flex-col md:flex-row justify-between items-end mb-16">
                 <div>
                     <span class="px-4 py-2 text-xs border border-yellow-400/30 text-yellow-400 rounded-3xl">COSA OFFRO</span>
-                    <h2 class="heading-font text-6xl tracking-tighter font-semibold mt-3">Servizi premium</h2>
+                    <h2 class="heading-font text-6xl tracking-tighter font-semibold mt-3">Servizi</h2>
                 </div>
                 <a onclick="smoothScrollTo('portfolio')" 
                    class="hidden md:flex items-center text-sm gap-x-3 cursor-pointer">
@@ -480,7 +523,7 @@
                     <div class="text-4xl mb-6">📹</div>
                     <h3 class="text-3xl font-medium mb-3">Videomaking</h3>
                     <p class="text-zinc-400 mb-10">
-                        Produzione video professionali: spot pubblicitari, reel per social, documentari brevi, interviste e contenuti per e-commerce.
+                        Produzione video per aziende, sport ed eventi: promo, reel, interviste, contenuti verticali e video corporate.
                     </p>
                     <ul class="space-y-4 text-sm">
                         <li class="flex items-center gap-x-3">
@@ -509,7 +552,7 @@
                     <div class="text-4xl mb-6">📸</div>
                     <h3 class="text-3xl font-medium mb-3">Fotografia</h3>
                     <p class="text-zinc-400 mb-10">
-                        Sessioni fotografiche creative: ritratti, prodotti, eventi, architettura e campagne pubblicitarie.
+                        Servizi fotografici per eventi, ritratti professionali, sport, prodotto e contenuti per campagne digitali.
                     </p>
                     <ul class="space-y-4 text-sm">
                         <li class="flex items-center gap-x-3">
@@ -538,7 +581,7 @@
                     <div class="text-4xl mb-6">📱</div>
                     <h3 class="text-3xl font-medium mb-3">Social Media</h3>
                     <p class="text-zinc-400 mb-10">
-                        Gestione completa dei profili social: creazione contenuti, strategie di crescita, advertising e analisi performance.
+                        Strategia contenuti, calendario editoriale, format social e gestione della comunicazione visiva del brand.
                     </p>
                     <ul class="space-y-4 text-sm">
                         <li class="flex items-center gap-x-3">
@@ -567,16 +610,20 @@
     <!-- PORTFOLIO -->
     <section id="portfolio" class="py-28 bg-zinc-950">
         <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="flex justify-between items-baseline mb-12">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-baseline gap-6 mb-12">
                 <h2 class="heading-font text-5xl font-semibold tracking-tighter">Ultimi lavori</h2>
                 
                 <!-- Filter tabs -->
-                <div class="flex bg-zinc-900 rounded-3xl p-1 text-xs sm:text-sm font-medium overflow-x-auto max-w-full">
-    <button onclick="filterPortfolio('all')" id="filter-all" class="active-filter px-4 sm:px-7 py-3 rounded-3xl transition-all whitespace-nowrap">TUTTO</button>
-    <button onclick="filterPortfolio('video')" id="filter-video" class="px-4 sm:px-7 py-3 rounded-3xl transition-all whitespace-nowrap">VIDEO</button>
-    <button onclick="filterPortfolio('photo')" id="filter-photo" class="px-4 sm:px-7 py-3 rounded-3xl transition-all whitespace-nowrap">FOTO</button>
-    <button onclick="filterPortfolio('social')" id="filter-social" class="px-4 sm:px-7 py-3 rounded-3xl transition-all whitespace-nowrap">SOCIAL</button>
-</div>
+                <div class="flex bg-zinc-900 rounded-3xl p-1 text-sm font-medium overflow-x-auto max-w-full">
+                    <button onclick="filterPortfolio('all')" id="filter-all"
+                            class="active-filter px-5 sm:px-7 py-3 rounded-3xl transition-all whitespace-nowrap">TUTTO</button>
+                    <button onclick="filterPortfolio('video')" id="filter-video"
+                            class="px-5 sm:px-7 py-3 rounded-3xl transition-all whitespace-nowrap">VIDEO</button>
+                    <button onclick="filterPortfolio('photo')" id="filter-photo"
+                            class="px-5 sm:px-7 py-3 rounded-3xl transition-all whitespace-nowrap">FOTO</button>
+                    <button onclick="filterPortfolio('social')" id="filter-social"
+                            class="px-5 sm:px-7 py-3 rounded-3xl transition-all whitespace-nowrap">SOCIAL</button>
+                </div>
             </div>
             
             <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -655,8 +702,8 @@
             <div class="flex items-center gap-x-6">
                 <div class="text-6xl">📍</div>
                 <div>
-                    <div class="font-medium text-xl">Pronto per il tuo prossimo progetto?</div>
-                    <div class="text-zinc-400">Disponibile per collaborazioni in Alto Adige e da remoto</div>
+                    <div class="font-medium text-xl">Hai un progetto da raccontare meglio?</div>
+                    <div class="text-zinc-400">Disponibile per aziende, sport, eventi e professionisti in Alto Adige e da remoto</div>
                 </div>
             </div>
             <button onclick="showContactModal()" 
@@ -675,7 +722,7 @@
                     <h2 class="text-5xl font-semibold tracking-tighter mb-10">Iniziamo a creare insieme</h2>
                     
                     <form id="contact-form" onsubmit="handleSubmit(event)" class="space-y-8">
-                        <div class="grid grid-cols-2 gap-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div>
                                 <label class="block text-xs font-medium mb-2 text-zinc-400">NOME</label>
                                 <input id="name" type="text" 
@@ -692,7 +739,7 @@
                         
                         <div>
                             <label class="block text-xs font-medium mb-2 text-zinc-400">TIPO DI PROGETTO</label>
-                            <div class="flex gap-3">
+                            <div class="flex flex-wrap gap-3">
                                 <label onclick="this.classList.toggle('bg-yellow-400');this.classList.toggle('text-zinc-900')" 
                                        class="cursor-pointer text-sm border border-white/30 px-6 py-4 rounded-3xl hover:border-yellow-400 transition-colors">Video</label>
                                 <label onclick="this.classList.toggle('bg-yellow-400');this.classList.toggle('text-zinc-900')" 
@@ -732,34 +779,39 @@
                                 <span class="text-xl font-light">+39 329 6472167</span>
                                 <span class="text-xs text-white/30 group-hover:text-yellow-400">CHIAMA</span>
                             </a>
+
+                            <a href="https://wa.me/393296472167" target="_blank" rel="noopener noreferrer" class="block group py-6 border-t border-white/10 flex justify-between items-center">
+                                <span class="text-xl font-light">WhatsApp diretto</span>
+                                <span class="text-xs text-white/30 group-hover:text-yellow-400">SCRIVI</span>
+                            </a>
                         </div>
                         
                         <div class="pt-12">
                             <div class="text-xs uppercase">Seguimi</div>
                             <div class="flex items-center gap-x-4">
     <a href="https://www.instagram.com/paolosavioph/" 
-       target="_blank" 
+       target="_blank" rel="noopener noreferrer" 
        class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-yellow-400 hover:border-yellow-400/30 hover:bg-yellow-400/5 transition-all duration-300">
         <i class="fa-brands fa-instagram text-lg"></i>
     </a>
 
     <a href="https://www.youtube.com/@paolosavioph" 
-       target="_blank" 
+       target="_blank" rel="noopener noreferrer" 
        class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-yellow-400 hover:border-yellow-400/30 hover:bg-yellow-400/5 transition-all duration-300">
         <i class="fa-brands fa-youtube text-lg"></i>
     </a>
 <a href="https://www.facebook.com/paolosavioph" 
-       target="_blank" 
+       target="_blank" rel="noopener noreferrer" 
        class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-yellow-400 hover:border-yellow-400/30 hover:bg-yellow-400/5 transition-all duration-300">
         <i class="fa-brands fa-facebook-f text-lg"></i>
     </a>
 
     <a href="https://www.linkedin.com/in/paolosavioph" 
-       target="_blank" 
+       target="_blank" rel="noopener noreferrer" 
        class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-yellow-400 hover:border-yellow-400/30 hover:bg-yellow-400/5 transition-all duration-300">
         <i class="fa-brands fa-linkedin-in text-lg"></i>
     </a>
-    <a href="mailto:info@paolosavio.com" 
+    <a href="mailto:info@paolosavio.eu" 
        class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-yellow-400 hover:border-yellow-400/30 hover:bg-yellow-400/5 transition-all duration-300">
         <i class="fa-solid fa-envelope text-lg"></i>
     </a>
@@ -767,7 +819,7 @@
                         </div>
                         
                         <div class="mt-auto text-[10px] font-mono pt-12 text-zinc-400">
-                            © 2025 PAOLO SAVIO PH<br>
+                            © 2026 PAOLO SAVIO PH<br>
                             TUTTI I DIRITTI RISERVATI
                         </div>
                     </div>
@@ -854,11 +906,11 @@
         <div class="max-w-4xl w-full mx-5 bg-zinc-900 rounded-3xl overflow-hidden shadow-2xl border border-white/10">
             <div id="hero-video-container" class="aspect-video bg-black flex items-center justify-center relative"></div>
             
-           <div class="p-4 sm:p-8">
+            <div class="p-8">
                 <div class="text-yellow-400 text-xs tracking-wider mb-2">PROMO REEL</div>
                 <div class="font-semibold text-xl">Paolo Savio Ph • Visual Creator</div>
                 <p class="text-zinc-400 text-sm mt-3">
-                    Il mio video di presentation: scopri come racconto storie, valorizzo brand e catturo emozioni attraverso immagini in movimento.
+                    Il mio video di presentazione: scopri come racconto storie, valorizzo brand e catturo emozioni attraverso immagini in movimento.
                 </p>
             </div>
         </div>
@@ -938,7 +990,7 @@
         div.className = `portfolio-item rounded-3xl overflow-hidden cursor-pointer bg-zinc-900`
         div.innerHTML = `
             <div class="relative">
-                <img src="${thumbUrl}" alt="${item.title}" class="w-full aspect-square object-cover">
+                <img src="${thumbUrl}" alt="${item.title}" loading="lazy" onerror="this.src='https://picsum.photos/id/1016/600/600'" class="w-full aspect-square object-cover">
                 <div class="portfolio-overlay">
                     <div class="w-full">
                         <div class="flex items-center justify-between">
@@ -995,7 +1047,7 @@
             } else if (item.igReelId) {
                 mediaContent = `
                     <div class="w-full flex justify-center bg-zinc-950 py-6">
-                        <iframe src="https://www.instagram.com/p/${item.igReelId}/embed/" width="320" height="540" frameborder="0" scrolling="no" allowtransparency="true" class="rounded-xl shadow-2xl"></iframe>
+                        <iframe src="https://www.instagram.com/reel/${item.igReelId}/embed/" width="320" height="540" frameborder="0" scrolling="no" allowtransparency="true" class="rounded-xl shadow-2xl"></iframe>
                     </div>
                 `;
             } else {
@@ -1064,9 +1116,17 @@
         }
         
         function submitQuickContact() {
-            const name = document.getElementById("modal-name").value || "Cliente"
-            alert(`Grazie ${name}! La tua richiesta è stata inviata. Ti risponderò presto.`)
-            hideContactModal()
+            const name = document.getElementById("modal-name").value || "Cliente";
+            const email = document.getElementById("modal-email").value || "";
+            const message = document.getElementById("modal-message").value || "";
+            const subject = encodeURIComponent("Richiesta progetto dal sito - " + name);
+            const body = encodeURIComponent(`Nome: ${name}
+Email: ${email}
+
+Messaggio:
+${message}`);
+            window.location.href = `mailto:info@paolosavio.eu?subject=${subject}&body=${body}`;
+            hideContactModal();
         }
         
         // Video modal
@@ -1121,21 +1181,31 @@
         
         // Form handler
         function handleSubmit(e) {
-            e.preventDefault()
-            const name = document.getElementById("name").value
-            alert(`Grazie ${name}! Il tuo messaggio è stato inviato correttamente. Ti contatterò entro 48 ore.`)
-            e.target.reset()
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+            const selectedProjects = Array.from(document.querySelectorAll("#contact-form label.bg-yellow-400")).map(el => el.textContent.trim()).join(", ") || "Non specificato";
+            const subject = encodeURIComponent("Richiesta progetto dal sito - " + name);
+            const body = encodeURIComponent(`Nome: ${name}
+Email: ${email}
+Tipo progetto: ${selectedProjects}
+
+Messaggio:
+${message}`);
+            window.location.href = `mailto:info@paolosavio.eu?subject=${subject}&body=${body}`;
+            e.target.reset();
         }
         
         // Select service
         function selectService(n) {
-            let msg = ""
-            if (n === 1) msg = "Interessato alla videomaking"
-            else if (n === 2) msg = "Interessato alla fotografia"
-            else msg = "Interessato alla gestione social"
-            
-            showContactModal()
-            // Could prefill modal but skipped for simplicity
+            let msg = "";
+            if (n === 1) msg = "Sono interessato a un progetto video.";
+            else if (n === 2) msg = "Sono interessato a un servizio fotografico.";
+            else msg = "Sono interessato a una strategia social.";
+            showContactModal();
+            const textarea = document.getElementById("modal-message");
+            if (textarea && !textarea.value) textarea.value = msg;
         }
         
         // Mobile menu
@@ -1248,6 +1318,10 @@
             
             // Cycle hero
             cycleHeroBackground()
+            
+            // Mobile menu listener
+            const mobileBtn = document.getElementById("mobile-menu-btn")
+            mobileBtn.addEventListener("click", toggleMobileMenu)
             
             // Demo: pre-load one image
             console.log('%c✅ Sito portfolio Paolo Savio caricato con successo!', 'color:#facc15; font-family:monospace')
