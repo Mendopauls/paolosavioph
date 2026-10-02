@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Tools & Web Apps | Paolo Savio</title>
+  <meta name="description" content="Web app, creative tools e software su misura sviluppati da Paolo Savio per creator, sport, fotografi e piccole attività.">
+  <meta name="theme-color" content="#09090b">
+  <meta property="og:title" content="Digital Tools & Web Apps | Paolo Savio">
+  <meta property="og:description" content="Custom web apps, creative tools e business software costruiti attorno a flussi di lavoro reali.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.paolosavio.eu/digital/">
+  <link rel="canonical" href="https://www.paolosavio.eu/digital/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #09090b; }
+    ::selection { background: #facc15; color: #09090b; }
+    .glass { background: rgba(24,24,27,.72); backdrop-filter: blur(18px); }
+    .card-lift { transition: transform .3s ease, border-color .3s ease, background .3s ease; }
+    .card-lift:hover { transform: translateY(-4px); border-color: rgba(250,204,21,.42); background: rgba(39,39,42,.9); }
+    .focus-ring:focus-visible { outline: 2px solid #facc15; outline-offset: 3px; }
+    .grid-glow {
+      background-image:
+        linear-gradient(rgba(250,204,21,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(250,204,21,.045) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body class="font-sans text-white antialiased overflow-x-hidden">
+
+  <nav class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-zinc-950/90 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+      <a href="/" class="focus-ring flex items-center gap-3 rounded-xl" aria-label="Torna al sito principale">
+        <span class="flex h-9 w-9 items-center justify-center rounded-full bg-yellow-400 font-bold text-zinc-950">PS</span>
+        <span class="hidden text-sm font-semibold sm:inline">Paolo Savio</span>
+      </a>
+      <div class="hidden items-center gap-7 text-sm text-zinc-300 md:flex">
+        <a href="#progetti" class="hover:text-white">Progetti</a>
+        <a href="#servizi" class="hover:text-white">Servizi</a>
+        <a href="#approccio" class="hover:text-white">Approccio</a>
+        <a href="/" class="hover:text-white">Foto & Video</a>
+      </div>
+      <a href="#contatti" class="focus-ring inline-flex items-center gap-2 rounded-full bg-yellow-400 px-4 py-2.5 text-sm font-semibold text-zinc-950 hover:bg-yellow-300 sm:px-5">
+        Parliamo del progetto <i class="fa-solid fa-arrow-right text-xs"></i>
+      </a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="relative overflow-hidden pt-24">
+      <div class="grid-glow absolute inset-0"></div>
+      <div class="absolute left-1/2 top-32 h-96 w-96 -translate-x-1/2 rounded-full bg-yellow-400/10 blur-3xl"></div>
+      <div class="relative mx-auto grid min-h-[78vh] max-w-7xl items-center gap-12 px-5 py-20 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-8">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium uppercase tracking-[.18em] text-zinc-200">
+            <span class="h-2 w-2 rounded-full bg-yellow-400"></span>
+            Digital Tools · Web Apps · Creative Technology
+          </div>
+          <p class="mb-4 text-sm font-semibold uppercase tracking-[.22em] text-yellow-400">Paolo Savio · Creative Technologist</p>
+          <h1 class="font-display max-w-5xl text-5xl font-semibold leading-[.98] tracking-tight sm:text-6xl lg:text-8xl">
+            Software costruito attorno al lavoro reale.
+          </h1>
+          <p class="mt-7 max-w-3xl text-lg leading-relaxed text-zinc-300 sm:text-xl">
+            Progetto web app, strumenti creativi e software su misura per trasformare processi manuali, fogli di calcolo e flussi frammentati in strumenti digitali semplici da usare.
+          </p>
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a href="#progetti" class="focus-ring inline-flex items-center gap-3 rounded-full bg-white px-6 py-4 font-semibold text-zinc-950 hover:bg-yellow-300">
+              Guarda i progetti <i class="fa-solid fa-arrow-down text-sm"></i>
+            </a>
+            <a href="#contatti" class="focus-ring inline-flex items-center gap-3 rounded-full border border-white/20 bg-black/20 px-6 py-4 font-semibold text-white hover:border-white/40 hover:bg-white/5">
+              Hai un'idea? Parliamone
+            </a>
+          </div>
+        </div>
+
+        <aside class="glass rounded-[2rem] border border-white/10 p-7 lg:col-span-4 lg:p-8">
+          <p class="text-xs font-semibold uppercase tracking-[.18em] text-yellow-400">Cosa realizzo</p>
+          <div class="mt-6 space-y-4 text-sm text-zinc-300">
+            <div class="flex gap-3"><i class="fa-solid fa-code mt-1 text-yellow-400"></i><span>Web app personalizzate</span></div>
+            <div class="flex gap-3"><i class="fa-solid fa-table-columns mt-1 text-yellow-400"></i><span>Dashboard e gestionali</span></div>
+            <div class="flex gap-3"><i class="fa-solid fa-user-lock mt-1 text-yellow-400"></i><span>Aree clienti e portali privati</span></div>
+            <div class="flex gap-3"><i class="fa-solid fa-wand-magic-sparkles mt-1 text-yellow-400"></i><span>Creative tools e automazioni</span></div>
+            <div class="flex gap-3"><i class="fa-solid fa-globe mt-1 text-yellow-400"></i><span>Siti e landing page</span></div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section class="border-y border-white/10 bg-black">
+      <div class="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-white/10 sm:grid-cols-4">
+        <div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Focus</p><p class="mt-2 font-semibold">Web Apps</p></div>
+        <div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Workflow</p><p class="mt-2 font-semibold">Automation</p></div>
+        <div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Creative</p><p class="mt-2 font-semibold">Media Tools</p></div>
+        <div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Delivery</p><p class="mt-2 font-semibold">Client Portals</p></div>
+      </div>
+    </section>
+
+    <section id="progetti" class="bg-zinc-950 py-24 sm:py-28">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">Selected digital work</p>
+          <h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-6xl">Progetti costruiti per problemi concreti.</h2>
+          <p class="mt-5 text-lg leading-relaxed text-zinc-400">Dal coaching alla produzione video, dalla fotografia alle grafiche sportive: strumenti nati da esigenze operative reali.</p>
+        </div>
+
+        <div class="mt-14 grid gap-5 md:grid-cols-2">
+          <article class="card-lift rounded-[2rem] border border-white/10 bg-zinc-900/70 p-7 sm:p-8">
+            <div class="flex items-start justify-between gap-4"><span class="text-xs font-semibold uppercase tracking-[.18em] text-yellow-400">01 · Full-stack platform</span><span class="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-[11px] font-semibold text-emerald-300">DEPLOYED</span></div>
+            <h3 class="mt-5 text-2xl font-semibold">Coaching Management Platform</h3>
+            <p class="mt-4 leading-relaxed text-zinc-400">Piattaforma per coach e atleti che centralizza programmi, nutrizione, check-in, tracker e progressi in un unico ambiente.</p>
+            <div class="mt-6 flex flex-wrap gap-2 text-xs text-zinc-300"><span class="rounded-full border border-white/10 px-3 py-1.5">Next.js</span><span class="rounded-full border border-white/10 px-3 py-1.5">React</span><span class="rounded-full border border-white/10 px-3 py-1.5">Supabase</span><span class="rounded-full border border-white/10 px-3 py-1.5">PostgreSQL</span><span class="rounded-full border border-white/10 px-3 py-1.5">Vercel</span></div>
+            <details class="mt-7 border-t border-white/10 pt-5"><summary class="cursor-pointer font-semibold text-white">Case study</summary><div class="mt-4 space-y-3 text-sm leading-relaxed text-zinc-400"><p><strong class="text-zinc-200">Problema.</strong> Dati e comunicazione distribuiti tra fogli, PDF e strumenti diversi.</p><p><strong class="text-zinc-200">Soluzione.</strong> Area Coach/Athlete con gestione clienti, training, nutrition plans, daily tracker, check-in, dashboard e progress photos.</p></div></details>
+          </article>
+
+          <article class="card-lift rounded-[2rem] border border-white/10 bg-zinc-900/70 p-7 sm:p-8">
+            <div class="flex items-start justify-between gap-4"><span class="text-xs font-semibold uppercase tracking-[.18em] text-yellow-400">02 · Sports automation</span><span class="rounded-full border border-yellow-400/20 bg-yellow-400/10 px-3 py-1 text-[11px] font-semibold text-yellow-300">ADVANCED TOOL</span></div>
+            <h3 class="mt-5 text-2xl font-semibold">Sports Graphics Automation System</h3>
+            <p class="mt-4 leading-relaxed text-zinc-400">Sistema guidato da JSON per creare specifiche grafiche sportive ripetibili tramite template, roster e reference visive.</p>
+            <div class="mt-6 flex flex-wrap gap-2 text-xs text-zinc-300"><span class="rounded-full border border-white/10 px-3 py-1.5">JSON</span><span class="rounded-full border border-white/10 px-3 py-1.5">100+ Templates</span><span class="rounded-full border border-white/10 px-3 py-1.5">Roster</span><span class="rounded-full border border-white/10 px-3 py-1.5">Automation</span></div>
+            <details class="mt-7 border-t border-white/10 pt-5"><summary class="cursor-pointer font-semibold text-white">Case study</summary><div class="mt-4 space-y-3 text-sm leading-relaxed text-zinc-400"><p><strong class="text-zinc-200">Problema.</strong> Le grafiche sportive richiedono coerenza e molto setup ripetitivo.</p><p><strong class="text-zinc-200">Soluzione.</strong> Editor JSON con template, gestione roster, reference-to-JSON, import/export, backup e contratti tipografici.</p></div></details>
+          </article>
+
+          <article class="card-lift rounded-[2rem] border border-white/10 bg-zinc-900/70 p-7 sm:p-8">
+            <div class="flex items-start justify-between gap-4"><span class="text-xs font-semibold uppercase tracking-[.18em] text-yellow-400">03 · Creative technology</span><span class="rounded-full border border-white/10 px-3 py-1 text-[11px] font-semibold text-zinc-300">STORYBOARD</span></div>
+            <h3 class="mt-5 text-2xl font-semibold">AI Storyboard & Shot Planning System</h3>
+            <p class="mt-4 leading-relaxed text-zinc-400">Strumento di pre-produzione per trasformare idee, scene e reference in storyboard, shot specification e prompt strutturati.</p>
+            <div class="mt-6 flex flex-wrap gap-2 text-xs text-zinc-300"><span class="rounded-full border border-white/10 px-3 py-1.5">Next.js</span><span class="rounded-full border border-white/10 px-3 py-1.5">TypeScript</span><span class="rounded-full border border-white/10 px-3 py-1.5">FastAPI</span><span class="rounded-full border border-white/10 px-3 py-1.5">SQLite</span></div>
+            <details class="mt-7 border-t border-white/10 pt-5"><summary class="cursor-pointer font-semibold text-white">Case study</summary><div class="mt-4 space-y-3 text-sm leading-relaxed text-zinc-400"><p><strong class="text-zinc-200">Problema.</strong> Storyboard, note, immagini e prompt spesso vivono in strumenti separati.</p><p><strong class="text-zinc-200">Soluzione.</strong> Scene START/END, Visual Bible, Prompt Director, Shot Director, transizioni, asset e export JSON/PDF/ZIP.</p></div></details>
+          </article>
+
+          <article class="card-lift rounded-[2rem] border border-white/10 bg-zinc-900/70 p-7 sm:p-8">
+            <div class="flex items-start justify-between gap-4"><span class="text-xs font-semibold uppercase tracking-[.18em] text-yellow-400">04 · Media workflow</span><span class="rounded-full border border-white/10 px-3 py-1 text-[11px] font-semibold text-zinc-300">VIDEO TOOL</span></div>
+            <h3 class="mt-5 text-2xl font-semibold">AI-Assisted Video Production Suite</h3>
+            <p class="mt-4 leading-relaxed text-zinc-400">Workflow desktop per accelerare produzione di contenuti short-form, sottotitoli, reframing, audio ed export social.</p>
+            <div class="mt-6 flex flex-wrap gap-2 text-xs text-zinc-300"><span class="rounded-full border border-white/10 px-3 py-1.5">Electron</span><span class="rounded-full border border-white/10 px-3 py-1.5">FFmpeg</span><span class="rounded-full border border-white/10 px-3 py-1.5">Video</span><span class="rounded-full border border-white/10 px-3 py-1.5">Automation</span></div>
+            <details class="mt-7 border-t border-white/10 pt-5"><summary class="cursor-pointer font-semibold text-white">Case study</summary><div class="mt-4 space-y-3 text-sm leading-relaxed text-zinc-400"><p><strong class="text-zinc-200">Problema.</strong> Molte operazioni social video sono ripetitive e frammentate.</p><p><strong class="text-zinc-200">Soluzione.</strong> Timeline, waveform, sottotitoli, 9:16 reframing, smart zoom, LUT/color tools, preflight e gestione export.</p></div></details>
+          </article>
+
+          <article class="card-lift rounded-[2rem] border border-white/10 bg-zinc-900/70 p-7 sm:p-8">
+            <div class="flex items-start justify-between gap-4"><span class="text-xs font-semibold uppercase tracking-[.18em] text-yellow-400">05 · Photography workflow</span><span class="rounded-full border border-white/10 px-3 py-1 text-[11px] font-semibold text-zinc-300">CLIENT DELIVERY</span></div>
+            <h3 class="mt-5 text-2xl font-semibold">Photography Client Delivery Platform</h3>
+            <p class="mt-4 leading-relaxed text-zinc-400">Applicazione dedicata alla consegna digitale delle fotografie ai clienti, progettata partendo dal flusso reale di un fotografo.</p>
+            <div class="mt-6 flex flex-wrap gap-2 text-xs text-zinc-300"><span class="rounded-full border border-white/10 px-3 py-1.5">Photography</span><span class="rounded-full border border-white/10 px-3 py-1.5">Client Portal</span><span class="rounded-full border border-white/10 px-3 py-1.5">Delivery Workflow</span></div>
+          </article>
+
+          <article class="card-lift rounded-[2rem] border border-white/10 bg-zinc-900/70 p-7 sm:p-8">
+            <div class="flex items-start justify-between gap-4"><span class="text-xs font-semibold uppercase tracking-[.18em] text-yellow-400">06 · Paid content</span><span class="rounded-full border border-white/10 px-3 py-1 text-[11px] font-semibold text-zinc-300">LIVE VIDEO</span></div>
+            <h3 class="mt-5 text-2xl font-semibold">Paid Live Streaming Platform</h3>
+            <p class="mt-4 leading-relaxed text-zinc-400">Web application progettata per offrire accesso controllato a contenuti video live a pagamento.</p>
+            <div class="mt-6 flex flex-wrap gap-2 text-xs text-zinc-300"><span class="rounded-full border border-white/10 px-3 py-1.5">Live Video</span><span class="rounded-full border border-white/10 px-3 py-1.5">Access Control</span><span class="rounded-full border border-white/10 px-3 py-1.5">Web App</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="servizi" class="bg-black py-24 sm:py-28">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">Servizi</p>
+          <h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-6xl">Software utile, senza complessità inutile.</h2>
+        </div>
+        <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <article class="card-lift rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-code text-yellow-400"></i><h3 class="mt-5 text-xl font-semibold">Web App su misura</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Strumenti costruiti attorno a un processo specifico quando il software standard non è sufficiente.</p></article>
+          <article class="card-lift rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-user-lock text-yellow-400"></i><h3 class="mt-5 text-xl font-semibold">Aree clienti</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Portali privati per clienti, membri, atleti o utenti che devono accedere a dati e contenuti.</p></article>
+          <article class="card-lift rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-table-columns text-yellow-400"></i><h3 class="mt-5 text-xl font-semibold">Dashboard & gestionali</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Interfacce semplici che sostituiscono fogli, moduli e procedure manuali frammentate.</p></article>
+          <article class="card-lift rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-wand-magic-sparkles text-yellow-400"></i><h3 class="mt-5 text-xl font-semibold">Creative Technology</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Tool dedicati a fotografia, video, sport e produzione di contenuti.</p></article>
+          <article class="card-lift rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-globe text-yellow-400"></i><h3 class="mt-5 text-xl font-semibold">Siti & landing page</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Siti responsive orientati a presentazione, acquisizione contatti e obiettivi commerciali chiari.</p></article>
+          <article class="card-lift rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-gears text-yellow-400"></i><h3 class="mt-5 text-xl font-semibold">Automazioni</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Connessione di dati, API e attività ripetitive per ridurre lavoro manuale e passaggi inutili.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="approccio" class="bg-zinc-950 py-24 sm:py-28">
+      <div class="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-5"><p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">Approccio</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Prima il problema. Poi il software.</h2></div>
+        <div class="space-y-5 text-lg leading-relaxed text-zinc-400 lg:col-span-7">
+          <p>Sono videomaker e fotografo e sviluppo strumenti digitali partendo da problemi operativi reali: produzione, consegna contenuti, gestione clienti, sport e workflow creativi.</p>
+          <p>Non parto dalla tecnologia da utilizzare. Parto da quello che deve funzionare, da chi lo userà e da quali passaggi possono essere semplificati. Il software viene dopo.</p>
+          <p>Questo approccio permette di creare applicazioni più piccole, più comprensibili e più vicine al lavoro quotidiano di chi le utilizza.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contatti" class="bg-yellow-400 py-20 text-zinc-950 sm:py-24">
+      <div class="mx-auto grid max-w-7xl items-end gap-10 px-5 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-8">
+          <p class="text-sm font-semibold uppercase tracking-[.2em]">Start a project</p>
+          <h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-6xl">Hai un processo che dovrebbe essere più semplice?</h2>
+          <p class="mt-5 max-w-2xl text-lg leading-relaxed text-zinc-800">Se stai usando fogli, cartelle condivise, messaggi o più strumenti scollegati per gestire un unico lavoro, potrebbe esserci spazio per costruire una soluzione migliore.</p>
+        </div>
+        <div class="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end">
+          <a href="mailto:info@paolosavio.eu?subject=Progetto%20web%20app" class="focus-ring inline-flex items-center gap-2 rounded-full bg-zinc-950 px-6 py-4 font-semibold text-white hover:bg-black"><i class="fa-regular fa-envelope"></i> Email</a>
+          <a href="https://wa.me/393296472167?text=Ciao%20Paolo%2C%20vorrei%20parlarti%20di%20un%20progetto%20digitale." target="_blank" rel="noopener" class="focus-ring inline-flex items-center gap-2 rounded-full border border-zinc-950/30 px-6 py-4 font-semibold hover:bg-zinc-950 hover:text-white"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-black">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+      <p>© <span id="year"></span> Paolo Savio · Digital Tools & Web Apps</p>
+      <div class="flex flex-wrap gap-5"><a href="/" class="hover:text-white">Foto & Video</a><a href="https://www.linkedin.com/in/paolosavioph/" target="_blank" rel="noopener" class="hover:text-white">LinkedIn</a><a href="mailto:info@paolosavio.eu" class="hover:text-white">Email</a></div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
