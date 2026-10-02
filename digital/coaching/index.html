@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coaching Management Platform Case Study | Paolo Savio</title>
+  <meta name="description" content="Case study della Coaching Management Platform sviluppata da Paolo Savio: web app full-stack per coach e atleti con training, nutrition, check-in, tracker e progress photos.">
+  <meta name="theme-color" content="#09090b">
+  <link rel="canonical" href="https://www.paolosavio.eu/digital/coaching/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],display:['Playfair Display','serif']}}}}</script>
+  <style>
+    html{scroll-behavior:smooth}body{background:#09090b}::selection{background:#facc15;color:#09090b}
+    .grid-glow{background-image:linear-gradient(rgba(250,204,21,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(250,204,21,.045) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
+    .card{transition:transform .3s ease,border-color .3s ease}.card:hover{transform:translateY(-3px);border-color:rgba(250,204,21,.38)}
+  </style>
+</head>
+<body class="font-sans text-white antialiased">
+  <nav class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-zinc-950/90 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+      <a href="/digital/" class="flex items-center gap-3 rounded-xl"><span class="flex h-9 w-9 items-center justify-center rounded-full bg-yellow-400 font-bold text-zinc-950">PS</span><span class="hidden text-sm font-semibold sm:inline">Paolo Savio · Digital</span></a>
+      <div class="flex items-center gap-3"><a href="/digital/" class="text-sm text-zinc-300 hover:text-white">← Tutti i progetti</a><a href="#contatti" class="rounded-full bg-yellow-400 px-4 py-2.5 text-sm font-semibold text-zinc-950 hover:bg-yellow-300">Parliamone</a></div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="relative overflow-hidden pt-24">
+      <div class="grid-glow absolute inset-0"></div><div class="absolute left-1/2 top-28 h-96 w-96 -translate-x-1/2 rounded-full bg-yellow-400/10 blur-3xl"></div>
+      <div class="relative mx-auto max-w-7xl px-5 py-20 lg:px-8">
+        <div class="max-w-5xl">
+          <div class="mb-6 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[.18em]"><span class="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-2 text-emerald-300">Tested workflow</span><span class="rounded-full border border-white/10 px-3 py-2 text-zinc-300">Full-stack web app</span><span class="rounded-full border border-white/10 px-3 py-2 text-zinc-300">Vercel deployment</span></div>
+          <p class="text-sm font-semibold uppercase tracking-[.22em] text-yellow-400">Case study · AM Coaching</p>
+          <h1 class="font-display mt-4 text-5xl font-semibold leading-[.98] tracking-tight sm:text-6xl lg:text-8xl">Un gestionale unico per coach, atleti, piani e progressi.</h1>
+          <p class="mt-7 max-w-3xl text-lg leading-relaxed text-zinc-300 sm:text-xl">La Coaching Management Platform centralizza ciò che normalmente vive in fogli di calcolo, PDF, chat e cartelle separate: programmi di allenamento, nutrizione, supplementi, tracker giornalieri, check-in e fotografie di progresso.</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="border-y border-white/10 bg-black"><div class="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-white/10 sm:grid-cols-4"><div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Frontend</p><p class="mt-2 font-semibold">Next.js / React</p></div><div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Backend</p><p class="mt-2 font-semibold">Supabase</p></div><div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Database</p><p class="mt-2 font-semibold">PostgreSQL</p></div><div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Deploy</p><p class="mt-2 font-semibold">Vercel</p></div></div></section>
+
+    <section class="bg-zinc-950 py-24 sm:py-28">
+      <div class="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-4"><p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">01 · Il problema</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Un coach può gestire tutto. Ma non bene, se ogni cosa vive in un posto diverso.</h2></div>
+        <div class="space-y-5 text-lg leading-relaxed text-zinc-400 lg:col-span-8"><p>Programmi, piani alimentari, check-in, foto, note e feedback diventano rapidamente difficili da seguire quando sono distribuiti tra documenti, messaggi e fogli diversi.</p><p>Il progetto nasce per trasformare questo flusso in un unico ambiente con due ruoli distinti: Coach e Athlete.</p></div>
+      </div>
+    </section>
+
+    <section class="bg-black py-24 sm:py-28">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">02 · Product map</p><h2 class="font-display mt-3 max-w-4xl text-4xl font-semibold tracking-tight sm:text-6xl">Un sistema modulare, con ogni dato collegato all'atleta.</h2><p class="mt-5 max-w-3xl text-zinc-400">La mappa sotto rappresenta le aree validate dell'applicazione. Non è uno screenshot dell'interfaccia.</p>
+        <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <article class="card rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-dumbbell text-3xl text-yellow-400"></i><h3 class="mt-5 text-xl font-semibold">Training</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Programmi, giorni, esercizi, prescrizioni, note, versioni, pubblicazione e workout logging.</p></article>
+          <article class="card rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-utensils text-3xl text-yellow-400"></i><h3 class="mt-5 text-xl font-semibold">Nutrition</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Piani versionati Draft / Published / Archived, pasti, alimenti e ricalcolo dei totali.</p></article>
+          <article class="card rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-chart-line text-3xl text-yellow-400"></i><h3 class="mt-5 text-xl font-semibold">Daily Tracker</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Peso, sonno, passi, RPE, energia, performance, stress e fame.</p></article>
+          <article class="card rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-camera text-3xl text-yellow-400"></i><h3 class="mt-5 text-xl font-semibold">Progress Photos</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Upload privato, immagini collegate ai check-in e confronto stessa posa tra settimane diverse.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-zinc-950 py-24 sm:py-28">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="grid gap-10 lg:grid-cols-12"><div class="lg:col-span-5"><p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">03 · Coach / Athlete workflow</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Due ruoli, un unico flusso di lavoro.</h2></div><div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+          <article class="rounded-3xl border border-yellow-400/20 bg-yellow-400/5 p-7"><p class="text-xs font-semibold uppercase tracking-[.18em] text-yellow-300">Coach</p><h3 class="mt-3 text-2xl font-semibold">Crea, pubblica, controlla</h3><p class="mt-4 leading-relaxed text-zinc-400">Il coach gestisce clienti, programmi, piani, versioni, check-in, progressi e note da un'unica vista.</p></article>
+          <article class="rounded-3xl border border-emerald-400/20 bg-emerald-400/5 p-7"><p class="text-xs font-semibold uppercase tracking-[.18em] text-emerald-300">Athlete</p><h3 class="mt-3 text-2xl font-semibold">Consulta, registra, completa</h3><p class="mt-4 leading-relaxed text-zinc-400">L'atleta accede al proprio materiale, registra il workout, compila tracker e check-in e carica le progress photos.</p></article>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="bg-black py-24 sm:py-28">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">04 · Versioning</p><h2 class="font-display mt-3 max-w-4xl text-4xl font-semibold tracking-tight sm:text-6xl">I piani evolvono senza perdere la versione precedente.</h2>
+        <div class="mt-12 grid gap-4 md:grid-cols-3">
+          <article class="rounded-3xl border border-white/10 bg-zinc-950 p-7"><p class="text-xs font-semibold uppercase tracking-[.18em] text-zinc-500">Draft</p><h3 class="mt-3 text-xl font-semibold">Modifica</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Le nuove versioni vengono preparate senza alterare il piano già pubblicato.</p></article>
+          <article class="rounded-3xl border border-emerald-400/20 bg-emerald-400/5 p-7"><p class="text-xs font-semibold uppercase tracking-[.18em] text-emerald-300">Published</p><h3 class="mt-3 text-xl font-semibold">In uso</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">La versione pubblicata resta quella disponibile all'atleta fino alla nuova pubblicazione.</p></article>
+          <article class="rounded-3xl border border-white/10 bg-zinc-950 p-7"><p class="text-xs font-semibold uppercase tracking-[.18em] text-zinc-500">Archived</p><h3 class="mt-3 text-xl font-semibold">Storico</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Le versioni precedenti restano distinguibili invece di essere sovrascritte.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-zinc-950 py-24 sm:py-28">
+      <div class="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-5"><p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">05 · Progress & media</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Dati e immagini nello stesso percorso di verifica.</h2></div>
+        <div class="space-y-5 text-lg leading-relaxed text-zinc-400 lg:col-span-7"><p>Le fotografie di progresso vengono archiviate in storage privato e rese disponibili tramite accesso controllato. Il flusso testato collega upload atleta, check-in e vista coach.</p><p>È stato verificato anche il confronto side-by-side tra due settimane selezionando la stessa posa, così il controllo visuale non rimane separato dallo storico dell'atleta.</p></div>
+      </div>
+    </section>
+
+    <section class="bg-black py-24 sm:py-28">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8"><div class="rounded-[2rem] border border-white/10 bg-zinc-950 p-8 sm:p-10"><p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">Risultato</p><div class="mt-4 grid gap-8 lg:grid-cols-12 lg:items-end"><h2 class="font-display text-4xl font-semibold tracking-tight sm:text-6xl lg:col-span-8">Da strumenti separati a un prodotto full-stack dedicato al coaching.</h2><p class="text-lg leading-relaxed text-zinc-400 lg:col-span-4">Il progetto dimostra gestione di ruoli, dati relazionali, versioning, storage privato, dashboard operative e deployment web in un unico prodotto verticale.</p></div></div></div>
+    </section>
+
+    <section id="contatti" class="bg-yellow-400 py-20 text-zinc-950 sm:py-24"><div class="mx-auto grid max-w-7xl items-end gap-10 px-5 lg:grid-cols-12 lg:px-8"><div class="lg:col-span-8"><p class="text-sm font-semibold uppercase tracking-[.2em]">Custom business app</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-6xl">Hai un gestionale che oggi vive tra fogli, PDF e messaggi?</h2><p class="mt-5 max-w-2xl text-lg leading-relaxed text-zinc-800">Possiamo trasformare quel flusso in un'applicazione più semplice, con ruoli, dati e operazioni costruiti intorno al tuo lavoro.</p></div><div class="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end"><a href="mailto:info@paolosavio.eu?subject=Progetto%20gestionale%20web" class="rounded-full bg-zinc-950 px-6 py-4 font-semibold text-white hover:bg-black"><i class="fa-regular fa-envelope mr-2"></i>Email</a><a href="https://wa.me/393296472167?text=Ciao%20Paolo%2C%20vorrei%20parlarti%20di%20un%20gestionale%20web." target="_blank" rel="noopener" class="rounded-full border border-zinc-950/30 px-6 py-4 font-semibold hover:bg-zinc-950 hover:text-white"><i class="fa-brands fa-whatsapp mr-2"></i>WhatsApp</a></div></div></section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-black"><div class="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between lg:px-8"><p>© <span id="year"></span> Paolo Savio · Coaching Management Platform case study</p><div class="flex gap-5"><a href="/digital/" class="hover:text-white">Digital Tools</a><a href="/" class="hover:text-white">Foto & Video</a></div></div></footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
