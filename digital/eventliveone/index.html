@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EventLiveOne Studio Case Study | Paolo Savio</title>
-  <meta name="description" content="Case study di EventLiveOne Studio V1.9.5, piattaforma sviluppata da Paolo Savio per l'accesso controllato a dirette video a pagamento.">
+  <meta name="description" content="Case study di EventLiveOne Studio: piattaforma per eventi live, accesso controllato, streaming protetto e gestione operativa.">
   <meta name="theme-color" content="#09090b">
   <link rel="canonical" href="https://www.paolosavio.eu/digital/eventliveone/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,13 +12,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], display: ['Playfair Display','serif'] } } } }
-  </script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],display:['Playfair Display','serif']}}}}</script>
   <style>
     html{scroll-behavior:smooth}body{background:#09090b}::selection{background:#facc15;color:#09090b}
     .grid-glow{background-image:linear-gradient(rgba(250,204,21,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(250,204,21,.045) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
     .card{transition:transform .3s ease,border-color .3s ease}.card:hover{transform:translateY(-3px);border-color:rgba(250,204,21,.38)}
+    .product-shot{background:#050506}.product-shot img{display:block;width:100%;height:auto}
   </style>
 </head>
 <body class="font-sans text-white antialiased">
@@ -31,89 +30,57 @@
 
   <main>
     <header class="relative overflow-hidden pt-24">
-      <div class="grid-glow absolute inset-0"></div>
-      <div class="absolute left-1/2 top-28 h-96 w-96 -translate-x-1/2 rounded-full bg-yellow-400/10 blur-3xl"></div>
+      <div class="grid-glow absolute inset-0"></div><div class="absolute left-1/2 top-28 h-96 w-96 -translate-x-1/2 rounded-full bg-yellow-400/10 blur-3xl"></div>
       <div class="relative mx-auto max-w-7xl px-5 py-20 lg:px-8">
         <div class="max-w-5xl">
-          <div class="mb-6 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[.18em]"><span class="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-2 text-emerald-300">Operational baseline</span><span class="rounded-full border border-white/10 px-3 py-2 text-zinc-300">V1.9.5</span><span class="rounded-full border border-white/10 px-3 py-2 text-zinc-300">Paid live video</span></div>
+          <div class="mb-6 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[.18em]"><span class="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-2 text-emerald-300">V1.10.0 · STABLE</span><span class="rounded-full border border-white/10 px-3 py-2 text-zinc-300">Live events</span><span class="rounded-full border border-white/10 px-3 py-2 text-zinc-300">Protected streaming</span></div>
           <p class="text-sm font-semibold uppercase tracking-[.22em] text-yellow-400">Case study · EventLiveOne Studio</p>
-          <h1 class="font-display mt-4 text-5xl font-semibold leading-[.98] tracking-tight sm:text-6xl lg:text-8xl">Una piattaforma per gestire accesso e fruizione di dirette video a pagamento.</h1>
-          <p class="mt-7 max-w-3xl text-lg leading-relaxed text-zinc-300 sm:text-xl">EventLiveOne Studio nasce per trasformare una diretta video a pagamento in un flusso digitale controllato, con una base applicativa separata dai dati runtime sensibili e una gestione di sviluppo strutturata tra versione stabile e sviluppo.</p>
+          <h1 class="font-display mt-4 text-5xl font-semibold leading-[.98] tracking-tight sm:text-6xl lg:text-8xl">Una piattaforma per gestire eventi live, accessi e streaming protetto.</h1>
+          <p class="mt-7 max-w-3xl text-lg leading-relaxed text-zinc-300 sm:text-xl">EventLiveOne Studio trasforma una diretta video in un flusso operativo controllato: configurazione evento, accesso tramite ticket, streaming, controlli preflight, infrastruttura e persistenza dello stato nello stesso ambiente.</p>
+          <div class="mt-8"><a href="#screens" class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 font-semibold text-zinc-950 hover:bg-yellow-300">Guarda l'interfaccia <i class="fa-solid fa-arrow-down text-xs"></i></a></div>
         </div>
       </div>
     </header>
 
-    <section class="border-y border-white/10 bg-black">
-      <div class="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-white/10 sm:grid-cols-4">
-        <div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Versione</p><p class="mt-2 font-semibold">V1.9.5</p></div>
-        <div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Stato</p><p class="mt-2 font-semibold">Operational baseline</p></div>
-        <div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Categoria</p><p class="mt-2 font-semibold">Paid Live Video</p></div>
-        <div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Workflow</p><p class="mt-2 font-semibold">Stable / Develop</p></div>
-      </div>
-    </section>
+    <section class="border-y border-white/10 bg-black"><div class="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-white/10 sm:grid-cols-4"><div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">UI attuale</p><p class="mt-2 font-semibold">V1.10.0</p></div><div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Stato</p><p class="mt-2 font-semibold">Stable</p></div><div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Categoria</p><p class="mt-2 font-semibold">Live Video Platform</p></div><div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Baseline repo</p><p class="mt-2 font-semibold">V1.9.5</p></div></div></section>
 
-    <section class="bg-zinc-950 py-24 sm:py-28">
-      <div class="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-12 lg:px-8">
-        <div class="lg:col-span-4"><p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">01 · Il problema</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Una live a pagamento non è solo un player video.</h2></div>
-        <div class="space-y-5 text-lg leading-relaxed text-zinc-400 lg:col-span-8"><p>Quando il contenuto è riservato a utenti paganti, servono controllo dell'accesso, gestione dello stato applicativo e una struttura che distingua il codice dai dati runtime reali.</p><p>Il progetto è stato quindi trattato come un prodotto software, non come una semplice pagina con un video incorporato.</p></div>
-      </div>
-    </section>
-
-    <section class="bg-black py-24 sm:py-28">
+    <section id="screens" class="bg-zinc-950 py-24 sm:py-28">
       <div class="mx-auto max-w-7xl px-5 lg:px-8">
-        <p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">02 · Product map</p>
-        <h2 class="font-display mt-3 max-w-4xl text-4xl font-semibold tracking-tight sm:text-6xl">Il flusso, ridotto alle parti essenziali.</h2>
-        <p class="mt-5 max-w-3xl text-zinc-400">Questa è una rappresentazione del prodotto, non uno screenshot dell'interfaccia. Le schermate reali verranno aggiunte separatamente.</p>
-        <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <article class="card rounded-3xl border border-white/10 bg-zinc-950 p-6"><span class="text-xs font-bold text-yellow-400">01</span><i class="fa-solid fa-user-lock mt-8 block text-3xl text-zinc-600"></i><h3 class="mt-5 text-xl font-semibold">Accesso controllato</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Il contenuto live è pensato per essere fruito in un ambiente ad accesso riservato.</p></article>
-          <article class="card rounded-3xl border border-white/10 bg-zinc-950 p-6"><span class="text-xs font-bold text-yellow-400">02</span><i class="fa-solid fa-video mt-8 block text-3xl text-zinc-600"></i><h3 class="mt-5 text-xl font-semibold">Live video</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">La diretta è il nucleo dell'esperienza, inserita dentro un flusso applicativo dedicato.</p></article>
-          <article class="card rounded-3xl border border-white/10 bg-zinc-950 p-6"><span class="text-xs font-bold text-yellow-400">03</span><i class="fa-solid fa-database mt-8 block text-3xl text-zinc-600"></i><h3 class="mt-5 text-xl font-semibold">Runtime state</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Sessioni, configurazione runtime e store vengono trattati come dati operativi separati dal codice sorgente.</p></article>
-          <article class="card rounded-3xl border border-white/10 bg-zinc-950 p-6"><span class="text-xs font-bold text-yellow-400">04</span><i class="fa-solid fa-code-branch mt-8 block text-3xl text-zinc-600"></i><h3 class="mt-5 text-xl font-semibold">Release workflow</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Una linea stabile conserva la versione verificata; lo sviluppo avviene separatamente prima della promozione.</p></article>
-        </div>
-      </div>
-    </section>
+        <div class="max-w-4xl"><p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">Real product screens</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-6xl">La regia reale, dal preflight alla messa in onda.</h2><p class="mt-5 text-lg leading-relaxed text-zinc-400">Schermate reali di EventLiveOne Studio: dashboard operativa, gestione eventi, controllo streaming e infrastruttura di sistema. La schermata ticket non viene pubblicata perché contiene dati di accesso reali.</p></div>
+        <div class="mt-12 space-y-6">
+          <figure class="overflow-hidden rounded-[2rem] border border-white/10 bg-black"><div class="product-shot"><img src="assets/dashboard.webp" loading="lazy" alt="EventLiveOne Studio dashboard operativa con stato video e checklist preflight"></div><figcaption class="grid gap-3 border-t border-white/10 p-6 sm:grid-cols-12 sm:p-7"><div class="sm:col-span-4"><p class="text-xs font-semibold uppercase tracking-[.18em] text-yellow-400">01 · Dashboard</p><h3 class="mt-2 text-xl font-semibold">Regia operativa e preflight</h3></div><p class="text-sm leading-relaxed text-zinc-400 sm:col-span-8">Ticket emessi, stato video, controlli essenziali e checklist prima di aprire l'evento o andare in onda sono raccolti nella stessa vista.</p></figcaption></figure>
 
-    <section class="bg-zinc-950 py-24 sm:py-28">
-      <div class="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-12 lg:px-8">
-        <div class="lg:col-span-5"><p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">03 · Engineering hygiene</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Il repository pubblico non deve contenere i dati reali del sistema.</h2></div>
-        <div class="lg:col-span-7">
-          <div class="grid gap-4 sm:grid-cols-2">
-            <div class="rounded-3xl border border-white/10 bg-black p-6"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Escluso</p><p class="mt-3 font-semibold">Environment secrets</p><p class="mt-2 text-sm text-zinc-400">File .env, chiavi, token e password non vengono conservati nella baseline condivisa.</p></div>
-            <div class="rounded-3xl border border-white/10 bg-black p-6"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Escluso</p><p class="mt-3 font-semibold">Runtime configuration</p><p class="mt-2 text-sm text-zinc-400">La configurazione runtime reale viene tenuta fuori dal repository.</p></div>
-            <div class="rounded-3xl border border-white/10 bg-black p-6"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Escluso</p><p class="mt-3 font-semibold">Sessions</p><p class="mt-2 text-sm text-zinc-400">I dati di sessione reali non fanno parte della copia sorgente condivisa.</p></div>
-            <div class="rounded-3xl border border-white/10 bg-black p-6"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Escluso</p><p class="mt-3 font-semibold">Runtime store</p><p class="mt-2 text-sm text-zinc-400">Anche lo store operativo viene separato dalla baseline del prodotto.</p></div>
+          <div class="grid gap-6 lg:grid-cols-2">
+            <figure class="overflow-hidden rounded-[2rem] border border-white/10 bg-black"><div class="product-shot"><img src="assets/events.webp" loading="lazy" alt="EventLiveOne Studio gestione eventi con calendario e configurazione evento"></div><figcaption class="border-t border-white/10 p-6"><p class="text-xs font-semibold uppercase tracking-[.18em] text-yellow-400">02 · Eventi</p><h3 class="mt-2 text-xl font-semibold">Calendario e configurazione</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Ogni evento mantiene pagina, stato, accessi e configurazione separati; il pannello guida il flusso dai dati evento al canale video e al Live ID.</p></figcaption></figure>
+            <figure class="overflow-hidden rounded-[2rem] border border-white/10 bg-black"><div class="product-shot"><img src="assets/streaming.webp" loading="lazy" alt="EventLiveOne Studio controllo streaming con stato YouTube, player e protezione"></div><figcaption class="border-t border-white/10 p-6"><p class="text-xs font-semibold uppercase tracking-[.18em] text-yellow-400">03 · Streaming</p><h3 class="mt-2 text-xl font-semibold">Controllo della diretta</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Stato YouTube, Sports Live, player protetto e session gate vengono verificati nello stesso pannello prima della messa in onda.</p></figcaption></figure>
           </div>
+
+          <figure class="overflow-hidden rounded-[2rem] border border-white/10 bg-black"><div class="product-shot"><img src="assets/system.webp" loading="lazy" alt="EventLiveOne Studio sistema con dominio, tunnel, persistenza e backup"></div><figcaption class="grid gap-3 border-t border-white/10 p-6 sm:grid-cols-12 sm:p-7"><div class="sm:col-span-4"><p class="text-xs font-semibold uppercase tracking-[.18em] text-yellow-400">04 · Sistema</p><h3 class="mt-2 text-xl font-semibold">Dominio, tunnel, persistenza e backup</h3></div><p class="text-sm leading-relaxed text-zinc-400 sm:col-span-8">Controlli di raggiungibilità, HTTPS, persistenza dello stato e backup operativo rendono l'app gestibile anche oltre il singolo evento.</p></figcaption></figure>
         </div>
       </div>
     </section>
 
-    <section class="bg-black py-24 sm:py-28">
-      <div class="mx-auto max-w-7xl px-5 lg:px-8">
-        <div class="grid gap-10 lg:grid-cols-12 lg:items-start">
-          <div class="lg:col-span-5"><p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">04 · Release strategy</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Una baseline verificata, uno spazio separato per evolvere.</h2></div>
-          <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
-            <article class="rounded-3xl border border-emerald-400/20 bg-emerald-400/5 p-7"><p class="text-xs font-semibold uppercase tracking-[.18em] text-emerald-300">Stable</p><h3 class="mt-3 text-2xl font-semibold">Versione verificata</h3><p class="mt-4 leading-relaxed text-zinc-400">Il branch stabile rappresenta l'ultima versione considerata funzionante e pronta come riferimento operativo.</p></article>
-            <article class="rounded-3xl border border-yellow-400/20 bg-yellow-400/5 p-7"><p class="text-xs font-semibold uppercase tracking-[.18em] text-yellow-300">Develop</p><h3 class="mt-3 text-2xl font-semibold">Restyling e sviluppo</h3><p class="mt-4 leading-relaxed text-zinc-400">Le modifiche vengono sviluppate separatamente e promosse solo dopo verifica.</p></article>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="bg-black py-24 sm:py-28"><div class="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-12 lg:px-8"><div class="lg:col-span-4"><p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">01 · Il problema</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Una live protetta non è solo un player video.</h2></div><div class="space-y-5 text-lg leading-relaxed text-zinc-400 lg:col-span-8"><p>Quando una diretta richiede accesso controllato, servono gestione dell'evento, ticket, stato streaming, protezione del player, verifiche tecniche e persistenza operativa.</p><p>Il progetto è stato quindi trattato come un prodotto software completo, non come una semplice pagina con un video incorporato.</p></div></div></section>
 
-    <section class="bg-zinc-950 py-24 sm:py-28">
-      <div class="mx-auto max-w-7xl px-5 lg:px-8">
-        <div class="rounded-[2rem] border border-white/10 bg-black p-8 sm:p-10">
-          <p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">Risultato</p>
-          <div class="mt-4 grid gap-8 lg:grid-cols-12 lg:items-end"><h2 class="font-display text-4xl font-semibold tracking-tight sm:text-6xl lg:col-span-8">Da idea di streaming a prodotto software versionato.</h2><p class="text-lg leading-relaxed text-zinc-400 lg:col-span-4">EventLiveOne Studio dimostra la capacità di progettare un'applicazione attorno a un'esigenza reale, mantenendo una baseline operativa e separando codice, sviluppo e dati sensibili.</p></div>
-        </div>
-      </div>
-    </section>
+    <section class="bg-zinc-950 py-24 sm:py-28"><div class="mx-auto max-w-7xl px-5 lg:px-8"><p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">02 · Product map</p><h2 class="font-display mt-3 max-w-4xl text-4xl font-semibold tracking-tight sm:text-6xl">Il flusso, ridotto alle parti essenziali.</h2><p class="mt-5 max-w-3xl text-zinc-400">Le aree principali del sistema sono supportate dalle schermate reali mostrate sopra.</p><div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <article class="card rounded-3xl border border-white/10 bg-black p-6"><span class="text-xs font-bold text-yellow-400">01</span><i class="fa-solid fa-calendar-days mt-8 block text-3xl text-zinc-600"></i><h3 class="mt-5 text-xl font-semibold">Eventi</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Calendario, stato, pagina pubblica e configurazione vengono gestiti per singolo evento.</p></article>
+      <article class="card rounded-3xl border border-white/10 bg-black p-6"><span class="text-xs font-bold text-yellow-400">02</span><i class="fa-solid fa-video mt-8 block text-3xl text-zinc-600"></i><h3 class="mt-5 text-xl font-semibold">Streaming</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">La regia controlla account, destinazione, player e readiness della diretta.</p></article>
+      <article class="card rounded-3xl border border-white/10 bg-black p-6"><span class="text-xs font-bold text-yellow-400">03</span><i class="fa-solid fa-user-lock mt-8 block text-3xl text-zinc-600"></i><h3 class="mt-5 text-xl font-semibold">Accesso</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Ticket e session gate separano la fruizione pubblica dall'accesso autorizzato.</p></article>
+      <article class="card rounded-3xl border border-white/10 bg-black p-6"><span class="text-xs font-bold text-yellow-400">04</span><i class="fa-solid fa-server mt-8 block text-3xl text-zinc-600"></i><h3 class="mt-5 text-xl font-semibold">Sistema</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Dominio, tunnel, HTTPS, persistenza e backup sono verificabili dalla regia.</p></article>
+    </div></div></section>
 
-    <section id="contatti" class="bg-yellow-400 py-20 text-zinc-950 sm:py-24">
-      <div class="mx-auto grid max-w-7xl items-end gap-10 px-5 lg:grid-cols-12 lg:px-8">
-        <div class="lg:col-span-8"><p class="text-sm font-semibold uppercase tracking-[.2em]">Custom web app</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-6xl">Hai un'idea simile o un workflow che vuoi trasformare in un'app?</h2><p class="mt-5 max-w-2xl text-lg leading-relaxed text-zinc-800">Partiamo dal processo reale, definiamo cosa deve funzionare e costruiamo solo ciò che serve.</p></div>
-        <div class="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end"><a href="mailto:info@paolosavio.eu?subject=Progetto%20web%20app" class="rounded-full bg-zinc-950 px-6 py-4 font-semibold text-white hover:bg-black"><i class="fa-regular fa-envelope mr-2"></i>Email</a><a href="https://wa.me/393296472167?text=Ciao%20Paolo%2C%20vorrei%20parlarti%20di%20un%20progetto%20web%20app." target="_blank" rel="noopener" class="rounded-full border border-zinc-950/30 px-6 py-4 font-semibold hover:bg-zinc-950 hover:text-white"><i class="fa-brands fa-whatsapp mr-2"></i>WhatsApp</a></div>
-      </div>
-    </section>
+    <section class="bg-black py-24 sm:py-28"><div class="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-12 lg:px-8"><div class="lg:col-span-5"><p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">03 · Engineering hygiene</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Il codice condiviso resta separato dai dati runtime sensibili.</h2></div><div class="lg:col-span-7"><div class="grid gap-4 sm:grid-cols-2">
+      <div class="rounded-3xl border border-white/10 bg-zinc-950 p-6"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Escluso</p><p class="mt-3 font-semibold">Environment secrets</p><p class="mt-2 text-sm text-zinc-400">File .env, chiavi, token e password non vengono conservati nella baseline condivisa.</p></div>
+      <div class="rounded-3xl border border-white/10 bg-zinc-950 p-6"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Escluso</p><p class="mt-3 font-semibold">Runtime configuration</p><p class="mt-2 text-sm text-zinc-400">La configurazione runtime reale viene tenuta fuori dal repository.</p></div>
+      <div class="rounded-3xl border border-white/10 bg-zinc-950 p-6"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Escluso</p><p class="mt-3 font-semibold">Sessions</p><p class="mt-2 text-sm text-zinc-400">I dati di sessione reali non fanno parte della copia sorgente condivisa.</p></div>
+      <div class="rounded-3xl border border-white/10 bg-zinc-950 p-6"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Escluso</p><p class="mt-3 font-semibold">Runtime store</p><p class="mt-2 text-sm text-zinc-400">Anche lo store operativo viene separato dalla baseline del prodotto.</p></div>
+    </div></div></div></section>
+
+    <section class="bg-zinc-950 py-24 sm:py-28"><div class="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-12 lg:px-8"><div class="lg:col-span-5"><p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">04 · Release strategy</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Una baseline documentata, una versione stabile successiva.</h2></div><div class="space-y-5 text-lg leading-relaxed text-zinc-400 lg:col-span-7"><p>La baseline operativa documentata nel repository è la <strong class="text-zinc-200">V1.9.5</strong>. Le schermate reali mostrate in questa pagina appartengono alla successiva <strong class="text-zinc-200">V1.10.0 STABILE</strong>.</p><p>Lo sviluppo resta separato dalla versione verificata, così le modifiche possono essere testate prima della promozione alla linea stabile.</p></div></div></section>
+
+    <section class="bg-black py-24 sm:py-28"><div class="mx-auto max-w-7xl px-5 lg:px-8"><div class="rounded-[2rem] border border-white/10 bg-zinc-950 p-8 sm:p-10"><p class="text-sm font-semibold uppercase tracking-[.2em] text-yellow-400">Risultato</p><div class="mt-4 grid gap-8 lg:grid-cols-12 lg:items-end"><h2 class="font-display text-4xl font-semibold tracking-tight sm:text-6xl lg:col-span-8">Da idea di streaming a regia software per eventi live.</h2><p class="text-lg leading-relaxed text-zinc-400 lg:col-span-4">EventLiveOne Studio dimostra progettazione di workflow reali, controllo operativo, accesso protetto, gestione streaming e infrastruttura in un unico prodotto verticale.</p></div></div></div></section>
+
+    <section id="contatti" class="bg-yellow-400 py-20 text-zinc-950 sm:py-24"><div class="mx-auto grid max-w-7xl items-end gap-10 px-5 lg:grid-cols-12 lg:px-8"><div class="lg:col-span-8"><p class="text-sm font-semibold uppercase tracking-[.2em]">Custom web app</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-6xl">Hai un'idea simile o un workflow che vuoi trasformare in un'app?</h2><p class="mt-5 max-w-2xl text-lg leading-relaxed text-zinc-800">Partiamo dal processo reale, definiamo cosa deve funzionare e costruiamo solo ciò che serve.</p></div><div class="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end"><a href="mailto:info@paolosavio.eu?subject=Progetto%20web%20app" class="rounded-full bg-zinc-950 px-6 py-4 font-semibold text-white hover:bg-black"><i class="fa-regular fa-envelope mr-2"></i>Email</a><a href="https://wa.me/393296472167?text=Ciao%20Paolo%2C%20vorrei%20parlarti%20di%20un%20progetto%20web%20app." target="_blank" rel="noopener" class="rounded-full border border-zinc-950/30 px-6 py-4 font-semibold hover:bg-zinc-950 hover:text-white"><i class="fa-brands fa-whatsapp mr-2"></i>WhatsApp</a></div></div></section>
   </main>
 
   <footer class="border-t border-white/10 bg-black"><div class="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between lg:px-8"><p>© <span id="year"></span> Paolo Savio · EventLiveOne Studio case study</p><div class="flex gap-5"><a href="/digital/" class="hover:text-white">Digital Tools</a><a href="/" class="hover:text-white">Foto & Video</a></div></div></footer>
