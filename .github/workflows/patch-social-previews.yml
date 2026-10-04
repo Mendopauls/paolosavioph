@@ -1,81 +1,13 @@
-name: Patch social previews
+name: Social preview maintenance
 
 on:
-  push:
-    paths:
-      - '.github/workflows/patch-social-previews.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  patch:
+  info:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Build coaching preview asset
-        shell: bash
-        run: |
-          base64 -d digital/coaching/assets/dashboard.b64 > digital/coaching/assets/dashboard-og.webp
-
-      - name: Add Open Graph metadata
-        shell: python
-        run: |
-          from pathlib import Path
-
-          pages = [
-              {
-                  'path': Path('digital/coaching/index.html'),
-                  'canonical': '<link rel="canonical" href="https://www.paolosavio.eu/digital/coaching/">',
-                  'tags': '''
-  <meta property="og:title" content="Coaching Management Platform — Full-Stack Web App">
-  <meta property="og:description" content="Web app per coach e atleti con training, nutrition, tracker, check-in e progress management.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.paolosavio.eu/digital/coaching/">
-  <meta property="og:image" content="https://www.paolosavio.eu/digital/coaching/assets/dashboard-og.webp">
-  <meta property="og:image:alt" content="Coaching Management Platform — Coach Dashboard">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Coaching Management Platform — Full-Stack Web App">
-  <meta name="twitter:description" content="Web app per coach e atleti con training, nutrition, tracker, check-in e progress management.">
-  <meta name="twitter:image" content="https://www.paolosavio.eu/digital/coaching/assets/dashboard-og.webp">'''
-              },
-              {
-                  'path': Path('digital/eventliveone/index.html'),
-                  'canonical': '<link rel="canonical" href="https://www.paolosavio.eu/digital/eventliveone/">',
-                  'tags': '''
-  <meta property="og:title" content="EventLiveOne Studio — Live Events Platform">
-  <meta property="og:description" content="Piattaforma per gestione eventi live, streaming protetto, accessi e controllo operativo.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.paolosavio.eu/digital/eventliveone/">
-  <meta property="og:image" content="https://www.paolosavio.eu/digital/eventliveone/assets/dashboard.webp">
-  <meta property="og:image:alt" content="EventLiveOne Studio — Regia Operativa">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="EventLiveOne Studio — Live Events Platform">
-  <meta name="twitter:description" content="Piattaforma per gestione eventi live, streaming protetto, accessi e controllo operativo.">
-  <meta name="twitter:image" content="https://www.paolosavio.eu/digital/eventliveone/assets/dashboard.webp">'''
-              },
-          ]
-
-          for item in pages:
-              p = item['path']
-              text = p.read_text(encoding='utf-8')
-              if 'property="og:title"' not in text:
-                  text = text.replace(item['canonical'], item['canonical'] + item['tags'], 1)
-                  p.write_text(text, encoding='utf-8')
-
-      - name: Commit preview metadata
-        shell: bash
-        run: |
-          git config user.name "Paolo Savio"
-          git config user.email "127487760+Mendopauls@users.noreply.github.com"
-          git add digital/coaching/index.html digital/coaching/assets/dashboard-og.webp digital/eventliveone/index.html
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Fix LinkedIn social previews for digital case studies"
-            git push
-          fi
+      - run: echo "Social preview metadata is maintained directly in the case-study pages."
