@@ -1,0 +1,1151 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UISP Bolzano · Demo Newsletter Manager</title>
+  <style>
+:root{--navy:#0b2f4f;--blue:#0b4a7d;--blue2:#1467a8;--bg:#f5f7fa;--card:#fff;--text:#1f2937;--muted:#6b7280;--line:#dfe5ec;--green:#0d7a55;--red:#b42318;--amber:#a15c00;--accent:#ff3b30;--shadow:0 8px 28px rgba(15,23,42,.08)}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(135deg,#101820,#252a31)}.login-card{width:min(430px,100%);background:#fff;border-radius:16px;padding:30px;box-shadow:0 22px 70px rgba(0,0,0,.28)}.login-logo{width:56px;height:56px;border-radius:14px;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:850;font-size:24px;margin-bottom:18px}.login-card h1{font-size:24px;margin:0 0 6px}.login-card p{margin:0 0 22px;color:var(--muted);line-height:1.5}.login-error{min-height:20px;margin-top:10px;color:var(--red);font-size:13px}.version-badge{display:inline-block;margin-top:14px;font-size:11px;color:#7b8a99}
+    button,input,select,textarea{font:inherit} button{cursor:pointer}.app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}
+    aside{background:linear-gradient(180deg,var(--navy),#08253e);color:#fff;padding:24px 18px;position:sticky;top:0;height:100vh}
+    .brand{display:flex;gap:12px;align-items:center;margin-bottom:28px}.brand-badge{width:50px;height:42px;border-radius:10px;background:#fff;color:var(--blue);display:grid;place-items:center;font-weight:800;padding:5px;flex:0 0 auto}.brand-badge img{max-width:40px;max-height:32px;object-fit:contain;display:block}.brand strong{display:block;font-size:15px}.brand small{opacity:.7}
+    nav button{width:100%;border:0;background:transparent;color:#dbe8f5;padding:11px 12px;border-radius:8px;text-align:left;margin:3px 0}.nav-btn.active,.nav-btn:hover{background:rgba(255,255,255,.12);color:#fff}.nav-separator{height:1px;background:rgba(255,255,255,.13);margin:12px 4px}.nav-admin{color:#b9cee0!important}.nav-admin::before{content:'⚙ ';opacity:.8}
+    .side-foot{position:absolute;bottom:18px;left:18px;right:18px;font-size:12px;color:#aac2d8;line-height:1.45}
+    main{padding:30px;min-width:0}.topbar{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px}.topbar h1{margin:0 0 6px;font-size:28px}.sub{color:var(--muted);font-size:14px}
+    .btn{border:1px solid var(--line);background:#fff;color:var(--text);padding:10px 14px;border-radius:8px;font-weight:650}.btn:hover{border-color:#b8c4d0}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn.danger{background:#fff1f0;border-color:#ffc9c5;color:var(--red)}.btn.small{padding:7px 10px;font-size:13px}.btn:disabled{opacity:.5;cursor:not-allowed}
+    .grid{display:grid;gap:16px}.cards{grid-template-columns:repeat(5,minmax(0,1fr));margin-bottom:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:18px}.metric .label{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}.metric .value{font-size:28px;font-weight:800;margin-top:8px}.metric .hint{font-size:12px;color:var(--muted);margin-top:4px}
+    .section{display:none}.section.active{display:block}.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.space{justify-content:space-between}.toolbar{margin-bottom:14px}.input,select,textarea{width:100%;border:1px solid var(--line);border-radius:8px;background:#fff;padding:10px 11px;outline:none}.input:focus,select:focus,textarea:focus{border-color:#77a7cd;box-shadow:0 0 0 3px rgba(11,74,125,.09)}
+</style>
+
+  <style>
+.search{max-width:340px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px;background:#fff}.table{width:100%;border-collapse:collapse;min-width:900px}.table th,.table td{padding:11px 12px;border-bottom:1px solid #edf0f3;text-align:left;font-size:13px;vertical-align:top}.table th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#64748b;background:#f8fafc;position:sticky;top:0}.table tr:last-child td{border-bottom:0}
+    .pill{display:inline-block;padding:4px 8px;border-radius:99px;background:#eef2f6;font-size:11px;font-weight:800}.pill.green{background:#e7f7f0;color:var(--green)}.pill.red{background:#fff0ef;color:var(--red)}.pill.amber{background:#fff7e6;color:var(--amber)}
+    .split{display:grid;grid-template-columns:minmax(480px,.95fr) minmax(420px,1.05fr);gap:18px}.panel-title{font-size:16px;font-weight:800;margin:0 0 16px}.field{margin-bottom:13px}.field label{display:block;font-size:12px;font-weight:750;color:#475569;margin-bottom:6px}.help{font-size:12px;color:var(--muted);line-height:1.45;margin-top:6px}.editor-toolbar{display:flex;gap:6px;flex-wrap:wrap;border:1px solid var(--line);border-bottom:0;border-radius:8px 8px 0 0;background:#f8fafc;padding:7px}.editor-toolbar button{border:1px solid var(--line);background:#fff;border-radius:6px;padding:6px 9px}.editor{min-height:320px;border:1px solid var(--line);border-radius:0 0 8px 8px;padding:18px;background:#fff;outline:none;line-height:1.6}.preview{background:#e9edf2;border-radius:10px;padding:20px;min-height:420px}.preview-inner{background:#fff;max-width:680px;margin:auto;border-radius:8px;overflow:hidden}.preview-head{background:var(--blue);color:#fff;text-align:center;padding:22px;font-weight:800;font-size:22px}.preview-body{padding:30px;font-family:Arial,sans-serif;line-height:1.6}.preview-foot{padding:18px;background:#eef2f6;text-align:center;color:#64748b;font-size:12px}
+    .template-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.template{cursor:default}.template:hover{border-color:#8fb4d2}.template h3{margin:0 0 8px}.template p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+    .settings{max-width:760px}.notice{border:1px solid #b8d8ee;background:#eef8ff;color:#234b66;border-radius:10px;padding:13px 14px;font-size:13px;line-height:1.5}.notice.warn{border-color:#f4d7a0;background:#fff9ec;color:#6c4a09}.notice.good{border-color:#b9e3d2;background:#effaf5;color:#175f48}
+    .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:30;align-items:center;justify-content:center;padding:20px}.modal-backdrop.show{display:flex}.modal{width:min(720px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:14px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.25)}.modal h2{margin:0 0 18px}.app-dialog{padding:26px;border:1px solid #e4eaf0}.dialog-head{display:flex;gap:14px;align-items:flex-start}.dialog-icon{width:42px;height:42px;flex:0 0 42px;border-radius:50%;display:grid;place-items:center;font-size:20px;font-weight:900;background:#eaf4fb;color:var(--blue)}.tone-success .dialog-icon,.dialog-icon.tone-success{background:#e8f7ef;color:#087a52}.tone-error .dialog-icon,.dialog-icon.tone-error{background:#fff0ef;color:#b42318}.tone-warn .dialog-icon,.dialog-icon.tone-warn{background:#fff7e8;color:#9a5b00}.tone-info .dialog-icon,.dialog-icon.tone-info{background:#eaf4fb;color:var(--blue)}.dialog-details{margin-top:18px}.dialog-grid{display:grid;gap:9px}.dialog-row{display:flex;justify-content:space-between;gap:20px;padding:11px 12px;border:1px solid #e5ebf0;border-radius:9px;background:#f8fafc}.dialog-row span{color:#64748b}.dialog-row strong{text-align:right}.dialog-ok{color:#087a52}.dialog-bad{color:#b42318}.dialog-note{margin-top:12px;padding:12px 14px;border-radius:9px;background:#eef8ff;color:#315b78;font-size:13px;line-height:1.5}.dialog-loading{display:flex;gap:7px;margin-top:18px}.dialog-loading span{width:9px;height:9px;border-radius:50%;background:var(--blue);animation:dialogPulse .9s infinite alternate}.dialog-loading span:nth-child(2){animation-delay:.15s}.dialog-loading span:nth-child(3){animation-delay:.3s}@keyframes dialogPulse{from{opacity:.25;transform:translateY(0)}to{opacity:1;transform:translateY(-4px)}}.pill.blue{background:#e7f2fb;color:#0b5a8f}.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}.toast{position:fixed;right:22px;bottom:22px;z-index:50;background:#111827;color:#fff;padding:12px 15px;border-radius:9px;box-shadow:var(--shadow);display:none;max-width:420px}.toast.show{display:block}.toast.error{background:#991b1b}.loading{opacity:.72}.empty{padding:30px;color:var(--muted);text-align:center}.muted{color:var(--muted)}.right{text-align:right}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+
+    .builder-head{display:flex;justify-content:space-between;align-items:flex-end;margin-top:18px}.builder-title{font-size:13px;font-weight:800;color:#334155}.block-addbar{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 12px}.block-list{display:block;max-height:none;overflow:visible;padding-right:0}.block-list>.newsletter-block{margin-bottom:10px}.block-list>.newsletter-block:last-child{margin-bottom:0}.builder-empty{border:1px dashed #cbd5e1;border-radius:10px;background:#f8fafc}
+    .newsletter-block{border:1px solid #dbe3ea;border-radius:10px;background:#fff;overflow:hidden;height:auto;min-height:0;flex:none}.newsletter-block:hover{border-color:#9fb9cc}.newsletter-block-head{display:flex;justify-content:space-between;align-items:center;padding:9px 10px;background:#f8fafc;border-bottom:1px solid #e7edf2}.newsletter-block-body{padding:14px;display:block;height:auto;overflow:visible}.drag-handle{cursor:grab;font-size:17px;color:#64748b;user-select:none}.drag-handle:active{cursor:grabbing}.block-kind{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#334155}.block-index{font-size:11px}.icon-btn{border:0;background:transparent;width:28px;height:28px;border-radius:6px;font-weight:800;color:#475569}.icon-btn:hover{background:#e8eef4}.danger-text{color:var(--red)}
+    .block-image-row{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center;margin-bottom:13px}.block-image-preview,.block-image-empty{width:150px;height:92px;border:1px solid var(--line);border-radius:8px;background:#f8fafc;display:flex;align-items:center;justify-content:center;overflow:hidden;color:#94a3b8;font-size:12px;text-align:center;padding:8px}.block-image-preview img{width:100%;height:100%;object-fit:cover}.block-image-actions{display:flex;gap:8px;flex-wrap:wrap}.mini-editor-toolbar{display:flex;gap:5px;border:1px solid var(--line);border-bottom:0;background:#f8fafc;border-radius:8px 8px 0 0;padding:6px}.mini-editor-toolbar button{border:1px solid var(--line);background:#fff;border-radius:5px;padding:5px 8px}.block-richtext{min-height:190px;border:1px solid #cbd5e1;border-radius:0 0 8px 8px;padding:14px 15px;outline:none;line-height:1.6;font-size:15px;color:#0f172a;background:#fff;white-space:normal;overflow-wrap:anywhere}.block-richtext:focus{border-color:#77a7cd;box-shadow:0 0 0 3px rgba(11,74,125,.09)}.block-richtext:empty:before{content:attr(data-placeholder);color:#94a3b8;pointer-events:none}.block-richtext p{margin:0 0 12px}.block-richtext p:last-child{margin-bottom:0}
+    .email-news-block{margin:0 0 30px}.email-news-img,.email-standalone-img{width:100%;height:auto;display:block;border-radius:8px}.email-news-title{font:700 25px/1.25 Arial,sans-serif;margin:18px 0 10px;color:#1e293b}.email-news-title a{color:#1e293b;text-decoration:none}.email-news-summary{font:16px/1.6 Arial,sans-serif;color:#475569}.email-news-cta{margin-top:18px}.email-news-cta a,.email-button-block a,.email-button-placeholder{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;padding:12px 18px;border-radius:6px;font:700 14px Arial,sans-serif}.email-button-placeholder{opacity:.62;cursor:not-allowed}.email-button-missing{margin-top:7px;color:#a15c00;font-size:11px;font-weight:700}.email-text-block{margin:0 0 22px;font:16px/1.65 Arial,sans-serif;color:#334155}.email-text-block p{margin:0 0 14px}.email-text-block p:last-child{margin-bottom:0}.email-text-block div{margin:0 0 10px}.email-image-block{margin:0 0 24px}.email-button-block{margin:24px 0}.email-divider{border-top:1px solid #dfe5ec;margin:28px 0}
+
+    .newsletter-block-body .input,.newsletter-block-body select,.newsletter-block-body textarea{display:block;width:100%;max-width:100%;box-sizing:border-box;min-height:44px;color:#0f172a;background:#fff;font-size:15px}.newsletter-block-body textarea{min-height:120px;resize:vertical;line-height:1.55}.newsletter-block-body .field label{font-size:13px;color:#334155}.block-control{min-height:44px}.required-mark{display:inline-block;margin-left:6px;padding:2px 6px;border-radius:99px;background:#fff1f0;color:#b42318;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.03em}.button-destination-field{padding:12px;border:1px solid #dbe3ea;border-radius:9px;background:#f8fafc}.field-error{color:#b42318!important;font-weight:700}.button-align-field{max-width:280px}
+
+    .guide-layout{display:grid;gap:16px;max-width:1050px}.guide-hero{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;background:linear-gradient(135deg,#ffffff,#f2f7fb)}.guide-hero h2{margin:10px 0 8px;font-size:26px}.guide-hero p{margin:0;color:#64748b;line-height:1.6;max-width:720px}.guide-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.guide-step{display:flex;gap:14px;align-items:flex-start;box-shadow:none}.guide-num{width:34px;height:34px;flex:0 0 34px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:800}.guide-step h3{margin:2px 0 6px;font-size:15px}.guide-step p,.guide-copy{margin:0;color:#64748b;font-size:13px;line-height:1.6}.guide-bottom{grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media(max-width:1050px){.cards{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}.template-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:760px){.guide-hero{display:block}.guide-hero .row{margin-top:16px}.guide-steps,.guide-bottom{grid-template-columns:1fr}.app{display:block}aside{height:auto;position:static}.side-foot{display:none}nav{display:flex;overflow:auto;gap:6px}.nav-btn{white-space:nowrap!important}main{padding:18px}.cards{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}.template-grid{grid-template-columns:1fr}.topbar{gap:14px}.topbar h1{font-size:23px}}
+.test-contact-toggle{display:flex;align-items:center;gap:8px;font-weight:700}.test-contact-toggle input{width:auto;margin:0}.test-contact-toggle .muted{font-weight:400}
+</style>
+<style>
+  .tenant-screen{min-height:100vh;align-items:center;justify-content:center;padding:28px;background:#eef1f4}.tenant-card{width:min(900px,100%);background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:var(--shadow)}.tenant-card h1{margin:4px 0 8px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:800}.tenant-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.tenant-choice{border:1px solid var(--line);background:#fff;border-radius:12px;padding:20px;text-align:left;display:grid;grid-template-columns:18px 1fr;column-gap:10px;row-gap:4px}.tenant-choice:hover{border-color:#9aa8b6;box-shadow:var(--shadow)}.tenant-choice strong{font-size:17px}.tenant-choice small{grid-column:2;color:var(--muted)}.tenant-dot{width:12px;height:12px;border-radius:50%;margin-top:4px}.tenant-switch{min-width:170px;max-width:260px}.admin-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #edf0f3}.admin-row:last-child{border-bottom:0}.tenant-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.tenant-check{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:8px;padding:10px}.tenant-check input{width:auto}.login-logo{font-size:15px!important;letter-spacing:-.03em}.preview-head{border-top:4px solid var(--accent,#ff3b30)}
+  @media(max-width:760px){.tenant-grid,.tenant-checks{grid-template-columns:1fr}.tenant-card{padding:20px}}
+
+</style>
+
+<style>
+.grid.cards{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:800px){.grid.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+:root{--blue:#087d35;--navy:#07582e;--accent:#95c84b} aside{background:linear-gradient(180deg,#07582e,#063c26)}
+.demo-banner{background:#e6f3e9;color:#124f2a;padding:12px 30px;border-bottom:1px solid #bfdcc6;font-size:13px;display:flex;align-items:center;gap:16px;justify-content:space-between}.demo-banner button{background:white;border:1px solid #b5d5bd;border-radius:6px;padding:6px 12px}.demo-tag{font-weight:800;letter-spacing:1px}.demo-hero{padding:25px;background:linear-gradient(120deg,#edf6ee,#fff);margin-bottom:20px;border:1px solid #d6e7d9;border-radius:12px}.demo-hero h2{margin:0 0 8px;font-size:26px}.demo-hero p{line-height:1.6;max-width:750px}.demo-hero .eyebrow{color:#087d35;margin-bottom:10px}.brand{flex-direction:column;align-items:flex-start}.brand-badge{width:170px;height:108px}.brand-badge img{max-width:152px;max-height:96px}#previewHead{background:white!important;padding:18px}#previewHead img{max-height:110px!important}.login-screen{background:linear-gradient(140deg,#043721,#0c8741)}.login-card{width:min(580px,100%);padding:40px}.demo-cover-logo{width:230px;height:auto;margin-bottom:24px}.login-card h1{font-size:32px;margin-bottom:16px}.login-card .btn{padding:14px 24px} .side-foot{color:#d0e4d6} @media(max-width:800px){.demo-banner{padding:10px;flex-wrap:wrap}.brand{flex-direction:row}.brand-badge{width:85px;height:60px}.brand-badge img{max-width:75px;max-height:50px}.demo-hero h2{font-size:22px}}
+</style></head>
+<body><div class="demo-banner"><span><span class="demo-tag">DEMO UISP BOLZANO</span> · Dati fittizi · Sender simulato · Nessuna email inviata</span><button onclick="resetDemo()">Ripristina demo</button></div>
+  <div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">P&S</div>
+    <h1>P&S Newsletter Manager</h1>
+    <p>Accesso riservato. Ogni account vede esclusivamente i progetti per cui è autorizzato.</p>
+    <form onsubmit="doLogin(event)">
+      <div class="field"><label>Account / email</label><input id="loginName" type="text" class="input" autocomplete="username" required placeholder="nome@dominio.it oppure uisp"></div>
+      <div class="field"><label>Password</label><input id="loginPassword" type="password" class="input" autocomplete="current-password" required></div>
+      <button id="loginButton" class="btn primary" type="submit" style="width:100%">Accedi</button>
+      <div id="loginError" class="login-error"></div>
+    </form>
+    <span class="version-badge">P&S Newsletter Manager v2.0.21</span>
+  </div>
+</div>
+
+<div class="tenant-screen" id="tenantScreen" style="display:none">
+  <div class="tenant-card">
+    <div class="row space" style="margin-bottom:18px"><div><div class="eyebrow">P&S Newsletter Manager</div><h1>Seleziona il progetto</h1><p id="tenantWelcome" class="muted"></p></div><button class="btn" onclick="logoutApp()">Esci</button></div>
+    <div id="tenantGrid" class="tenant-grid"></div>
+  </div>
+</div>
+
+<div class="app" id="app" style="display:none">
+  <aside>
+    <div class="brand"><div class="brand-badge"><span id="brandFallback">P&S</span><img id="brandLogo" alt="Logo" style="display:none"></div><div><strong id="sideBrandName">Newsletter</strong><small>Press&Sport Manager</small></div></div>
+    <nav>
+      <button class="nav-btn active" data-section="dashboard">Dashboard</button>
+      <button class="nav-btn" data-section="contacts">Contatti</button>
+      <button class="nav-btn" data-section="newsletter">Newsletter</button>
+      <button class="nav-btn" data-section="templates">Template</button>
+      <button class="nav-btn" data-section="guide">Guida</button>
+      <div class="nav-separator"></div>
+      <button class="nav-btn nav-admin" data-section="settings">Impostazioni</button>
+    </nav>
+    <div class="side-foot"><span id="sideTenantName"></span><br><span id="sideUserName"></span><br><br><span id="sideAppVersion">v2.0.21</span></div>
+  </aside>
+  <main>
+    <div class="topbar">
+      <div><h1 id="pageTitle">Dashboard</h1><div class="sub"><span id="topTenantName">Newsletter</span> · P&S Newsletter Manager</div></div>
+      <div class="row"><select id="tenantSwitch" class="tenant-switch" onchange="switchTenant(this.value)" style="display:none"></select><button class="btn" onclick="refreshAll()">Aggiorna</button><button class="btn" onclick="logoutApp()">Esci</button></div>
+    </div>
+
+    <section class="section active" id="dashboard"><div class="demo-hero"><div class="eyebrow">COMUNICAZIONE ASSOCIATIVA</div><h2>Le notizie giuste, alle persone giuste.</h2><p>Un unico spazio per organizzare società e iscritti, comporre comunicazioni con il vostro logo e accompagnare ogni newsletter dalla bozza all’invio.</p><div class="row"><button class="btn primary" onclick="openDemoExample()">Apri newsletter di esempio</button><button class="btn" onclick="go('guide')">Percorso di presentazione</button></div></div>
+      <div class="row space" style="margin-bottom:14px"><div class="muted">Panoramica operativa del progetto</div><span id="dashboardAppVersion" class="pill">v2.0.21</span></div>
+      <div class="grid cards" id="metrics"></div>
+      <div class="grid" style="grid-template-columns:1.2fr .8fr">
+        <div class="card"><h3 class="panel-title">Flusso operativo</h3><div id="workflowNotice" class="notice good">Crea la newsletter, verifica i destinatari su Sender, genera la bozza e conferma l'invio.</div><div style="height:12px"></div><div class="row"><button class="btn primary" onclick="go('newsletter')">Crea newsletter</button><button class="btn" onclick="go('contacts')">Gestisci contatti</button><button class="btn" onclick="go('guide')">Apri guida</button></div></div>
+        <div class="card"><h3 class="panel-title">Stato Sender</h3><div id="senderStatus" class="notice warn">Configurazione non verificata.</div><div style="height:12px"></div><button class="btn" onclick="testSender()">Test connessione</button></div>
+      </div>
+    </section>
+
+    <section class="section" id="contacts">
+      <div id="uispAudienceTabs" class="row" style="display:none;margin-bottom:14px;gap:8px">
+        <button id="audienceCompaniesTab" class="btn primary" type="button" onclick="setContactAudience('companies')">Società <span id="companiesTabCount" class="pill" style="margin-left:6px">0</span></button>
+        <button id="audienceMembersTab" class="btn" type="button" onclick="setContactAudience('members')">Iscritti <span id="membersTabCount" class="pill" style="margin-left:6px">0</span></button>
+      </div>
+      <div class="row space toolbar">
+        <div class="row" style="flex:1"><input id="contactSearch" class="input search" placeholder="Cerca società, nome, email, disciplina..." oninput="renderContacts()"><select id="contactFilter" style="width:180px" onchange="renderContacts()"><option value="">Tutti</option><option value="consent">Solo consenzienti</option><option value="unsub">Disiscritti</option><option value="test">Solo test</option></select></div>
+        <div class="row"><button id="importCsvBtn" class="btn" onclick="document.getElementById('csvFile').click()">Importa CSV</button><input type="file" id="csvFile" accept=".csv,text/csv" hidden onchange="importCsv(this.files[0]);this.value=''"><button id="recoverImportBtn" class="btn" style="display:none" type="button" onclick="document.getElementById('recoverCsvFile').click()">Recupera lotto CSV</button><input type="file" id="recoverCsvFile" accept=".csv,text/csv" hidden onchange="recoverImportCsv(this.files[0]);this.value=''"><button id="pullSenderMembersBtn" class="btn" style="display:none" onclick="pullMembersFromSender()">Allinea con Sender</button><button id="publicSignupBtn" class="btn" style="display:none" onclick="openPublicSignup()">Apri modulo sito</button><button id="syncSenderBtn" class="btn" onclick="syncSender()">Sincronizza Sender</button><button id="newContactBtn" class="btn primary" onclick="openContact()">Nuovo contatto</button></div>
+      </div>
+      <div id="contactsSourceNote" class="notice" style="margin-bottom:14px"></div>
+      <div class="table-wrap"><table class="table"><thead id="contactsHead"><tr><th>Società</th><th>Referente</th><th>Email</th><th>Disciplina</th><th>Consenso</th><th>Stato</th><th>Aggiornato</th><th></th></tr></thead><tbody id="contactsBody"></tbody></table></div>
+    </section>
+
+    <section class="section" id="newsletter">
+      <div class="split">
+        <div class="card">
+          <div class="row space" style="margin-bottom:14px"><h3 class="panel-title" style="margin:0">Editor newsletter</h3><span class="pill">Visuale a blocchi</span></div>
+          <input type="hidden" id="nId">
+          <div class="field"><label>Template</label><select id="nTemplate" onchange="applyTemplate(this.value)"><option value="">— Nessuno —</option></select></div>
+          <div class="field"><label>Titolo interno</label><input id="nTitle" class="input" placeholder="Titolo interno della campagna"></div>
+          <div class="field"><label>Oggetto email</label><input id="nSubject" class="input" placeholder="Oggetto visualizzato in inbox"></div>
+          <div class="field"><label>Preheader</label><input id="nPreheader" class="input" placeholder="Breve testo di anteprima"></div>
+          <div class="field"><label id="nSegmentLabel">Destinatari</label><select id="nSegment"><option value="Tutti i destinatari del gruppo Sender">Tutti i destinatari del gruppo Sender</option></select><div id="nSegmentHelp" class="help">L'invio utilizza il Group ID Sender configurato per il progetto attivo.</div></div>
+
+          <div class="builder-head"><div><div class="builder-title">Contenuto</div><div class="help" style="margin-top:2px">Aggiungi sezioni e trascinale per riordinarle.</div></div></div>
+          <div class="block-addbar"><button class="btn primary small" type="button" onclick="addNewsletterBlock('news')">+ Notizia</button><button class="btn small" type="button" onclick="addNewsletterBlock('heading')">Titolo</button><button class="btn small" type="button" onclick="addNewsletterBlock('text')">Testo</button><button class="btn small" type="button" onclick="addNewsletterBlock('image')">Immagine</button><button class="btn small" type="button" onclick="addNewsletterBlock('button')">Pulsante</button><button class="btn small" type="button" onclick="addNewsletterBlock('divider')">Separatore</button><button class="btn small" type="button" onclick="addNewsletterBlock('spacer')">Spazio</button></div>
+          <div id="blockList" class="block-list"><div class="empty builder-empty">Aggiungi una <b>Notizia</b> o un altro blocco per iniziare.</div></div>
+          <div class="row" style="margin-top:16px"><button class="btn primary" onclick="saveNewsletter()">Salva bozza</button><button class="btn" onclick="newNewsletter()">Nuova</button></div>
+          <input type="hidden" id="nCtaText"><input type="hidden" id="nCtaUrl">
+
+
+
+
+          </div>
+        <div>
+          <div class="card" style="margin-bottom:16px"><div class="row space"><h3 class="panel-title" style="margin:0">Anteprima</h3><span class="pill">Desktop</span></div><div class="preview" style="margin-top:14px"><div class="preview-inner"><div class="preview-head" id="previewHead">Newsletter</div><div id="previewBody" class="preview-body"><span class="muted">Inserisci il contenuto...</span></div><div class="preview-foot" id="previewFooter">Footer newsletter<br>Link di disiscrizione gestito da Sender</div></div></div></div>
+          <div class="card"><div class="row space"><h3 class="panel-title" style="margin:0">Bozze</h3><div class="row"><span id="newsletterDraftCount" class="muted"></span><button class="btn small" onclick="refreshCampaignStatuses()">Aggiorna stati Sender</button></div></div><div id="newsletterDraftList" style="margin-top:12px"></div></div>
+          <div class="card" style="margin-top:16px"><div class="row space"><h3 class="panel-title" style="margin:0">Storico newsletter</h3><span id="newsletterHistoryCount" class="muted"></span></div><div id="newsletterHistoryList" style="margin-top:12px"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="templates"><div class="grid template-grid" id="templateGrid"></div></section>
+
+    <section class="section" id="guide">
+      <div class="guide-layout">
+        <div class="card guide-hero"><div><span class="pill green">Uso quotidiano</span><h2>Guida rapida</h2><p>Ogni account lavora nel proprio progetto. Il Super Admin può passare da un cliente all'altro dal selettore in alto.</p></div><div class="row"><button class="btn primary" onclick="go('newsletter')">Crea una newsletter</button><button class="btn" onclick="go('contacts')">Gestisci contatti</button></div></div>
+        <div class="guide-steps">
+          <div class="card guide-step"><div class="guide-num">1</div><div><h3>Controlla il pubblico</h3><p id="guideAudienceText">I destinatari vengono verificati prima della creazione della campagna Sender.</p></div></div>
+          <div class="card guide-step"><div class="guide-num">2</div><div><h3>Crea la newsletter</h3><p>Scegli un template oppure parti da zero e aggiungi i blocchi necessari.</p></div></div>
+          <div class="card guide-step"><div class="guide-num">3</div><div><h3>Inserisci contenuti</h3><p>Usa notizie, immagini, testo e pulsanti. Nella demo le immagini restano soltanto nel browser.</p></div></div>
+          <div class="card guide-step"><div class="guide-num">4</div><div><h3>Controlla l'anteprima</h3><p>Verifica testi, immagini, link, oggetto e preheader prima di salvare la bozza.</p></div></div>
+          <div class="card guide-step"><div class="guide-num">5</div><div><h3>Crea su Sender</h3><p>Il Manager controlla il gruppo Sender e crea la campagna solo quando il controllo destinatari è superato.</p></div></div>
+          <div class="card guide-step"><div class="guide-num">6</div><div><h3>Invia</h3><p>Dopo il controllo finale premi <b>Invia</b> e digita <b>INVIA</b>. Nella demo viene simulato il passaggio nello storico, senza spedire email.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="settings">
+      <div id="projectSettingsCard" class="card settings"><div class="notice warn" style="margin-bottom:16px"><b>Impostazioni del progetto.</b> Le impostazioni sono separate per ogni cliente.</div>
+        <h3 class="panel-title">Identità del progetto</h3>
+        <div class="field"><label>Nome brand</label><input id="sBrandName" class="input"></div>
+        <div class="two"><div class="field"><label>Colore principale</label><input id="sPrimaryColor" class="input" type="color"></div><div class="field"><label>Colore accento</label><input id="sAccentColor" class="input" type="color"></div></div>
+        <div class="field"><label>Logo</label><div id="logoBox" style="border:1px solid var(--line);border-radius:10px;padding:14px;background:#f8fafc"><div id="logoEmpty" class="muted" style="font-size:13px">Nessun logo caricato.</div><div id="logoPreviewWrap" style="display:none;align-items:center;gap:14px;flex-wrap:wrap"><div style="width:180px;min-height:76px;background:#fff;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;padding:10px"><img id="logoPreview" alt="Logo" style="max-width:160px;max-height:70px;object-fit:contain"></div><div><div id="logoName" style="font-size:13px;font-weight:700;margin-bottom:8px"></div><button class="btn small" type="button" onclick="document.getElementById('logoFile').click()">Sostituisci logo</button><button class="btn small danger" type="button" onclick="removeLogo()">Rimuovi</button></div></div><div id="logoUploadActions" style="margin-top:10px"><button class="btn" type="button" onclick="document.getElementById('logoFile').click()">Carica logo</button><input id="logoFile" type="file" accept="image/png,image/jpeg,image/webp" hidden onchange="uploadLogo(this.files[0])"><div class="help">PNG, JPG o WEBP. Massimo 2 MB.</div></div></div></div>
+
+        <h3 class="panel-title" style="margin-top:24px">Collegamento Sender</h3>
+        <div class="field"><label>API token Sender</label><input id="sToken" type="password" class="input" placeholder="Lascia vuoto per mantenere quello salvato"><div id="tokenState" class="help"></div></div>
+        <div id="defaultSenderGroupBox" class="field"><label>Gruppo destinatari Sender</label><div class="row" style="align-items:center"><input id="sGroup" class="input" placeholder="ID gruppo destinatari" style="flex:1"><button class="btn" type="button" onclick="loadSenderGroups()">Carica gruppi da Sender</button></div><select id="sGroupSelect" style="display:none;margin-top:8px" onchange="selectSenderGroup(this.value)"></select><div id="senderGroupsHelp" class="help">Dopo aver salvato il token, premi “Carica gruppi da Sender” e scegli il gruppo corretto.</div></div>
+        <div id="uispSenderGroupsBox" style="display:none;border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:14px;background:#f8fafc">
+          <div class="row space" style="margin-bottom:12px"><div><b>Gruppi destinatari UISP</b><div class="help">Società e Iscritti vengono mantenuti separati su Sender.</div></div><button class="btn" type="button" onclick="loadSenderGroups()">Carica gruppi da Sender</button></div>
+          <div class="field"><label>Gruppo Società</label><input id="sGroupCompanies" class="input" placeholder="ID gruppo Sender Società"><select id="sGroupCompaniesSelect" style="display:none;margin-top:8px" onchange="selectUispSenderGroup('companies',this.value)"></select></div>
+          <div class="field"><label>Gruppo Iscritti</label><input id="sGroupMembers" class="input" placeholder="ID gruppo Sender Iscritti"><select id="sGroupMembersSelect" style="display:none;margin-top:8px" onchange="selectUispSenderGroup('members',this.value)"></select></div>
+          <div id="uispSenderGroupsHelp" class="help">Il gruppo Società riutilizza automaticamente il vecchio gruppo UISP finché non ne selezioni uno diverso. Il gruppo Iscritti va configurato separatamente.</div>
+        </div>
+        <div class="two"><div class="field"><label>Nome mittente</label><input id="sFrom" class="input"></div><div class="field"><label>Email mittente / Reply-to</label><input id="sReply" class="input" type="email"></div></div>
+        <div class="field"><label>Fonte destinatari</label><select id="sSubscriberSource"><option value="sender">Sender è la fonte principale</option><option value="manager">Il Manager sincronizza i contatti su Sender</option></select><div class="help">Per Press & Sport è consigliato Sender come fonte principale. Per UISP può restare la sincronizzazione dal database locale.</div></div>
+
+        <h3 class="panel-title" style="margin-top:24px">Footer newsletter</h3>
+        <div class="field"><label>Testo footer</label><input id="sFooter" class="input"></div>
+        <div class="two"><div class="field"><label>Email nel footer</label><input id="sFooterEmail" class="input" type="email"></div><div class="field"><label>Sito web nel footer</label><input id="sFooterWebsite" class="input" placeholder="https://..."></div></div>
+        <div class="field"><label>Indirizzo nel footer</label><input id="sFooterAddress" class="input"></div>
+        <div class="row"><button class="btn primary" onclick="saveSettings()">Salva impostazioni</button><button class="btn" onclick="testSender()">Test Sender</button><a id="dbLink" class="btn" target="_blank" rel="noopener">Apri database</a><a id="folderLink" class="btn" target="_blank" rel="noopener">Apri cartella Drive</a></div>
+      </div>
+
+      <div class="card settings" style="margin-top:16px"><h3 class="panel-title">Sicurezza account</h3><div class="notice">La password è personale per il login utilizzato. La modifica disconnette solo le sessioni di questo account.</div><div style="height:16px"></div><div class="field"><label>Password attuale</label><input id="currentPassword" type="password" class="input" autocomplete="current-password"></div><div class="two"><div class="field"><label>Nuova password</label><input id="newPassword" type="password" class="input" autocomplete="new-password"></div><div class="field"><label>Conferma nuova password</label><input id="newPassword2" type="password" class="input" autocomplete="new-password"></div></div><button class="btn" onclick="changePassword()">Cambia password</button></div>
+
+      <div id="superAdminCard" class="card settings" style="margin-top:16px;display:none"><div class="row space"><div><h3 class="panel-title" style="margin-bottom:4px">Clienti e accessi</h3><div class="muted" style="font-size:13px">Solo Super Admin. Crea nuovi ambienti e assegna gli utenti.</div></div><button class="btn primary" onclick="openTenantAdmin()">Nuovo cliente</button></div><div id="adminTenants" style="margin-top:16px"></div><hr style="border:0;border-top:1px solid var(--line);margin:22px 0"><div class="row space"><h3 class="panel-title" style="margin:0">Utenti</h3><button class="btn" onclick="openUserAdmin()">Nuovo utente</button></div><div id="adminUsers" style="margin-top:14px"></div></div>
+    </section>
+  </main>
+</div>
+
+<div class="modal-backdrop" id="contactModal"><div class="modal"><div class="row space"><h2 id="contactModalTitle">Contatto newsletter</h2><button class="btn small" onclick="closeContact()">Chiudi</button></div><input type="hidden" id="cId"><input type="hidden" id="cKind" value="companies"><div id="companyContactFields" class="two"><div class="field"><label>Società</label><input id="cOrg" class="input"></div><div class="field"><label>Disciplina</label><input id="cDisc" class="input"></div></div><div class="two"><div class="field"><label>Nome</label><input id="cFirst" class="input"></div><div class="field"><label>Cognome</label><input id="cLast" class="input"></div></div><div class="field"><label>Email *</label><input id="cEmail" class="input" type="email"></div><div class="two"><div class="field"><label>Consenso newsletter</label><select id="cConsent"><option value="NO">NO</option><option value="SI">SI</option></select></div><div class="field"><label>Data consenso</label><input id="cConsentDate" class="input" type="date"></div><div class="field"><label>Fonte consenso</label><input id="cConsentSource" class="input"></div><div class="field"><label>Stato</label><select id="cStatus"><option>ATTIVO</option><option>DISISCRITTO</option></select></div></div><div class="field"><label class="test-contact-toggle"><input id="cTest" type="checkbox"> Contatto di test <span class="muted">(escluso dalla sincronizzazione del gruppo reale)</span></label></div><div class="field"><label>Note</label><textarea id="cNotes" rows="3"></textarea></div><div class="row"><button id="saveContactBtn" class="btn primary" onclick="saveContact()">Salva contatto</button><button id="deleteContactBtn" class="btn danger" onclick="deleteCurrentContact()" style="display:none">Elimina</button></div></div></div>
+
+<div class="modal-backdrop" id="templateModal"><div class="modal" style="max-width:760px"><div class="row space"><div><h2 style="margin-bottom:4px">Modifica template</h2><div class="muted" style="font-size:13px">Le modifiche saranno usate dalle nuove newsletter.</div></div><button class="btn small" type="button" onclick="closeTemplateEditor()">Chiudi</button></div><input type="hidden" id="tId"><div class="two" style="margin-top:18px"><div class="field"><label>Nome template</label><input id="tName" class="input"></div><div class="field"><label>Descrizione</label><input id="tDescription" class="input"></div></div><div class="field"><label>Oggetto email</label><input id="tSubject" class="input"></div><div class="field"><label>Preheader</label><input id="tPreheader" class="input"></div><div class="field"><label>Contenuto base</label><div class="mini-editor-toolbar"><button type="button" onclick="templateFmt('bold')"><b>B</b></button><button type="button" onclick="templateFmt('italic')"><i>I</i></button><button type="button" onclick="templateFmt('formatBlock','h2')">H2</button><button type="button" onclick="templateFmt('insertUnorderedList')">• Lista</button><button type="button" onclick="templateAddLink()">Link</button></div><div id="tContent" class="block-richtext" contenteditable="true"></div></div><div class="two"><div class="field"><label>Testo CTA</label><input id="tCtaText" class="input"></div><div class="field"><label>URL CTA</label><input id="tCtaUrl" class="input"></div></div><div class="row"><button class="btn primary" type="button" onclick="saveTemplateEditor()">Salva template</button><button class="btn" type="button" onclick="closeTemplateEditor()">Annulla</button></div></div></div>
+
+<div class="modal-backdrop" id="sendModal"><div class="modal" style="max-width:560px"><h2>Conferma invio simulato</h2><div class="notice warn">Dimostrazione: nessuna email verrà spedita. La newsletter passerà nello storico dimostrativo.</div><div style="height:14px"></div><div class="field"><label>Per confermare digita INVIA</label><input id="sendConfirm" class="input" autocomplete="off"></div><input type="hidden" id="sendNewsletterId"><div class="row"><button class="btn danger" onclick="confirmSend()">Invia ora</button><button class="btn" onclick="closeSend()">Annulla</button></div></div></div>
+
+<div class="modal-backdrop" id="scheduleModal"><div class="modal app-dialog" style="max-width:600px"><div class="dialog-head"><div class="dialog-icon tone-info">◷</div><div><h2 style="margin:0">Programma invio</h2><div id="scheduleNewsletterTitle" class="muted" style="margin-top:4px"></div></div></div><div class="notice" style="margin-top:18px">Scegli data e ora. Sender userà il fuso orario configurato nel tuo account Sender.</div><div class="field" style="margin-top:16px"><label>Data e ora di invio</label><input id="scheduleDateTime" class="input" type="datetime-local"></div><input type="hidden" id="scheduleNewsletterId"><div class="row" style="margin-top:18px"><button class="btn primary" onclick="confirmSchedule()">Programma invio</button><button class="btn" onclick="closeSchedule()">Annulla</button></div></div></div>
+
+<div class="modal-backdrop" id="appDialog"><div class="modal app-dialog" id="appDialogCard" style="max-width:640px"><div class="dialog-head"><div class="dialog-icon" id="appDialogIcon">i</div><div><h2 id="appDialogTitle" style="margin:0">Conferma</h2><div id="appDialogMessage" class="muted" style="margin-top:5px;line-height:1.5"></div></div></div><div id="appDialogDetails" class="dialog-details"></div><div class="row" style="margin-top:20px"><button id="appDialogConfirm" class="btn primary" onclick="closeAppDialog(true)">Continua</button><button id="appDialogCancel" class="btn" onclick="closeAppDialog(false)">Annulla</button></div></div></div>
+
+<div class="modal-backdrop" id="tenantAdminModal"><div class="modal" style="max-width:620px"><div class="row space"><h2>Cliente / progetto</h2><button class="btn small" onclick="closeTenantAdmin()">Chiudi</button></div><input id="aTenantId" type="hidden"><div class="field"><label>Nome</label><input id="aTenantName" class="input"></div><div class="field"><label>Nome breve</label><input id="aTenantShort" class="input"></div><div class="two"><div class="field"><label>Colore principale</label><input id="aTenantPrimary" type="color" class="input" value="#111111"></div><div class="field"><label>Colore accento</label><input id="aTenantAccent" type="color" class="input" value="#ff3b30"></div></div><div class="field"><label>Fonte destinatari</label><select id="aTenantSource"><option value="sender">Sender</option><option value="manager">Manager locale</option></select></div><div class="row"><button class="btn primary" onclick="saveTenantAdminUi()">Salva</button><button class="btn" onclick="closeTenantAdmin()">Annulla</button></div></div></div>
+
+<div class="modal-backdrop" id="userAdminModal"><div class="modal" style="max-width:680px"><div class="row space"><h2>Utente</h2><button class="btn small" onclick="closeUserAdmin()">Chiudi</button></div><input id="aUserId" type="hidden"><div class="two"><div class="field"><label>Login / email</label><input id="aUserLogin" class="input"></div><div class="field"><label>Nome visualizzato</label><input id="aUserDisplay" class="input"></div></div><div class="field"><label>Ruolo</label><select id="aUserRole" onchange="renderUserTenantChecks()"><option value="EDITOR">Editor</option><option value="ADMIN">Admin</option><option value="SUPERADMIN">Super Admin</option></select></div><div class="field"><label>Progetti autorizzati</label><div id="aUserTenants" class="tenant-checks"></div></div><div class="row"><button class="btn primary" onclick="saveUserAdminUi()">Salva</button><button class="btn" onclick="closeUserAdmin()">Annulla</button></div></div></div>
+
+<div class="toast" id="toast"></div>
+
+  <script>
+let state={contacts:[],newsletters:[],templates:[],settings:{},dashboard:{},tenant:null,tenants:[],session:null,admin:null};
+let tenantStateCache={};
+// Elimina solo l'eventuale vecchia sessione persistente della v2.0.1.
+
+let sessionToken='demo';
+let sessionInfo=null;
+let uiBound=false;
+const $=id=>document.getElementById(id);
+
+function busy(on){if($('app'))$('app').classList.toggle('loading',on);if($('loginButton'))$('loginButton').disabled=on}
+function toast(msg,error=false){const t=$('toast');t.textContent=msg;t.className='toast show'+(error?' error':'');setTimeout(()=>t.className='toast',4200)}
+let appDialogResolver=null;
+function closeAppDialog(result=false){const m=$('appDialog');if(m)m.classList.remove('show');if(appDialogResolver){const r=appDialogResolver;appDialogResolver=null;r(!!result)}}
+function showAppDialog(opts={}){return new Promise(resolve=>{appDialogResolver=resolve;const tone=opts.tone||'info';$('appDialog').className='modal-backdrop show';$('appDialogCard').className='modal app-dialog tone-'+tone;$('appDialogIcon').textContent=tone==='success'?'✓':tone==='error'?'!':tone==='warn'?'!':'i';$('appDialogTitle').textContent=opts.title||'Conferma';$('appDialogMessage').textContent=opts.message||'';$('appDialogDetails').innerHTML=opts.html||'';$('appDialogConfirm').textContent=opts.confirmText||'Continua';$('appDialogConfirm').className='btn '+(opts.danger?'danger':'primary');$('appDialogCancel').textContent=opts.cancelText||'Annulla';$('appDialogCancel').style.display=opts.showCancel===false?'none':'';$('appDialogConfirm').style.display=opts.hideConfirm?'none':''})}
+function showAppLoading(title,message){$('appDialog').className='modal-backdrop show';$('appDialogCard').className='modal app-dialog tone-info';$('appDialogIcon').textContent='…';$('appDialogTitle').textContent=title||'Operazione in corso';$('appDialogMessage').textContent=message||'Attendi qualche secondo.';$('appDialogDetails').innerHTML='<div class="dialog-loading"><span></span><span></span><span></span></div>';$('appDialogConfirm').style.display='none';$('appDialogCancel').style.display='none'}
+function hideAppLoading(){if($('appDialog'))$('appDialog').classList.remove('show');appDialogResolver=null}
+async function run(fn){try{busy(true);return await fn()}catch(e){if(!String(e.message||'').includes('SESSION_EXPIRED'))toast(e.message,true);throw e}finally{busy(false)}}
+
+function bindUi(){if(uiBound)return;uiBound=true;document.querySelectorAll('.nav-btn').forEach(b=>b.onclick=()=>go(b.dataset.section));['nTitle','nSubject','nPreheader'].forEach(id=>$(id)&&$(id).addEventListener('input',updatePreview))}
+function hideAllScreens(){if($('app'))$('app').style.display='none';if($('loginScreen'))$('loginScreen').style.display='none';if($('tenantScreen'))$('tenantScreen').style.display='none'}
+function showLogin(message=''){hideAllScreens();$('loginScreen').style.display='flex';$('loginError').textContent=message;$('loginPassword').value='';setTimeout(()=>($('loginName').value?$('loginPassword'):$('loginName')).focus(),50)}
+function forceLogin(){sessionToken='';sessionInfo=null;tenantStateCache={};sessionStorage.removeItem('psnmSession');showLogin('Sessione scaduta. Accedi di nuovo.')}
+
+async function doLogin(e){e&&e.preventDefault();$('loginError').textContent='';try{busy(true);const r=await rawApi('login',$('loginName').value,$('loginPassword').value);sessionToken=r.token;sessionInfo=r;sessionStorage.setItem('psnmSession',sessionToken);if(r.activeTenantId){await showApp()}else{showTenantChooser(r)}}catch(err){$('loginError').textContent=err.message||'Accesso non riuscito.'}finally{busy(false)}}
+
+function showTenantChooser(info){hideAllScreens();sessionInfo=info||sessionInfo;$('tenantScreen').style.display='flex';$('tenantWelcome').textContent=(info&&info.user?info.user.displayName:'')+' · scegli l’ambiente su cui lavorare.';const tenants=(info&&info.tenants)||[];$('tenantGrid').innerHTML=tenants.map(t=>`<button class="tenant-choice" onclick="chooseTenant('${escAttr(t.id)}')"><span class="tenant-dot" style="background:${escAttr(t.accentColor||t.brandColor||'#111111')}"></span><strong>${esc(t.name)}</strong><small>${t.subscriberSource==='manager'?'Contatti gestiti dal Manager':'Destinatari gestiti da Sender'}</small></button>`).join('')}
+async function chooseTenant(id){await run(async()=>{const r=await rawApi('selectTenantAndBootstrap',sessionToken,id);sessionInfo=r.session;state=r.data;tenantStateCache[id]=state;await showApp(true)})}
+async function switchTenant(id){
+  if(!id||!state.tenant||id===state.tenant.id)return;
+  const currentId=state.tenant&&state.tenant.id;
+  if(currentId)tenantStateCache[currentId]=state;
+  await run(async()=>{
+    const cached=tenantStateCache[id];
+    if(cached){
+      sessionInfo=await rawApi('selectTenant',sessionToken,id);
+      state=cached;
+      if(state.session)state.session.activeTenantId=id;
+      renderAll();
+    }else{
+      const r=await rawApi('selectTenantAndBootstrap',sessionToken,id);
+      sessionInfo=r.session;
+      state=r.data;
+      tenantStateCache[id]=state;
+      renderAll();
+    }
+    newNewsletter();
+    go('dashboard');
+  })
+}
+
+async function showApp(hasState=false){bindUi();hideAllScreens();$('app').style.display='';if(hasState)renderAll();else await refreshAll();go('dashboard')}
+async function logoutApp(){try{if(sessionToken)await rawApi('logout',sessionToken)}catch(e){}sessionToken='';sessionInfo=null;tenantStateCache={};sessionStorage.removeItem('psnmSession');showLogin()}
+async function init(){bindUi();if(sessionToken){try{const s=await rawApi('getSessionState',sessionToken);if(s&&s.authenticated){sessionInfo=s;if(s.activeTenantId){await showApp();return}showTenantChooser(s);return}}catch(e){}}showLogin()}
+async function refreshAll(){return run(async()=>{const d=await api('getBootstrapData');state=d;if(state.tenant&&state.tenant.id)tenantStateCache[state.tenant.id]=state;renderAll()})}
+
+function renderAll(){applyTenantTheme();renderAppVersion();renderMetrics();renderContacts();renderNewsletters();renderTemplates();renderTemplateSelect();renderSettings();renderBrandLogo();renderAdmin();$('dbLink').href=state.dbUrl||'#';$('folderLink').href=state.folderUrl||'#';renderTenantSwitcher();renderAudienceMode();renderRolePermissions()}
+function renderAppVersion(){const v='v'+String(state.version||'2.0.21').replace(/^v/i,'');if($('sideAppVersion'))$('sideAppVersion').textContent=v;if($('dashboardAppVersion'))$('dashboardAppVersion').textContent=v}
+function applyTenantTheme(){const s=state.settings||{},t=state.tenant||{};const primary=s.brand_primary_color||t.brandColor||'#111111',accent=s.brand_accent_color||t.accentColor||primary;document.documentElement.style.setProperty('--blue',primary);document.documentElement.style.setProperty('--navy',primary);document.documentElement.style.setProperty('--accent',accent);$('sideBrandName').textContent=s.brand_name||t.name||'Newsletter';$('sideTenantName').textContent=t.name||'';$('topTenantName').textContent=t.name||'';$('sideUserName').textContent=(state.session&&state.session.displayName)||''}
+function renderTenantSwitcher(){const el=$('tenantSwitch'),tenants=state.tenants||[];if(tenants.length<=1){el.style.display='none';return}el.innerHTML=tenants.map(t=>`<option value="${escAttr(t.id)}"${state.tenant&&t.id===state.tenant.id?' selected':''}>${esc(t.name)}</option>`).join('');el.style.display='block'}
+function renderRolePermissions(){const role=(state.session&&state.session.role)||'EDITOR';const canAdmin=role==='SUPERADMIN'||role==='ADMIN';$('projectSettingsCard').style.display=canAdmin?'block':'none'}
+function renderAudienceMode(){const source=(state.settings&&state.settings.subscriber_source)||'sender';const senderMode=source==='sender';$('syncSenderBtn').style.display=senderMode?'none':'';$('contactsSourceNote').textContent=senderMode?'Sender è la fonte principale dei destinatari. I contatti locali sono un archivio operativo e non determinano il numero finale di destinatari.':'Il Manager è la fonte dei contatti: prima di creare una campagna sincronizza i consenzienti con il gruppo Sender.';$('workflowNotice').textContent=senderMode?'1. Prepara la newsletter. 2. Il Manager verifica il gruppo Sender. 3. Crea la bozza. 4. Controlla. 5. Conferma l’invio.':'1. Gestisci i contatti con consenso. 2. Sincronizzali con Sender. 3. Crea la newsletter. 4. Genera la bozza. 5. Conferma l’invio.';$('guideAudienceText').innerHTML=senderMode?'Per questo progetto <b>Sender è la fonte principale</b> degli iscritti. Il Manager legge il numero di destinatari attivi direttamente dal gruppo configurato.':'Per questo progetto il <b>Manager sincronizza i contatti</b> con Sender e verifica che i conteggi coincidano.'}
+function go(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.section===id));$('pageTitle').textContent={dashboard:'Dashboard',contacts:'Contatti',newsletter:'Newsletter',templates:'Template',guide:'Guida',settings:'Impostazioni'}[id]||id;if(id==='newsletter')updatePreview();if(id==='settings')loadAdminIfNeeded()}
+async function loadAdminIfNeeded(){if(!(state.session&&state.session.role==='SUPERADMIN')||state.admin)return;try{const r=await api('getAdminData');state.admin=r;renderAdmin()}catch(e){toast(e.message||'Impossibile caricare clienti e accessi.',true)}}
+function isTestContactClient(c){const type=String(c&&c.Type||'').trim().toUpperCase(),src=String(c&&c.ConsentSource||'').trim().toUpperCase(),org=String(c&&c.Organization||'').trim().toUpperCase(),email=String(c&&c.Email||'').trim().toLowerCase();if(type==='TEST'||src==='TEST'||src.indexOf('TEST INTERNO')===0||/^TEST(?:\s|$)/.test(org))return true;if(state.tenant&&state.tenant.id==='uisp'&&c&&Object.prototype.hasOwnProperty.call(c,'Organization'))return ['test1@example.com','test2@example.com','test3@example.com'].includes(email);return false}
+function renderMetrics(){const d=state.dashboard||{};const items=[['Contatti locali',d.contacts||0,'Archivio del progetto'],['Consensi attivi',d.activeConsent||0,'Esclusi i contatti test'],['Contatti test',d.testContacts||0,'Mai sincronizzati nel gruppo reale'],['Disiscritti / no',d.unsubscribed||0,'Esclusi localmente'],['Bozze',d.drafts||0,'In lavorazione'],['Inviate',d.sent||0,'Storico']];$('metrics').innerHTML=items.map(x=>`<div class="card metric"><div class="label">${x[0]}</div><div class="value">${x[1]}</div><div class="hint">${x[2]}</div></div>`).join('')}
+function renderContacts(){const q=($('contactSearch')?.value||'').toLowerCase(),f=$('contactFilter')?.value||'';let rows=state.contacts||[];rows=rows.filter(c=>Object.values(c).join(' ').toLowerCase().includes(q));if(f==='consent')rows=rows.filter(c=>String(c.Consent).toUpperCase()==='SI'&&String(c.Status).toUpperCase()!=='DISISCRITTO'&&!isTestContactClient(c));if(f==='unsub')rows=rows.filter(c=>String(c.Status).toUpperCase()==='DISISCRITTO'||String(c.Consent).toUpperCase()==='NO');if(f==='test')rows=rows.filter(isTestContactClient);$('contactsBody').innerHTML=rows.length?rows.map(c=>{const isTest=isTestContactClient(c);return `<tr><td><b>${esc(c.Organization||'—')}</b></td><td>${esc([c.FirstName,c.LastName].filter(Boolean).join(' ')||'—')}</td><td>${esc(c.Email)}${isTest?' <span class="pill amber">TEST</span>':''}</td><td>${esc(c.Discipline||'—')}</td><td><span class="pill ${String(c.Consent).toUpperCase()==='SI'?'green':'amber'}">${esc(c.Consent||'NO')}</span></td><td><span class="pill ${isTest?'amber':String(c.Status).toUpperCase()==='DISISCRITTO'?'red':'green'}">${isTest?'TEST':esc(c.Status||'ATTIVO')}</span></td><td>${esc(c.UpdatedAt||'')}</td><td class="right"><button class="btn small" onclick='editContact(${JSON.stringify(c).replace(/'/g,'&#39;')})'>Apri</button></td></tr>`}).join(''):`<tr><td colspan="8" class="empty">Nessun contatto</td></tr>`}
+</script>
+
+  <script>
+function openContact(){['cId','cOrg','cDisc','cFirst','cLast','cEmail','cConsentDate','cConsentSource','cNotes'].forEach(id=>$(id).value='');$('cConsent').value='NO';$('cStatus').value='ATTIVO';$('cTest').checked=false;$('deleteContactBtn').style.display='none';$('contactModal').classList.add('show')}
+function editContact(c){openContact();$('cId').value=c.ID||'';$('cOrg').value=c.Organization||'';$('cDisc').value=c.Discipline||'';$('cFirst').value=c.FirstName||'';$('cLast').value=c.LastName||'';$('cEmail').value=c.Email||'';$('cConsent').value=c.Consent||'NO';$('cConsentDate').value=(c.ConsentDate||'').slice(0,10);$('cConsentSource').value=c.ConsentSource||'';$('cStatus').value=c.Status||'ATTIVO';$('cTest').checked=isTestContactClient(c);$('cNotes').value=c.Notes||'';$('deleteContactBtn').style.display='inline-block'}
+function closeContact(){$('contactModal').classList.remove('show')}
+async function saveContact(){const c={ID:$('cId').value,Organization:$('cOrg').value,Discipline:$('cDisc').value,FirstName:$('cFirst').value,LastName:$('cLast').value,Email:$('cEmail').value,Type:$('cTest').checked?'TEST':'Società',Consent:$('cConsent').value,ConsentDate:$('cConsentDate').value,ConsentSource:$('cConsentSource').value,Status:$('cStatus').value,Notes:$('cNotes').value};await run(async()=>{const r=await api('saveContact',c);state.contacts=await api('getContacts');state.dashboard=r.dashboard;if(state.tenant&&state.tenant.id)tenantStateCache[state.tenant.id]=state;renderMetrics();renderContacts();closeContact();toast('Contatto salvato')})}
+async function deleteCurrentContact(){if(!confirm('Eliminare questo contatto dal database newsletter?'))return;await run(async()=>{const r=await api('deleteContact',$('cId').value);state.contacts=await api('getContacts');state.dashboard=r.dashboard;if(state.tenant&&state.tenant.id)tenantStateCache[state.tenant.id]=state;renderMetrics();renderContacts();closeContact();toast('Contatto eliminato')})}
+
+function parseCsv(text){const rows=[];let row=[],field='',q=false;for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];if(c==='"'&&q&&n==='"'){field+='"';i++}else if(c==='"'){q=!q}else if(c===','&&!q){row.push(field);field=''}else if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&n==='\n')i++;row.push(field);field='';if(row.some(x=>x.trim()!==''))rows.push(row);row=[]}else field+=c}if(field||row.length){row.push(field);rows.push(row)}if(rows.length<2)return[];const h=rows[0].map(x=>x.trim());return rows.slice(1).map(r=>Object.fromEntries(h.map((k,i)=>[k,(r[i]||'').trim()]))) }
+async function importCsv(file){if(!file)return;const text=await file.text();const rows=parseCsv(text);if(!rows.length){toast('CSV vuoto o non valido',true);return}await run(async()=>{const r=await api('importContacts',rows);state.contacts=r.contacts;state.dashboard=r.dashboard;renderMetrics();renderContacts();toast(`Importazione: ${r.added} nuovi, ${r.updated} aggiornati, ${r.skipped} saltati`)})}
+async function syncSender(){if(!confirm('Sincronizzare con Sender i contatti reali con consenso SI? I contatti marcati TEST verranno esclusi.'))return;await run(async()=>{const r=await api('syncContactsToSender');const skipped=r.skippedTest?` · ${r.skippedTest} test esclusi`:'';toast(`Sender: ${r.synced} sincronizzati, ${r.failed} errori${skipped}`,r.failed>0)})}
+
+function renderTemplateSelect(){const s=$('nTemplate');if(!s)return;s.innerHTML='<option value="">— Nessuno —</option>'+(state.templates||[]).map(t=>`<option value="${escAttr(t.ID)}">${esc(t.Name)}</option>`).join('')}
+function renderTemplates(){$('templateGrid').innerHTML=(state.templates||[]).map(t=>{const id=escAttr(t.ID);return`<div class="card template"><h3>${esc(t.Name)}</h3><p>${esc(t.Description||'')}</p><div style="height:12px"></div><div class="row"><button class="btn small primary" type="button" onclick="useTemplate('${id}')">Usa template</button><button class="btn small" type="button" onclick="openTemplateEditor('${id}')">Modifica</button></div></div>`}).join('')}
+function useTemplate(id){go('newsletter');$('nTemplate').value=id;applyTemplate(id)}
+</script>
+
+  <script>
+async function saveNewsletter(){await run(async()=>{const r=await api('saveNewsletter',newsletterPayload());state.newsletters=r.newsletters;state.dashboard=r.dashboard;$('nId').value=r.newsletter.ID;renderMetrics();renderNewsletters();toast('Bozza salvata')})}
+function formatScheduledAt(value){const s=String(value||'').trim();if(!s)return'';const m=s.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/);return m?`${m[3]}/${m[2]}/${m[1]} ${m[4]}:${m[5]}`:s}
+function newsletterRowHtml(n){
+  const st=String(n.Status||'BOZZA').toUpperCase(),cls=st==='INVIATA'?'green':st==='PROGRAMMATA'?'blue':st==='SENDER_DRAFT'?'amber':'',id=escAttr(n.ID),aud=(typeof isUispClient==='function'&&isUispClient())?` · ${esc(audienceLabelFromSegment(n.Segment))}`:'';
+  const scheduled=st==='PROGRAMMATA'&&n.SentAt?` · <strong>Invio ${esc(formatScheduledAt(n.SentAt))}</strong>`:'';
+  const senderActions=st==='BOZZA'?`<button class="btn small" onclick="makeSenderDraft('${id}')">Crea su Sender</button>`:st==='SENDER_DRAFT'?`<button class="btn small primary" onclick="openSchedule('${id}')">Programma invio</button><button class="btn small danger" onclick="openSend('${id}')">Invia ora</button>`:st==='PROGRAMMATA'?`<button class="btn small" onclick="cancelSchedule('${id}')">Annulla programmazione</button>`:'';
+  const deleteBtn=['PROGRAMMATA','INVIATA'].includes(st)?'':`<button class="btn small danger" onclick="deleteNewsletter('${id}')">Elimina</button>`;
+  return `<div style="padding:12px 0;border-bottom:1px solid #edf0f3"><div class="row space"><div><b>${esc(n.Title)}</b><div class="muted" style="font-size:12px;margin-top:3px">${esc(n.Subject)}${aud} · <span class="pill ${cls}">${esc(st)}</span>${scheduled}</div></div><div class="row"><button class="btn small" onclick="editNewsletterById('${id}')">Apri</button><button class="btn small" onclick="duplicateNewsletter('${id}')">Duplica</button>${senderActions}${deleteBtn}</div></div></div>`;
+}
+function renderNewsletters(){const list=state.newsletters||[];const drafts=list.filter(n=>String(n.Status||'BOZZA').toUpperCase()!=='INVIATA');const history=list.filter(n=>String(n.Status||'BOZZA').toUpperCase()==='INVIATA');if($('newsletterDraftCount'))$('newsletterDraftCount').textContent=drafts.length+' '+(drafts.length===1?'elemento':'elementi');if($('newsletterHistoryCount'))$('newsletterHistoryCount').textContent=history.length+' '+(history.length===1?'elemento':'elementi');if($('newsletterDraftList'))$('newsletterDraftList').innerHTML=drafts.length?drafts.map(newsletterRowHtml).join(''):'<div class="empty">Nessuna bozza in lavorazione.</div>';if($('newsletterHistoryList'))$('newsletterHistoryList').innerHTML=history.length?history.map(newsletterRowHtml).join(''):'<div class="empty">Nessuna newsletter inviata.</div>'}
+async function makeSenderDraft(id){await run(async()=>{showAppLoading('Controllo destinatari','Sto confrontando il Manager con Sender.');let p;try{p=await api('preflightSenderCampaign',id)}finally{hideAppLoading()}const source=p.subscriberSource||'sender';let rows=[];let note='';if(source==='manager'){rows=[{label:'Contatti validi nel Manager',value:p.localEligible},{label:'Destinatari attivi su Sender',value:p.senderActive},{label:'Gruppo Sender',value:p.senderGroup||'Sender'}]}else{rows=[{label:'Destinatari attivi su Sender',value:p.senderActive},{label:'Gruppo Sender',value:p.senderGroup||'Sender'}];note='Sender è la fonte principale degli iscritti per questo progetto.'}const html='<div class="dialog-grid">'+rows.map(r=>`<div class="dialog-row"><span>${esc(r.label)}</span><strong>${esc(r.value)}</strong></div>`).join('')+'</div>'+(note?`<div class="dialog-note">${esc(note)}</div>`:'');if(!p.ok){await showAppDialog({tone:'error',title:'Controllo destinatari non superato',message:'La campagna non verrà creata finché i conteggi non sono coerenti.',html,confirmText:'Chiudi',showCancel:false});return}const ok=await showAppDialog({tone:'success',title:'Destinatari verificati',message:'I controlli sono corretti. La newsletter verrà creata come bozza su Sender e non sarà ancora inviata.',html,confirmText:'Crea bozza su Sender'});if(!ok)return;showAppLoading('Creazione bozza','Sto creando la campagna su Sender.');let r;try{r=await api('createSenderDraft',id)}finally{hideAppLoading()}state.newsletters=r.newsletters;state.dashboard=r.dashboard;renderMetrics();renderNewsletters();toast('Bozza Sender SIMULATA creata')})}
+function openSend(id){$('sendNewsletterId').value=id;$('sendConfirm').value='';$('sendModal').classList.add('show')}
+function closeSend(){$('sendModal').classList.remove('show')}
+async function confirmSend(){await run(async()=>{const r=await api('sendSenderCampaign',$('sendNewsletterId').value,$('sendConfirm').value.trim());state.newsletters=r.newsletters;state.dashboard=r.dashboard;renderMetrics();renderNewsletters();closeSend();toast('Invio SIMULATO completato')})}
+function openSchedule(id){const n=(state.newsletters||[]).find(x=>String(x.ID)===String(id));if(!n)return;$('scheduleNewsletterId').value=id;$('scheduleNewsletterTitle').textContent=n.Title||'';const d=new Date(Date.now()+60*60*1000);d.setMinutes(Math.ceil(d.getMinutes()/5)*5,0,0);const z=v=>String(v).padStart(2,'0');$('scheduleDateTime').value=`${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}T${z(d.getHours())}:${z(d.getMinutes())}`;$('scheduleDateTime').min=`${new Date().getFullYear()}-${z(new Date().getMonth()+1)}-${z(new Date().getDate())}T${z(new Date().getHours())}:${z(new Date().getMinutes())}`;$('scheduleModal').classList.add('show')}
+function closeSchedule(){$('scheduleModal').classList.remove('show')}
+async function confirmSchedule(){const id=$('scheduleNewsletterId').value;const when=$('scheduleDateTime').value;if(!when){toast('Seleziona data e ora.',true);return}const human=formatScheduledAt(when);const ok=await showAppDialog({tone:'info',title:'Conferma programmazione',message:'La campagna verrà affidata a Sender per l’invio programmato.',html:`<div class="dialog-grid"><div class="dialog-row"><span>Data e ora</span><strong>${esc(human)}</strong></div></div><div class="dialog-note">Il fuso orario applicato è quello configurato nell’account Sender.</div>`,confirmText:'Programma invio'});if(!ok)return;closeSchedule();await run(async()=>{showAppLoading('Programmazione invio','Sto programmando la campagna su Sender.');let r;try{r=await api('scheduleSenderCampaign',id,when)}finally{hideAppLoading()}state.newsletters=r.newsletters;state.dashboard=r.dashboard;renderMetrics();renderNewsletters();toast('Invio programmato per '+formatScheduledAt(r.scheduledAt))})}
+async function cancelSchedule(id){const n=(state.newsletters||[]).find(x=>String(x.ID)===String(id));const ok=await showAppDialog({tone:'warn',title:'Annullare la programmazione?',message:'La campagna tornerà allo stato di bozza Sender e non verrà eliminata.',html:n&&n.SentAt?`<div class="dialog-grid"><div class="dialog-row"><span>Invio previsto</span><strong>${esc(formatScheduledAt(n.SentAt))}</strong></div></div>`:'',confirmText:'Annulla programmazione',cancelText:'Mantieni programmazione'});if(!ok)return;await run(async()=>{const r=await api('cancelScheduledCampaign',id);state.newsletters=r.newsletters;state.dashboard=r.dashboard;renderMetrics();renderNewsletters();toast('Programmazione annullata')})}
+async function refreshCampaignStatuses(){await run(async()=>{showAppLoading('Aggiornamento stati','Sto verificando le campagne su Sender.');let r;try{r=await api('refreshSenderCampaignStatuses')}finally{hideAppLoading()}state.newsletters=r.newsletters;state.dashboard=r.dashboard;renderMetrics();renderNewsletters();toast(r.updated?`${r.updated} stato/i aggiornato/i`:'Stati Sender già aggiornati',!!(r.errors&&r.errors.length))})}
+
+function renderSettings(){const s=state.settings||{};$('sBrandName').value=s.brand_name||'';$('sPrimaryColor').value=s.brand_primary_color||'#111111';$('sAccentColor').value=s.brand_accent_color||s.brand_primary_color||'#ff3b30';$('sGroup').value=s.sender_group_id||'';$('sFrom').value=s.sender_from_name||s.brand_name||'';$('sReply').value=s.sender_reply_to||'';$('sSubscriberSource').value=s.subscriber_source||'sender';$('sFooter').value=s.footer_text||s.brand_name||'';$('sFooterEmail').value=s.footer_email||'';$('sFooterWebsite').value=s.footer_website||'';$('sFooterAddress').value=s.footer_address||'';$('tokenState').textContent=s.sender_api_token_set?('Configurazione simulata'+(s.sender_api_token_fingerprint?' · impronta '+s.sender_api_token_fingerprint:'')+'. Lascia vuoto per mantenerlo.'):'Nessun token salvato.';renderLogoSettings();updatePreview()}
+function renderLogoSettings(){const s=state.settings||{};const has=!!s.brand_logo_url;$('logoEmpty').style.display=has?'none':'block';$('logoPreviewWrap').style.display=has?'flex':'none';$('logoUploadActions').style.display=has?'none':'block';if(has){$('logoPreview').src=s.brand_logo_url;$('logoName').textContent=s.brand_logo_name||('Logo '+(s.brand_name||''))}else{$('logoPreview').removeAttribute('src');$('logoName').textContent=''}if(typeof renderBrandLogo==='function')renderBrandLogo()}
+async function uploadLogo(file){if(!file)return;const allowed=['image/png','image/jpeg','image/webp'];if(!allowed.includes(String(file.type||'').toLowerCase())){toast('Formato logo non supportato. Usa PNG, JPG o WEBP.',true);$('logoFile').value='';return}if(file.size>2*1024*1024){toast('Il logo supera 2 MB.',true);$('logoFile').value='';return}const data=await readFileAsDataUrl(file);const base64=String(data).split(',')[1]||'';await run(async()=>{const r=await api('uploadLogo',{name:file.name,mimeType:file.type,dataBase64:base64});state.settings=r.settings;renderSettings();applyTenantTheme();$('logoFile').value='';toast('Logo caricato nella demo')})}
+function readFileAsDataUrl(file){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(new Error('Impossibile leggere il file.'));reader.readAsDataURL(file)})}
+async function removeLogo(){if(!confirm('Rimuovere il logo da questo progetto?'))return;await run(async()=>{const r=await api('removeLogo');state.settings=r.settings;renderSettings();applyTenantTheme();toast('Logo rimosso')})}
+async function saveSettings(){const data={brand_name:$('sBrandName').value,brand_primary_color:$('sPrimaryColor').value,brand_accent_color:$('sAccentColor').value,sender_group_id:$('sGroup').value,sender_from_name:$('sFrom').value,sender_reply_to:$('sReply').value,subscriber_source:$('sSubscriberSource').value,footer_text:$('sFooter').value,footer_email:$('sFooterEmail').value,footer_website:$('sFooterWebsite').value,footer_address:$('sFooterAddress').value};if($('sToken').value.trim())data.sender_api_token=$('sToken').value.trim();await run(async()=>{const r=await api('saveSettings',data);state.settings=r.settings;if(r.tenant)state.tenant=r.tenant;$('sToken').value='';renderSettings();applyTenantTheme();renderAudienceMode();toast('Impostazioni salvate')})}
+async function loadSenderGroups(){await run(async()=>{const r=await api('getSenderGroups');const groups=Array.isArray(r.groups)?r.groups:[];const sel=$('sGroupSelect');if(!groups.length){sel.style.display='none';$('senderGroupsHelp').textContent='Nessun gruppo trovato su Sender.';toast('Nessun gruppo Sender trovato',true);return}const current=$('sGroup').value.trim();sel.innerHTML='<option value="">Seleziona un gruppo...</option>'+groups.map(g=>{const id=String(g.id||g.group_id||'');const title=String(g.title||g.name||g.label||id);const active=(g.active_subscribers??g.recipient_count??'');const suffix=active!==''?' · '+active+' attivi':'';return `<option value="${escAttr(id)}" ${id===current?'selected':''}>${esc(title+suffix)}</option>`}).join('');sel.style.display='block';$('senderGroupsHelp').textContent='Seleziona il gruppo: il relativo ID verrà inserito automaticamente.';const target=groups.find(g=>String(g.title||g.name||'').trim().toLowerCase()==='press & sport — newsletter'.toLowerCase()||String(g.title||g.name||'').trim().toLowerCase()==='press & sport - newsletter'.toLowerCase());if(target&&!current){const id=String(target.id||target.group_id||'');if(id){sel.value=id;selectSenderGroup(id);toast('Gruppo Press & Sport selezionato automaticamente');return}}toast(groups.length+' gruppi Sender caricati')})}
+function selectSenderGroup(id){if(!id)return;$('sGroup').value=id;const sel=$('sGroupSelect');const opt=sel.options[sel.selectedIndex];$('senderGroupsHelp').textContent='Gruppo selezionato: '+(opt?opt.text:'')+' · ID '+id}
+async function testSender(){await run(async()=>{const r=await api('testSenderConnection');$('senderStatus').className='notice good';$('senderStatus').textContent=r.group?`Sender attivo · ${r.group.title||'gruppo'} · ${r.group.activeSubscribers} destinatari attivi`:r.message;toast(r.message)})}
+async function changePassword(){const cur=$('currentPassword').value,new1=$('newPassword').value,new2=$('newPassword2').value;if(new1!==new2){toast('Le nuove password non coincidono.',true);return}if(new1.length<8){toast('La nuova password deve contenere almeno 8 caratteri.',true);return}if(!confirm('Cambiare la password di questo account?'))return;await run(async()=>{await api('changeAccessPassword',cur,new1);sessionToken='';sessionStorage.removeItem('psnmSession');showLogin('Password aggiornata. Accedi con la nuova password.')})}
+
+function renderAdmin(){const isSuper=state.session&&state.session.role==='SUPERADMIN';$('superAdminCard').style.display=isSuper?'block':'none';if(!isSuper||!state.admin)return;renderAdminTenants();renderAdminUsers()}
+function renderAdminTenants(){const rows=(state.admin&&state.admin.tenants)||[];$('adminTenants').innerHTML=rows.length?rows.map(t=>`<div class="admin-row"><div><b>${esc(t.name)}</b><div class="muted" style="font-size:12px">${esc(t.id)} · ${t.subscriberSource==='manager'?'Manager → Sender':'Sender come fonte'}</div></div><button class="btn small" onclick='openTenantAdmin(${JSON.stringify(t)})'>Modifica</button></div>`).join(''):'<div class="empty">Nessun progetto</div>'}
+function renderAdminUsers(){const rows=(state.admin&&state.admin.users)||[];$('adminUsers').innerHTML=rows.length?rows.map(u=>`<div class="admin-row"><div><b>${esc(u.displayName||u.login)}</b><div class="muted" style="font-size:12px">${esc(u.login)} · ${esc(u.role)} · ${esc((u.tenantIds||[]).join(', ')||'tutti')}</div></div><div class="row"><button class="btn small" onclick='openUserAdmin(${JSON.stringify(u)})'>Modifica</button><button class="btn small" onclick="resetUserPassword('${escAttr(u.id)}')">Reset password</button></div></div>`).join(''):'<div class="empty">Nessun utente</div>'}
+function openTenantAdmin(t=null){$('aTenantId').value=t&&t.id||'';$('aTenantName').value=t&&t.name||'';$('aTenantShort').value=t&&t.shortName||'';$('aTenantPrimary').value=t&&t.brandColor||'#111111';$('aTenantAccent').value=t&&t.accentColor||'#ff3b30';$('aTenantSource').value=t&&t.subscriberSource||'manager';$('tenantAdminModal').classList.add('show')}
+function closeTenantAdmin(){$('tenantAdminModal').classList.remove('show')}
+async function saveTenantAdminUi(){const data={id:$('aTenantId').value,name:$('aTenantName').value,shortName:$('aTenantShort').value,brandColor:$('aTenantPrimary').value,accentColor:$('aTenantAccent').value,subscriberSource:$('aTenantSource').value,active:true};await run(async()=>{const r=await api('saveTenantAdmin',data);state.admin=r.admin;renderAdmin();closeTenantAdmin();toast('Progetto salvato. Aggiorna per visualizzarlo nel selettore.')})}
+function openUserAdmin(u=null){$('aUserId').value=u&&u.id||'';$('aUserLogin').value=u&&u.login||'';$('aUserDisplay').value=u&&u.displayName||'';$('aUserRole').value=u&&u.role||'EDITOR';renderUserTenantChecks(u&&u.tenantIds||[]);$('userAdminModal').classList.add('show')}
+function closeUserAdmin(){$('userAdminModal').classList.remove('show')}
+function renderUserTenantChecks(selected){if(!Array.isArray(selected))selected=[];const superRole=$('aUserRole').value==='SUPERADMIN';$('aUserTenants').innerHTML=superRole?'<div class="notice">Il Super Admin accede automaticamente a tutti i progetti.</div>':((state.admin&&state.admin.tenants)||[]).filter(t=>t.active!==false).map(t=>`<label class="tenant-check"><input type="checkbox" value="${escAttr(t.id)}" ${selected.includes(t.id)?'checked':''}> ${esc(t.name)}</label>`).join('')}
+async function saveUserAdminUi(){const role=$('aUserRole').value;const tenantIds=role==='SUPERADMIN'?[]:[...document.querySelectorAll('#aUserTenants input[type=checkbox]:checked')].map(x=>x.value);const data={id:$('aUserId').value,login:$('aUserLogin').value,displayName:$('aUserDisplay').value,role,tenantIds,active:true};await run(async()=>{const r=await api('saveUserAdmin',data);state.admin=r.admin;renderAdmin();closeUserAdmin();if(r.temporaryPassword)alert('Utente creato.\n\nPassword temporanea: '+r.temporaryPassword+'\n\nComunicala in modo sicuro e chiedi di cambiarla al primo accesso.');toast('Utente salvato')})}
+async function resetUserPassword(id){if(!confirm('Generare una nuova password temporanea per questo utente?'))return;await run(async()=>{const r=await api('resetUserPasswordAdmin',id);alert('Nuova password temporanea:\n\n'+r.temporaryPassword);toast('Password reimpostata')})}
+
+function esc(s){return String(s??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}function escAttr(s){return esc(s).replace(/'/g,'&#39;')}
+
+</script>
+
+  <script>
+let newsletterBlocks=[];
+
+function newsletterBlockId(){
+  if(window.crypto&&crypto.randomUUID)return 'b_'+crypto.randomUUID().replace(/-/g,'').slice(0,12);
+  return 'b_'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+}
+
+function defaultNewsletterBlock(type){
+  const id=newsletterBlockId();
+  if(type==='news')return{id,type,title:'',summary:'',imageUrl:'',imageFileId:'',imageAlt:'',linkUrl:'',linkText:'Approfondisci'};
+  if(type==='heading')return{id,type,text:'',level:'h2'};
+  if(type==='text')return{id,type,html:''};
+  if(type==='image')return{id,type,imageUrl:'',imageFileId:'',alt:'',linkUrl:''};
+  if(type==='button')return{id,type,text:'Scopri di più',url:'',align:'center'};
+  if(type==='divider')return{id,type};
+  if(type==='spacer')return{id,type,height:24};
+  return{id,type:'text',html:''};
+}
+
+function addNewsletterBlock(type){
+  newsletterBlocks.push(defaultNewsletterBlock(type));
+  renderNewsletterBlocks();
+  updatePreview();
+  setTimeout(()=>{const list=$('blockList');if(list)list.scrollTop=list.scrollHeight},20);
+}
+
+function newsletterBlockLabel(type){
+  return{news:'Notizia',heading:'Titolo',text:'Testo',image:'Immagine',button:'Pulsante',divider:'Separatore',spacer:'Spazio'}[type]||type;
+}
+
+function blockById(id){return newsletterBlocks.find(b=>b.id===id)}
+
+function updateNewsletterBlock(id,key,value){
+  const b=blockById(id);if(!b)return;
+  b[key]=value;
+  updatePreview();
+}
+
+function updateNewsletterBlockHtml(id,html){
+  const b=blockById(id);if(!b)return;
+  b.html=html;
+  updatePreview();
+}
+
+function isLegacyTextPlaceholder(html){
+  const compact=String(html||'').replace(/\s+/g,' ').trim().toLowerCase();
+  return compact==='<p>scrivi qui il testo...</p>'||compact==='scrivi qui il testo...';
+}
+
+function cleanTextBlockHtml(html){
+  return isLegacyTextPlaceholder(html)?'':String(html||'');
+}
+
+function blockRichTextFocus(id,el){
+  if(!el)return;
+  if(isLegacyTextPlaceholder(el.innerHTML)){
+    el.innerHTML='';
+    updateNewsletterBlockHtml(id,'');
+  }
+}
+
+function blockRichTextBlur(id,el){
+  if(!el)return;
+  const html=cleanTextBlockHtml(el.innerHTML);
+  if(!el.textContent.trim()&&!el.querySelector('img')){
+    el.innerHTML='';
+    updateNewsletterBlockHtml(id,'');
+  }else if(html!==el.innerHTML){
+    el.innerHTML=html;
+    updateNewsletterBlockHtml(id,html);
+  }
+}
+
+function moveNewsletterBlock(id,delta){
+  const i=newsletterBlocks.findIndex(b=>b.id===id);if(i<0)return;
+  const j=i+delta;if(j<0||j>=newsletterBlocks.length)return;
+  [newsletterBlocks[i],newsletterBlocks[j]]=[newsletterBlocks[j],newsletterBlocks[i]];
+  renderNewsletterBlocks();updatePreview();
+}
+
+function deleteNewsletterBlock(id){
+  const b=blockById(id);if(!b)return;
+  if(!confirm('Eliminare questo blocco?'))return;
+  newsletterBlocks=newsletterBlocks.filter(x=>x.id!==id);
+  renderNewsletterBlocks();updatePreview();
+}
+
+function blockDragStart(ev,id){
+  ev.dataTransfer.effectAllowed='move';
+  ev.dataTransfer.setData('text/plain',id);
+}
+
+function blockDrop(ev,targetId){
+  ev.preventDefault();
+  const sourceId=ev.dataTransfer.getData('text/plain');
+  if(!sourceId||sourceId===targetId)return;
+  const from=newsletterBlocks.findIndex(b=>b.id===sourceId);
+  const to=newsletterBlocks.findIndex(b=>b.id===targetId);
+  if(from<0||to<0)return;
+  const moved=newsletterBlocks.splice(from,1)[0];
+  newsletterBlocks.splice(to,0,moved);
+  renderNewsletterBlocks();updatePreview();
+}
+
+function blockImageControls(b){
+  const has=!!b.imageUrl;
+  const preview=has?'<div class="block-image-preview"><img src="'+escAttr(b.imageUrl)+'" alt=""></div>':'<div class="block-image-empty">Nessuna immagine</div>';
+  return '<div class="block-image-row">'+preview+
+    '<div class="block-image-actions"><button class="btn small" type="button" onclick="document.getElementById(\'img_'+b.id+'\').click()">'+(has?'Sostituisci':'Carica immagine')+'</button>'+
+    (has?'<button class="btn small danger" type="button" onclick="clearNewsletterBlockImage(\''+b.id+'\')">Rimuovi</button>':'')+
+    '<input id="img_'+b.id+'" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden onchange="uploadNewsletterBlockImage(\''+b.id+'\',this.files[0]);this.value=\'\'"></div></div>';
+}
+
+function renderNewsletterBlockFields(b){
+  if(b.type==='news'){
+    return '<div class="field"><label>Titolo notizia</label><input class="input" value="'+escAttr(b.title||'')+'" placeholder="Titolo della notizia" oninput="updateNewsletterBlock(\''+b.id+'\',\'title\',this.value)"></div>'+
+      blockImageControls(b)+
+      '<div class="field"><label>Riassunto</label><textarea rows="5" placeholder="Breve sintesi della notizia..." oninput="updateNewsletterBlock(\''+b.id+'\',\'summary\',this.value)">'+esc(b.summary||'')+'</textarea></div>'+
+      '<div class="field"><label>Link articolo sul sito <span class="muted">(opzionale)</span></label><input class="input" value="'+escAttr(b.linkUrl||'')+'" placeholder="https://..." oninput="updateNewsletterBlock(\''+b.id+'\',\'linkUrl\',this.value)"><div class="help">Se inserisci un URL, nella newsletter compare automaticamente il pulsante di approfondimento. Se lasci vuoto, la notizia termina qui.</div></div>'+
+      '<div class="field"><label>Testo pulsante</label><input class="input" value="'+escAttr(b.linkText||'Approfondisci')+'" oninput="updateNewsletterBlock(\''+b.id+'\',\'linkText\',this.value)"></div>';
+  }
+  if(b.type==='heading'){
+    return '<div class="two"><div class="field"><label>Testo titolo</label><input class="input" value="'+escAttr(b.text||'')+'" placeholder="Titolo sezione" oninput="updateNewsletterBlock(\''+b.id+'\',\'text\',this.value)"></div>'+
+      '<div class="field"><label>Dimensione</label><select onchange="updateNewsletterBlock(\''+b.id+'\',\'level\',this.value)"><option value="h2"'+(b.level==='h2'?' selected':'')+'>Titolo H2</option><option value="h1"'+(b.level==='h1'?' selected':'')+'>Titolo H1</option></select></div></div>';
+  }
+  if(b.type==='text'){
+    const html=cleanTextBlockHtml(b.html||'');
+    return '<div class="field"><label>Testo</label><div class="mini-editor-toolbar"><button type="button" onclick="blockFmt(\''+b.id+'\',\'bold\')"><b>B</b></button><button type="button" onclick="blockFmt(\''+b.id+'\',\'italic\')"><i>I</i></button><button type="button" onclick="blockFmt(\''+b.id+'\',\'insertUnorderedList\')">• Lista</button><button type="button" onclick="blockAddLink(\''+b.id+'\')">Link</button></div><div id="txt_'+b.id+'" class="block-richtext" contenteditable="true" spellcheck="true" data-placeholder="Scrivi qui il testo della newsletter..." onfocus="blockRichTextFocus(\''+b.id+'\',this)" onblur="blockRichTextBlur(\''+b.id+'\',this)" oninput="updateNewsletterBlockHtml(\''+b.id+'\',this.innerHTML)">'+html+'</div><div class="help">Gli a capo e la formattazione vengono mantenuti nell’email.</div></div>';
+  }
+  if(b.type==='image'){
+    return blockImageControls(b)+
+      '<div class="field"><label>Testo alternativo</label><input class="input" value="'+escAttr(b.alt||'')+'" placeholder="Descrizione immagine" oninput="updateNewsletterBlock(\''+b.id+'\',\'alt\',this.value)"></div>'+
+      '<div class="field"><label>Link immagine <span class="muted">(opzionale)</span></label><input class="input" value="'+escAttr(b.linkUrl||'')+'" placeholder="https://..." oninput="updateNewsletterBlock(\''+b.id+'\',\'linkUrl\',this.value)"></div>';
+  }
+  if(b.type==='button'){
+    const valid=!!safePreviewUrl(b.url);
+    return '<div class="field"><label>Testo pulsante</label><input class="input block-control" value="'+escAttr(b.text||'')+'" placeholder="Es. Scopri di più" oninput="updateNewsletterBlock(\''+b.id+'\',\'text\',this.value)"></div>'+
+      '<div class="field button-destination-field"><label>Destinazione del pulsante <span class="required-mark">obbligatoria</span></label><input class="input block-control" value="'+escAttr(b.url||'')+'" placeholder="https://www.uisp.bz.it/..." oninput="updateNewsletterBlock(\''+b.id+'\',\'url\',this.value)"><div class="help '+(b.url&&!valid?'field-error':'')+'">Inserisci la pagina che deve aprirsi quando il destinatario preme il pulsante.'+(b.url&&!valid?' Usa un indirizzo completo che inizi con https://':'')+'</div></div>'+
+      '<div class="field button-align-field"><label>Allineamento</label><select class="block-control" onchange="updateNewsletterBlock(\''+b.id+'\',\'align\',this.value)"><option value="left"'+(b.align==='left'?' selected':'')+'>Sinistra</option><option value="center"'+(b.align==='center'?' selected':'')+'>Centro</option><option value="right"'+(b.align==='right'?' selected':'')+'>Destra</option></select></div>';
+  }
+  if(b.type==='divider')return '<div class="help">Linea di separazione orizzontale.</div>';
+  if(b.type==='spacer')return '<div class="field"><label>Altezza spazio (px)</label><input class="input" type="number" min="8" max="80" value="'+escAttr(b.height||24)+'" oninput="updateNewsletterBlock(\''+b.id+'\',\'height\',this.value)"></div>';
+  return '';
+}
+
+function renderNewsletterBlocks(){
+  const root=$('blockList');if(!root)return;
+  if(!newsletterBlocks.length){
+    root.innerHTML='<div class="empty builder-empty">Aggiungi una <b>Notizia</b> o un altro blocco per iniziare.</div>';
+    return;
+  }
+  root.innerHTML=newsletterBlocks.map((b,i)=>
+    '<div class="newsletter-block" data-block-id="'+escAttr(b.id)+'" ondragover="event.preventDefault()" ondrop="blockDrop(event,\''+b.id+'\')">'+
+      '<div class="newsletter-block-head">'+
+        '<div class="row" style="gap:8px"><span class="drag-handle" draggable="true" ondragstart="blockDragStart(event,\''+b.id+'\')" title="Trascina per riordinare">☰</span><span class="block-kind">'+esc(newsletterBlockLabel(b.type))+'</span><span class="muted block-index">'+(i+1)+'</span></div>'+
+        '<div class="row" style="gap:5px"><button class="icon-btn" type="button" onclick="moveNewsletterBlock(\''+b.id+'\',-1)" title="Sposta su">↑</button><button class="icon-btn" type="button" onclick="moveNewsletterBlock(\''+b.id+'\',1)" title="Sposta giù">↓</button><button class="icon-btn danger-text" type="button" onclick="deleteNewsletterBlock(\''+b.id+'\')" title="Elimina">×</button></div>'+
+      '</div>'+
+      '<div class="newsletter-block-body">'+renderNewsletterBlockFields(b)+'</div>'+
+    '</div>'
+  ).join('');
+}
+
+function blockFmt(id,cmd){
+  const el=$('txt_'+id);if(!el)return;
+  el.focus();document.execCommand(cmd,false,null);
+  updateNewsletterBlockHtml(id,el.innerHTML);
+}
+function blockAddLink(id){
+  const el=$('txt_'+id);if(!el)return;
+  const url=prompt('URL del link:','https://');if(!url)return;
+  el.focus();document.execCommand('createLink',false,url);
+  updateNewsletterBlockHtml(id,el.innerHTML);
+}
+
+async function uploadNewsletterBlockImage(id,file){
+  if(!file)return;
+  const allowed=['image/png','image/jpeg','image/webp','image/gif'];
+  if(!allowed.includes(String(file.type||'').toLowerCase())){toast('Formato immagine non supportato.',true);return}
+  if(file.size>5*1024*1024){toast('L’immagine supera 5 MB.',true);return}
+  const data=await readFileAsDataUrl(file);
+  const base64=String(data).split(',')[1]||'';
+  await run(async()=>{
+    const r=await api('uploadNewsletterImage',{name:file.name,mimeType:file.type,dataBase64:base64});
+    const b=blockById(id);if(!b)return;
+    b.imageUrl=r.url;b.imageFileId=r.fileId||'';
+    renderNewsletterBlocks();updatePreview();
+    toast('Immagine caricata');
+  });
+}
+
+function clearNewsletterBlockImage(id){
+  const b=blockById(id);if(!b)return;
+  b.imageUrl='';b.imageFileId='';
+  renderNewsletterBlocks();updatePreview();
+}
+
+function safePreviewUrl(url){
+  url=String(url||'').trim();
+  return /^https?:\/\//i.test(url)?url:'';
+}
+function previewNl2br(v){return esc(v||'').replace(/\r?\n/g,'<br>')}
+
+function previewBlocksHtml(){
+  return newsletterBlocks.map(b=>{
+    if(b.type==='news'){
+      const link=safePreviewUrl(b.linkUrl),img=safePreviewUrl(b.imageUrl);
+      const image=img?(link?'<a href="'+escAttr(link)+'"><img class="email-news-img" src="'+escAttr(img)+'" alt=""></a>':'<img class="email-news-img" src="'+escAttr(img)+'" alt="">'):'';
+      const title=b.title?(link?'<h2 class="email-news-title"><a href="'+escAttr(link)+'">'+esc(b.title)+'</a></h2>':'<h2 class="email-news-title">'+esc(b.title)+'</h2>'):'';
+      const summary=b.summary?'<div class="email-news-summary">'+previewNl2br(b.summary)+'</div>':'';
+      const btn=link?'<div class="email-news-cta"><a href="'+escAttr(link)+'">'+esc(b.linkText||'Approfondisci')+'</a></div>':'';
+      return '<div class="email-news-block">'+image+title+summary+btn+'</div>';
+    }
+    if(b.type==='heading'){
+      const tag=b.level==='h1'?'h1':'h2';return b.text?'<'+tag+'>'+esc(b.text)+'</'+tag+'>':'';
+    }
+    if(b.type==='text')return '<div class="email-text-block">'+cleanTextBlockHtml(b.html||'')+'</div>';
+    if(b.type==='image'){
+      const img=safePreviewUrl(b.imageUrl),link=safePreviewUrl(b.linkUrl);if(!img)return'';
+      const node='<img class="email-standalone-img" src="'+escAttr(img)+'" alt="'+escAttr(b.alt||'')+'">';
+      return '<div class="email-image-block">'+(link?'<a href="'+escAttr(link)+'">'+node+'</a>':node)+'</div>';
+    }
+    if(b.type==='button'){
+      const link=safePreviewUrl(b.url);
+      const align=['left','center','right'].includes(b.align)?b.align:'center';
+      const text=esc(b.text||'Scopri di più');
+      if(link)return '<div class="email-button-block" style="text-align:'+align+'"><a href="'+escAttr(link)+'">'+text+'</a></div>';
+      return '<div class="email-button-block" style="text-align:'+align+'"><span class="email-button-placeholder">'+text+'</span><div class="email-button-missing">Imposta la destinazione del pulsante</div></div>';
+    }
+    if(b.type==='divider')return '<div class="email-divider"></div>';
+    if(b.type==='spacer'){const h=Math.max(8,Math.min(80,Number(b.height)||24));return '<div style="height:'+h+'px"></div>'}
+    return'';
+  }).join('');
+}
+
+function updatePreview(){
+  if($('previewBody')){
+    const html=previewBlocksHtml();
+    $('previewBody').innerHTML=html||'<span class="muted">Aggiungi un blocco per comporre la newsletter...</span>';
+  }
+  const s=state.settings||{},logo=s.brand_logo_url,brand=s.brand_name||((state.tenant&&state.tenant.name)||'Newsletter');
+  if($('previewHead')){
+    $('previewHead').style.background=s.brand_primary_color||'#111111';
+    $('previewHead').style.borderTop='4px solid '+(s.brand_accent_color||s.brand_primary_color||'#ff3b30');
+    $('previewHead').innerHTML=logo?'<img src="'+escAttr(logo)+'" alt="'+escAttr(brand)+'" style="max-width:190px;max-height:68px;object-fit:contain;display:block;margin:auto">':esc(brand);
+  }
+  if($('previewFooter')){
+    const parts=[s.footer_text||brand,s.footer_address||'',s.footer_email||'',s.footer_website||''].filter(Boolean).map(esc);
+    $('previewFooter').innerHTML=parts.join('<br>')+'<br><br>Link di disiscrizione gestito da Sender';
+  }
+}
+
+function newsletterPayload(){
+  return{
+    ID:$('nId').value,
+    Title:$('nTitle').value,
+    Subject:$('nSubject').value,
+    Preheader:$('nPreheader').value,
+    Segment:$('nSegment').value,
+    ContentJson:JSON.stringify(newsletterBlocks),
+    ContentHtml:previewBlocksHtml(),
+    CTA_Text:'',
+    CTA_URL:'',
+    Status:'BOZZA'
+  };
+}
+
+function parseNewsletterBlocks(n){
+  if(n&&String(n.ContentJson||'').trim()){
+    try{
+      const parsed=JSON.parse(n.ContentJson);
+      if(Array.isArray(parsed))return parsed.map(b=>{const out={...b,id:b.id||newsletterBlockId()};if(out.type==='text')out.html=cleanTextBlockHtml(out.html||'');return out});
+    }catch(e){}
+  }
+  const out=[];
+  if(n&&String(n.ContentHtml||'').trim())out.push({id:newsletterBlockId(),type:'text',html:n.ContentHtml});
+  if(n&&n.CTA_Text&&n.CTA_URL)out.push({id:newsletterBlockId(),type:'button',text:n.CTA_Text,url:n.CTA_URL,align:'center'});
+  return out;
+}
+
+function newNewsletter(){
+  ['nId','nTitle','nSubject','nPreheader','nCtaText','nCtaUrl'].forEach(id=>{if($(id))$(id).value=''});
+  $('nTemplate').value='';
+  $('nSegment').selectedIndex=0;
+  newsletterBlocks=[];
+  renderNewsletterBlocks();updatePreview();
+}
+
+function editNewsletter(n){
+  $('nId').value=n.ID||'';
+  $('nTitle').value=n.Title||'';
+  $('nSubject').value=n.Subject||'';
+  $('nPreheader').value=n.Preheader||'';
+  const seg=n.Segment||'Tutti i destinatari del gruppo Sender';
+  $('nSegment').value=[...$('nSegment').options].some(o=>o.value===seg)?seg:$('nSegment').options[0].value;
+  newsletterBlocks=parseNewsletterBlocks(n);
+  renderNewsletterBlocks();updatePreview();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function editNewsletterById(id){
+  const n=(state.newsletters||[]).find(x=>String(x.ID)===String(id));
+  if(n)editNewsletter(n);
+}
+
+function applyTemplate(id){
+  const t=(state.templates||[]).find(x=>x.ID===id);if(!t)return;
+  $('nSubject').value=t.Subject||'';
+  $('nPreheader').value=t.Preheader||'';
+  newsletterBlocks=[];
+  if(t.ContentHtml)newsletterBlocks.push({id:newsletterBlockId(),type:'text',html:t.ContentHtml});
+  if(t.CTA_Text&&t.CTA_URL)newsletterBlocks.push({id:newsletterBlockId(),type:'button',text:t.CTA_Text,url:t.CTA_URL,align:'center'});
+  renderNewsletterBlocks();updatePreview();
+}
+</script>
+
+  <script>
+function renderBrandLogo(){
+  const logo=$('brandLogo'),fallback=$('brandFallback');
+  if(!logo||!fallback)return;
+  const url=String((state.settings&&state.settings.brand_logo_url)||'').trim();
+  const brand=String((state.settings&&state.settings.brand_name)||((state.tenant&&state.tenant.name)||'Newsletter'));
+  fallback.textContent=brand.split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0]).join('').toUpperCase()||'N';
+  if(url){
+    logo.src=url;
+    logo.style.display='block';
+    fallback.style.display='none';
+    logo.onerror=()=>{logo.style.display='none';fallback.style.display='';};
+  }else{
+    logo.removeAttribute('src');
+    logo.style.display='none';
+    fallback.style.display='';
+  }
+}
+
+function openTemplateEditor(id){
+  const t=(state.templates||[]).find(x=>String(x.ID)===String(id));
+  if(!t)return;
+  $('tId').value=t.ID||'';
+  $('tName').value=t.Name||'';
+  $('tDescription').value=t.Description||'';
+  $('tSubject').value=t.Subject||'';
+  $('tPreheader').value=t.Preheader||'';
+  $('tContent').innerHTML=t.ContentHtml||'';
+  $('tCtaText').value=t.CTA_Text||'';
+  $('tCtaUrl').value=t.CTA_URL||'';
+  $('templateModal').classList.add('show');
+}
+
+function closeTemplateEditor(){
+  $('templateModal').classList.remove('show');
+}
+
+function templateFmt(cmd,val=null){
+  $('tContent').focus();
+  document.execCommand(cmd,false,val);
+}
+
+function templateAddLink(){
+  const url=prompt('URL del link:','https://');
+  if(!url)return;
+  $('tContent').focus();
+  document.execCommand('createLink',false,url);
+}
+
+async function saveTemplateEditor(){
+  const data={
+    ID:$('tId').value,
+    Name:$('tName').value,
+    Description:$('tDescription').value,
+    Subject:$('tSubject').value,
+    Preheader:$('tPreheader').value,
+    ContentHtml:$('tContent').innerHTML,
+    CTA_Text:$('tCtaText').value,
+    CTA_URL:$('tCtaUrl').value
+  };
+  await run(async()=>{
+    const r=await api('saveTemplate',data);
+    state.templates=r.templates||[];
+    renderTemplates();
+    renderTemplateSelect();
+    closeTemplateEditor();
+    toast('Template aggiornato');
+  });
+}
+</script>
+
+  <script>
+let contactAudience='companies';
+
+function isUispClient(){return !!(state.tenant&&state.tenant.id==='uisp')}
+function audienceLabelFromSegment(seg){const v=String(seg||'').toUpperCase();if(v==='UISP_ISCRITTI')return'Iscritti';if(v==='UISP_ENTRAMBI')return'Società + Iscritti';return isUispClient()?'Società':String(seg||'Destinatari')}
+
+function renderAll(){
+  applyTenantTheme();
+  renderAppVersion();
+  renderNewsletterAudienceSelect();
+  renderMetrics();
+  renderAudienceTabs();
+  renderContacts();
+  renderNewsletters();
+  renderTemplates();
+  renderTemplateSelect();
+  renderSettings();
+  renderBrandLogo();
+  renderAdmin();
+  $('dbLink').href=state.dbUrl||'#';
+  $('folderLink').href=state.folderUrl||'#';
+  renderTenantSwitcher();
+  renderAudienceMode();
+  renderRolePermissions();
+}
+
+function renderNewsletterAudienceSelect(){
+  const sel=$('nSegment');if(!sel)return;
+  const current=sel.value;
+  if(isUispClient()){
+    sel.innerHTML='<option value="UISP_SOCIETA">Società</option><option value="UISP_ISCRITTI">Iscritti</option><option value="UISP_ENTRAMBI">Società + Iscritti</option>';
+    $('nSegmentLabel').textContent='Destinatari';
+    $('nSegmentHelp').textContent='Scegli quale archivio UISP riceverà questa newsletter. In caso di invio a entrambi, gli stessi indirizzi presenti nei due gruppi vengono gestiti come un unico iscritto da Sender.';
+  }else{
+    sel.innerHTML='<option value="Tutti i destinatari del gruppo Sender">Tutti i contatti autorizzati (gruppo generale)</option>'+
+      (state.importBatches||[]).filter(b=>Number(b.Eligible)>0).map(b=>
+        '<option value="LOTTO:'+escAttr(b.ID)+'">Solo nuovi: '+esc(b.Title)+' ('+Number(b.Eligible)+' validi)</option>'
+      ).join('');
+    $('nSegmentLabel').textContent='Destinatari';
+    $('nSegmentHelp').textContent='Il gruppo generale include tutti gli autorizzati. Ogni importazione crea automaticamente un lotto per inviare solo ai nuovi.';
+  }
+  if([...sel.options].some(o=>o.value===current))sel.value=current;
+}
+
+function renderAudienceTabs(){
+  const box=$('uispAudienceTabs');if(!box)return;
+  if(!isUispClient()){
+    box.style.display='none';
+    contactAudience='companies';
+    return;
+  }
+  box.style.display='flex';
+  $('companiesTabCount').textContent=(state.contacts||[]).length;
+  $('membersTabCount').textContent=(state.members||[]).length;
+  $('audienceCompaniesTab').classList.toggle('primary',contactAudience==='companies');
+  $('audienceMembersTab').classList.toggle('primary',contactAudience==='members');
+}
+
+function setContactAudience(kind){
+  contactAudience=kind==='members'?'members':'companies';
+  if($('contactSearch'))$('contactSearch').value='';
+  if($('contactFilter'))$('contactFilter').value='';
+  renderAudienceTabs();renderContacts();renderAudienceMode();
+}
+
+function renderMetrics(){
+  const d=state.dashboard||{};
+  let items;
+  if(isUispClient()){
+    items=[
+      ['Società',d.contacts||0,'Archivio società'],
+      ['Consensi società',d.activeConsent||0,'Consensi dimostrativi'],
+      ['Iscritti',d.members||0,'Archivio iscritti'],
+      ['Consensi iscritti',d.memberActiveConsent||0,'Consensi dimostrativi'],
+      ['Bozze',d.drafts||0,'In lavorazione'],
+      ['Inviate',d.sent||0,'Storico']
+    ];
+  }else{
+    items=[['Contatti locali',d.contacts||0,'Archivio del progetto'],['Consensi attivi',d.activeConsent||0,'Esclusi i contatti test'],['Contatti test',d.testContacts||0,'Mai sincronizzati nel gruppo reale'],['Disiscritti / no',d.unsubscribed||0,'Esclusi localmente'],['Bozze',d.drafts||0,'In lavorazione'],['Inviate',d.sent||0,'Storico']];
+  }
+  $('metrics').innerHTML=items.map(x=>`<div class="card metric"><div class="label">${x[0]}</div><div class="value">${x[1]}</div><div class="hint">${x[2]}</div></div>`).join('');
+}
+
+function filterAudienceRows(rows){
+  const q=($('contactSearch')?.value||'').toLowerCase(),f=$('contactFilter')?.value||'';
+  rows=(rows||[]).filter(c=>Object.values(c).join(' ').toLowerCase().includes(q));
+  if(f==='consent')rows=rows.filter(c=>String(c.Consent).toUpperCase()==='SI'&&String(c.Status).toUpperCase()!=='DISISCRITTO'&&!isTestContactClient(c));
+  if(f==='unsub')rows=rows.filter(c=>String(c.Status).toUpperCase()==='DISISCRITTO'||String(c.Consent).toUpperCase()==='NO');
+  if(f==='test')rows=rows.filter(isTestContactClient);
+  return rows;
+}
+
+function renderContacts(){
+  const membersMode=isUispClient()&&contactAudience==='members';
+  const rows=filterAudienceRows(membersMode?(state.members||[]):(state.contacts||[]));
+  $('contactSearch').placeholder=membersMode?'Cerca nome, cognome o email...':'Cerca società, nome, email, disciplina...';
+  $('newContactBtn').textContent=membersMode?'Nuovo iscritto':(isUispClient()?'Nuova società':'Nuovo contatto');
+  $('importCsvBtn').textContent=membersMode?'Importa iscritti CSV':(isUispClient()?'Importa società CSV':'Importa CSV');
+  if ($('recoverImportBtn')) $('recoverImportBtn').style.display=(!isUispClient() && ['SUPERADMIN','ADMIN'].includes((state.session&&state.session.role)||''))?'':'none';
+  if(membersMode){
+    $('contactsHead').innerHTML='<tr><th>Nome</th><th>Email</th><th>Consenso</th><th>Stato</th><th>Aggiornato</th><th></th></tr>';
+    $('contactsBody').innerHTML=rows.length?rows.map(c=>{const isTest=isTestContactClient(c);return `<tr><td><b>${esc([c.FirstName,c.LastName].filter(Boolean).join(' ')||'—')}</b></td><td>${esc(c.Email)}${isTest?' <span class="pill amber">TEST</span>':''}</td><td><span class="pill ${String(c.Consent).toUpperCase()==='SI'?'green':'amber'}">${esc(c.Consent||'NO')}</span></td><td><span class="pill ${isTest?'amber':String(c.Status).toUpperCase()==='DISISCRITTO'?'red':'green'}">${isTest?'TEST':esc(c.Status||'ATTIVO')}</span></td><td>${esc(c.UpdatedAt||'')}</td><td class="right"><button class="btn small" onclick='editContact(${JSON.stringify(c).replace(/'/g,'&#39;')},"members")'>Apri</button></td></tr>`}).join(''):'<tr><td colspan="6" class="empty">Nessun iscritto</td></tr>';
+  }else{
+    $('contactsHead').innerHTML='<tr><th>Società</th><th>Referente</th><th>Email</th><th>Disciplina</th><th>Consenso</th><th>Stato</th><th>Aggiornato</th><th></th></tr>';
+    $('contactsBody').innerHTML=rows.length?rows.map(c=>{const isTest=isTestContactClient(c);return `<tr><td><b>${esc(c.Organization||'—')}</b></td><td>${esc([c.FirstName,c.LastName].filter(Boolean).join(' ')||'—')}</td><td>${esc(c.Email)}${isTest?' <span class="pill amber">TEST</span>':''}</td><td>${esc(c.Discipline||'—')}</td><td><span class="pill ${String(c.Consent).toUpperCase()==='SI'?'green':'amber'}">${esc(c.Consent||'NO')}</span></td><td><span class="pill ${isTest?'amber':String(c.Status).toUpperCase()==='DISISCRITTO'?'red':'green'}">${isTest?'TEST':esc(c.Status||'ATTIVO')}</span></td><td>${esc(c.UpdatedAt||'')}</td><td class="right"><button class="btn small" onclick='editContact(${JSON.stringify(c).replace(/'/g,'&#39;')},"companies")'>Apri</button></td></tr>`}).join(''):'<tr><td colspan="8" class="empty">Nessun contatto</td></tr>';
+  }
+}
+
+function openContact(kind=null){
+  const target=(kind||(isUispClient()?contactAudience:'companies'))==='members'?'members':'companies';
+  ['cId','cOrg','cDisc','cFirst','cLast','cEmail','cConsentDate','cConsentSource','cNotes'].forEach(id=>$(id).value='');
+  $('cKind').value=target;$('cConsent').value='NO';$('cStatus').value='ATTIVO';$('cTest').checked=false;$('deleteContactBtn').style.display='none';
+  const memberMode=isUispClient()&&target==='members';
+  $('companyContactFields').style.display=memberMode?'none':'grid';
+  $('contactModalTitle').textContent=memberMode?'Iscritto newsletter':(isUispClient()?'Società newsletter':'Contatto newsletter');
+  $('saveContactBtn').textContent=memberMode?'Salva iscritto':'Salva contatto';
+  $('contactModal').classList.add('show');
+}
+
+function editContact(c,kind='companies'){
+  openContact(kind);$('cId').value=c.ID||'';$('cOrg').value=c.Organization||'';$('cDisc').value=c.Discipline||'';$('cFirst').value=c.FirstName||'';$('cLast').value=c.LastName||'';$('cEmail').value=c.Email||'';$('cConsent').value=c.Consent||'NO';$('cConsentDate').value=(c.ConsentDate||'').slice(0,10);$('cConsentSource').value=c.ConsentSource||'';$('cStatus').value=c.Status||'ATTIVO';$('cTest').checked=isTestContactClient(c);$('cNotes').value=c.Notes||'';$('deleteContactBtn').style.display='inline-block';
+}
+
+async function saveContact(){
+  const kind=$('cKind').value==='members'?'members':'companies';
+  const base={ID:$('cId').value,FirstName:$('cFirst').value,LastName:$('cLast').value,Email:$('cEmail').value,Type:$('cTest').checked?'TEST':(kind==='members'?'Iscritto':'Società'),Consent:$('cConsent').value,ConsentDate:$('cConsentDate').value,ConsentSource:$('cConsentSource').value,Status:$('cStatus').value,Notes:$('cNotes').value};
+  if(kind==='companies'){base.Organization=$('cOrg').value;base.Discipline=$('cDisc').value}
+  await run(async()=>{
+    const r=await api(kind==='members'?'saveMember':'saveContact',base);
+    if(kind==='members')state.members=await api('getMembers');else {state.contacts=await api('getContacts');state.importBatches=await api('getImportBatches');renderNewsletterAudienceSelect();}
+    state.dashboard=r.dashboard;if(state.tenant&&state.tenant.id)tenantStateCache[state.tenant.id]=state;renderMetrics();renderAudienceTabs();renderContacts();closeContact();toast(kind==='members'?'Iscritto salvato':'Contatto salvato');
+  });
+}
+
+async function deleteCurrentContact(){
+  const kind=$('cKind').value==='members'?'members':'companies';
+  if(!confirm(kind==='members'?'Eliminare questo iscritto dal Manager e rimuoverlo dal gruppo Sender UISP - Iscritti?\n\nIl contatto resterà eventualmente disponibile negli altri gruppi Sender.':'Eliminare questo contatto dal database newsletter?'))return;
+  await run(async()=>{
+    const r=await api(kind==='members'?'deleteMember':'deleteContact',$('cId').value);
+    if(kind==='members')state.members=await api('getMembers');else {state.contacts=await api('getContacts');state.importBatches=await api('getImportBatches');renderNewsletterAudienceSelect();}
+    state.dashboard=r.dashboard;if(state.tenant&&state.tenant.id)tenantStateCache[state.tenant.id]=state;renderMetrics();renderAudienceTabs();renderContacts();closeContact();toast(kind==='members'?'Iscritto eliminato e rimosso dal gruppo Sender':'Contatto eliminato');
+  });
+}
+
+async function importCsv(file){
+  if(!file)return;const text=await file.text();const rows=parseCsv(text);if(!rows.length){toast('CSV vuoto o non valido',true);return}
+  const membersMode=isUispClient()&&contactAudience==='members';
+  await run(async()=>{
+    const r=await api(membersMode?'importMembers':'importContacts',rows);
+    if(membersMode)state.members=r.members;else{state.contacts=r.contacts;state.importBatches=r.importBatches||[];}
+    state.dashboard=r.dashboard;renderMetrics();renderAudienceTabs();renderContacts();renderNewsletterAudienceSelect();
+    const message=`Importazione: ${r.added} nuovi, ${r.updated} aggiornati, ${r.skipped} saltati.`;
+    if(r.batch){
+      const sync=r.sync||{};
+      const suffix=sync.ok?`Gruppo creato e ${sync.synced} sincronizzati automaticamente su Sender.`:
+        `Lotto salvato, ma sincronizzazione da completare automaticamente al controllo campagna: ${sync.message||sync.failed+' errori'}`;
+      await showAppDialog({tone:sync.ok?'success':'warn',title:'Nuova importazione registrata',
+        message:message+' '+suffix,
+        html:'<div class="dialog-note">Nella prossima newsletter scegli “Solo nuovi: '+esc(r.batch.Title)+'”, oppure “Tutti i contatti autorizzati” per il pubblico generale. Nessuna email è stata inviata.</div>',
+        confirmText:'Chiudi',showCancel:false});
+    } else toast(message);
+  });
+}
+
+// Recupera SOLTANTO contatti esistenti non ancora assegnati a un lotto.
+// Prima del salvataggio mostra un'anteprima e richiede conferma esplicita.
+async function recoverImportCsv(file){
+  if(!file)return;
+  const rows=parseCsv(await file.text());
+  if(!rows.length){toast('CSV vuoto o non valido.',true);return}
+  try{
+    const p=await run(()=>api('previewRecoverImportBatch',rows));
+    const info=`CSV: ${p.uniqueEmails} indirizzi unici. Recuperabili: ${p.recoverable}. Già in un lotto: ${p.alreadyInBatch}. Non presenti: ${p.missing}. Esclusi per consenso/stato: ${p.excluded}. Non validi: ${p.invalid}.`;
+    if(!p.recoverable){
+      await showAppDialog({tone:'warn',title:'Nessun contatto da recuperare',message:info,showCancel:false,confirmText:'Chiudi'});
+      return;
+    }
+    const accepted=await showAppDialog({tone:'warn',title:'Recupera lotto da CSV',message:info,
+      html:'<div class="dialog-note">Questa operazione NON reimporta i contatti, NON modifica i consensi e NON invia email. Crea un lotto riservato ai contatti selezionati. Se la sincronizzazione Manager è attiva, li associa automaticamente anche al gruppo generale e al gruppo del lotto su Sender. Verifica che non abbiano già ricevuto la stessa campagna.</div>',
+      confirmText:'Conferma recupero',cancelText:'Annulla'});
+    if(!accepted)return;
+    await run(async()=>{
+      const r=await api('recoverImportBatch',rows);
+      state.importBatches=r.importBatches||[];
+      renderNewsletterAudienceSelect();
+      const status=r.sync&&r.sync.ok?`Gruppo Sender sincronizzato: ${r.sync.synced} contatti.`:
+        `Lotto registrato. Sender: ${(r.sync&&r.sync.message)||'sincronizzazione in sospeso'}`;
+      await showAppDialog({tone:r.sync&&r.sync.ok?'success':'warn',title:'Lotto recuperato',
+        message:`${r.recovered} contatti recuperati, ${r.ignored} esclusi. ${status}`,
+        html:'<div class="dialog-note">Nella prossima newsletter scegli «Solo nuovi: '+esc(r.batch.Title)+'». Gli altri contatti restano nel gruppo generale.</div>',
+        confirmText:'Chiudi',showCancel:false});
+    });
+  }catch(e){toast(e.message||String(e),true)}
+}
+
+function openPublicSignup(){
+  if(!state.publicSignupUrl){toast('URL del modulo pubblico non disponibile',true);return}
+  window.open(state.publicSignupUrl,'_blank','noopener');
+}
+
+async function pullMembersFromSender(){
+  if(!isUispClient()||contactAudience!=='members')return;
+  if(!confirm('Allineare l’archivio Iscritti con lo stato dei contatti presenti nel gruppo Sender configurato?'))return;
+  await run(async()=>{
+    const r=await api('importMembersFromSender');
+    state.members=r.members||[];
+    state.dashboard=r.dashboard||state.dashboard;
+    if(state.tenant&&state.tenant.id)tenantStateCache[state.tenant.id]=state;
+    renderMetrics();renderAudienceTabs();renderContacts();
+    toast(`Sender: ${r.added} nuovi, ${r.updated} aggiornati${r.inactive?`, ${r.inactive} non attivi`:''}`);
+  });
+}
+
+async function syncSender(){
+  if(isUispClient()){
+    const audience=contactAudience==='members'?'members':'companies';
+    const label=audience==='members'?'Iscritti':'Società';
+    if(!confirm('Sincronizzare con Sender il database '+label+' con consenso SI? I contatti TEST verranno esclusi.'))return;
+    await run(async()=>{const r=await api('syncAudienceToSender',audience);toast(`${label}: ${r.synced} sincronizzati, ${r.failed} errori`,r.failed>0)});return;
+  }
+  if(!confirm('Sincronizzare con Sender i contatti reali con consenso SI? I contatti marcati TEST verranno esclusi.'))return;
+  await run(async()=>{const r=await api('syncContactsToSender');const skipped=r.skippedTest?` · ${r.skippedTest} test esclusi`:'';toast(`Sender: ${r.synced} sincronizzati, ${r.failed} errori${skipped}`,r.failed>0)});
+}
+
+function renderAudienceMode(){
+  if(isUispClient()){
+    $('syncSenderBtn').style.display='';
+    const label=contactAudience==='members'?'Iscritti':'Società';
+    $('syncSenderBtn').textContent='Sincronizza '+label;
+    if($('pullSenderMembersBtn'))$('pullSenderMembersBtn').style.display=contactAudience==='members'?'':'none';if($('publicSignupBtn'))$('publicSignupBtn').style.display=contactAudience==='members'&&state.publicSignupUrl?'':'none';
+    $('contactsSourceNote').textContent=contactAudience==='members'?'Archivio Iscritti UISP. Il modulo del sito registra qui solo gli indirizzi confermati con double opt-in e li sincronizza con Sender. “Allinea con Sender” serve per riallineare lo stato dei contatti.':'Archivio Società UISP. Questo pubblico viene sincronizzato nel proprio gruppo Sender separato.';
+    $('workflowNotice').textContent='1. Gestisci Società e Iscritti separatamente. 2. Scegli i destinatari nella newsletter. 3. Il Manager sincronizza i gruppi Sender. 4. Crea la bozza. 5. Conferma l’invio.';
+    $('guideAudienceText').innerHTML='UISP usa due archivi distinti: <b>Società</b> e <b>Iscritti</b>. Ogni newsletter può essere inviata a uno dei due pubblici oppure a entrambi.';
+    return;
+  }
+  const source=(state.settings&&state.settings.subscriber_source)||'sender',senderMode=source==='sender';
+  if($('pullSenderMembersBtn'))$('pullSenderMembersBtn').style.display='none';if($('publicSignupBtn'))$('publicSignupBtn').style.display='none';
+  $('syncSenderBtn').style.display=senderMode?'none':'';
+  $('syncSenderBtn').textContent='Sincronizza Sender';
+  $('contactsSourceNote').textContent=senderMode?'Sender è la fonte principale dei destinatari. I contatti locali sono un archivio operativo e non determinano il numero finale di destinatari.':'Il Manager è la fonte dei contatti: prima di creare una campagna sincronizza i consenzienti con il gruppo Sender.';
+  $('workflowNotice').textContent=senderMode?'1. Prepara la newsletter. 2. Il Manager verifica il gruppo Sender. 3. Crea la bozza. 4. Controlla. 5. Conferma l’invio.':'1. Gestisci i contatti con consenso. 2. Sincronizzali con Sender. 3. Crea la newsletter. 4. Genera la bozza. 5. Conferma l’invio.';
+  $('guideAudienceText').innerHTML=senderMode?'Per questo progetto <b>Sender è la fonte principale</b> degli iscritti. Il Manager legge il numero di destinatari attivi direttamente dal gruppo configurato.':'Per questo progetto il <b>Manager sincronizza i contatti</b> con Sender e verifica che i conteggi coincidano.';
+}
+
+function formatScheduledAt(value){const s=String(value||'').trim();if(!s)return'';const m=s.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/);return m?`${m[3]}/${m[2]}/${m[1]} ${m[4]}:${m[5]}`:s}
+function newsletterRowHtml(n){
+  const st=String(n.Status||'BOZZA').toUpperCase(),cls=st==='INVIATA'?'green':st==='PROGRAMMATA'?'blue':st==='SENDER_DRAFT'?'amber':'',id=escAttr(n.ID),aud=isUispClient()?` · ${esc(audienceLabelFromSegment(n.Segment))}`:
+  (String(n.Segment||'').startsWith('LOTTO:')?` · ${esc('Solo nuovi: '+(((state.importBatches||[]).find(b=>'LOTTO:'+b.ID===n.Segment)||{}).Title||'Importazione'))}`:'');
+  const scheduled=st==='PROGRAMMATA'&&n.SentAt?` · <strong>Invio ${esc(formatScheduledAt(n.SentAt))}</strong>`:'';
+  const senderActions=st==='BOZZA'?`<button class="btn small" onclick="makeSenderDraft('${id}')">Crea su Sender</button>`:st==='SENDER_DRAFT'?`<button class="btn small primary" onclick="openSchedule('${id}')">Programma invio</button><button class="btn small danger" onclick="openSend('${id}')">Invia ora</button>`:st==='PROGRAMMATA'?`<button class="btn small" onclick="cancelSchedule('${id}')">Annulla programmazione</button>`:'';
+  const deleteBtn=['PROGRAMMATA','INVIATA'].includes(st)?'':`<button class="btn small danger" onclick="deleteNewsletter('${id}')">Elimina</button>`;
+  return `<div style="padding:12px 0;border-bottom:1px solid #edf0f3"><div class="row space"><div><b>${esc(n.Title)}</b><div class="muted" style="font-size:12px;margin-top:3px">${esc(n.Subject)}${aud} · <span class="pill ${cls}">${esc(st)}</span>${scheduled}</div></div><div class="row"><button class="btn small" onclick="editNewsletterById('${id}')">Apri</button><button class="btn small" onclick="duplicateNewsletter('${id}')">Duplica</button>${senderActions}${deleteBtn}</div></div></div>`;
+}
+// Eliminazione bozza dal portale: per SENDER_DRAFT la campagna viene rimossa
+// anche da Sender. Non modifica gruppi, iscritti o lotti di importazione.
+async function deleteNewsletter(id){
+  const n=(state.newsletters||[]).find(x=>String(x.ID)===String(id));
+  if(!n){toast('Bozza non trovata. Aggiorna la pagina.',true);return;}
+  const st=String(n.Status||'BOZZA').toUpperCase();
+  if(st==='INVIATA'||st==='PROGRAMMATA'){
+    toast(st==='PROGRAMMATA'?'Annulla prima la programmazione.':'La newsletter inviata resta nello storico.',true);
+    return;
+  }
+  const isSender=st==='SENDER_DRAFT';
+  const ok=await showAppDialog({
+    tone:'warn', danger:true, title:'Eliminare la bozza?',
+    message:isSender
+      ? 'La bozza verrà eliminata sia dal Newsletter Manager sia da Sender. Nessuna email verrà inviata.'
+      : 'La bozza verrà rimossa dal Newsletter Manager. Nessuna email verrà inviata.',
+    html:'<div class="dialog-grid"><div class="dialog-row"><span>Newsletter</span><strong>'+esc(n.Title||'Bozza')+'</strong></div>'
+      +'<div class="dialog-row"><span>Stato</span><strong>'+esc(st)+'</strong></div></div>'
+      +'<div class="dialog-note">I contatti e i gruppi Sender non verranno modificati.</div>',
+    confirmText:'Elimina definitivamente', cancelText:'Annulla'
+  });
+  if(!ok)return;
+  try {
+    await run(async()=>{
+      showAppLoading('Eliminazione bozza',isSender?'Elimino la campagna da Sender e dal Manager.':'Elimino la bozza dal Manager.');
+      let r;
+      try{r=await api('deleteNewsletter',id)}finally{hideAppLoading()}
+      if(!r||!r.ok)throw new Error(r&&r.message||'Eliminazione non confermata.');
+      state.newsletters=r.newsletters;
+      state.dashboard=r.dashboard;
+      renderMetrics();renderNewsletters();
+      if($('nId')&&String($('nId').value)===String(id))newNewsletter();
+      toast(isSender?'Bozza eliminata dal Manager e da Sender.':'Bozza eliminata.');
+    });
+  } catch (e) {
+    await showAppDialog({tone:'error',title:'Eliminazione non riuscita',
+      message:String(e&&e.message||e||'Errore sconosciuto'),
+      html:'<div class="dialog-note">La bozza nel Manager non è stata eliminata. Inviami questo messaggio di errore.</div>',
+      confirmText:'Chiudi',showCancel:false});
+  }
+}
+
+function renderNewsletters(){const list=state.newsletters||[];const drafts=list.filter(n=>String(n.Status||'BOZZA').toUpperCase()!=='INVIATA');const history=list.filter(n=>String(n.Status||'BOZZA').toUpperCase()==='INVIATA');if($('newsletterDraftCount'))$('newsletterDraftCount').textContent=drafts.length+' '+(drafts.length===1?'elemento':'elementi');if($('newsletterHistoryCount'))$('newsletterHistoryCount').textContent=history.length+' '+(history.length===1?'elemento':'elementi');if($('newsletterDraftList'))$('newsletterDraftList').innerHTML=drafts.length?drafts.map(newsletterRowHtml).join(''):'<div class="empty">Nessuna bozza in lavorazione.</div>';if($('newsletterHistoryList'))$('newsletterHistoryList').innerHTML=history.length?history.map(newsletterRowHtml).join(''):'<div class="empty">Nessuna newsletter inviata.</div>'}
+async function makeSenderDraft(id){await run(async()=>{showAppLoading('Controllo destinatari','Sto confrontando i pubblici del Manager con i gruppi Sender.');let p;try{p=await api('preflightSenderCampaign',id)}finally{hideAppLoading()}const source=p.subscriberSource||'sender';let html='';if(isUispClient()&&p.audience){const groupRows=(p.groupChecks||[]).map(c=>`<div class="dialog-row"><span>${esc(c.title)}</span><strong class="${c.matches?'dialog-ok':'dialog-bad'}">Manager ${esc(c.localEligible)} · Sender ${esc(c.senderActive)}</strong></div>`).join('');html=`<div class="dialog-grid"><div class="dialog-row"><span>Pubblico</span><strong>${esc(p.audienceLabel)}</strong></div><div class="dialog-row"><span>Destinatari unici nel Manager</span><strong>${esc(p.localEligible)}</strong></div>${groupRows}</div>`;if(p.audience==='both')html+='<div class="dialog-note">Gli indirizzi presenti in entrambi gli archivi vengono gestiti tramite i due gruppi Sender senza creare duplicati locali.</div>'}else if(source==='manager'){html=`<div class="dialog-grid"><div class="dialog-row"><span>Contatti validi nel Manager</span><strong>${esc(p.localEligible)}</strong></div><div class="dialog-row"><span>Destinatari attivi su Sender</span><strong>${esc(p.senderActive)}</strong></div><div class="dialog-row"><span>Gruppo Sender</span><strong>${esc(p.senderGroup||'Sender')}</strong></div></div>`}else{html=`<div class="dialog-grid"><div class="dialog-row"><span>Destinatari attivi su Sender</span><strong>${esc(p.senderActive)}</strong></div><div class="dialog-row"><span>Gruppo Sender</span><strong>${esc(p.senderGroup||'Sender')}</strong></div></div><div class="dialog-note">Sender è la fonte principale degli iscritti per questo progetto.</div>`}if(!p.ok){await showAppDialog({tone:'error',title:'Controllo destinatari non superato',message:'La campagna non verrà creata finché i conteggi non sono coerenti.',html,confirmText:'Chiudi',showCancel:false});return}const ok=await showAppDialog({tone:'success',title:'Destinatari verificati',message:'I controlli sono corretti. La newsletter verrà creata come bozza su Sender e non sarà ancora inviata.',html,confirmText:'Crea bozza su Sender'});if(!ok)return;showAppLoading('Creazione bozza','Sto creando la campagna su Sender.');let r;try{r=await api('createSenderDraft',id)}finally{hideAppLoading()}state.newsletters=r.newsletters;state.dashboard=r.dashboard;renderMetrics();renderNewsletters();toast('Bozza Sender SIMULATA creata')})}
+
+function renderSettings(){
+  const s=state.settings||{},uisp=isUispClient();
+  $('sBrandName').value=s.brand_name||'';$('sPrimaryColor').value=s.brand_primary_color||'#111111';$('sAccentColor').value=s.brand_accent_color||s.brand_primary_color||'#ff3b30';$('sGroup').value=s.sender_group_id||'';$('sGroupCompanies').value=s.sender_group_companies_id||s.sender_group_id||'';$('sGroupMembers').value=s.sender_group_members_id||'';$('sFrom').value=s.sender_from_name||s.brand_name||'';$('sReply').value=s.sender_reply_to||'';$('sSubscriberSource').value=uisp?'manager':(s.subscriber_source||'sender');$('sSubscriberSource').disabled=uisp;$('sFooter').value=s.footer_text||s.brand_name||'';$('sFooterEmail').value=s.footer_email||'';$('sFooterWebsite').value=s.footer_website||'';$('sFooterAddress').value=s.footer_address||'';$('tokenState').textContent=s.sender_api_token_set?('Configurazione simulata'+(s.sender_api_token_fingerprint?' · impronta '+s.sender_api_token_fingerprint:'')+'. Lascia vuoto per mantenerlo.'):'Nessun token salvato.';
+  $('defaultSenderGroupBox').style.display=uisp?'none':'';$('uispSenderGroupsBox').style.display=uisp?'block':'none';
+  renderLogoSettings();updatePreview();
+}
+
+async function saveSettings(){
+  const uisp=isUispClient();
+  const data={brand_name:$('sBrandName').value,brand_primary_color:$('sPrimaryColor').value,brand_accent_color:$('sAccentColor').value,sender_group_id:$('sGroup').value,sender_group_companies_id:$('sGroupCompanies').value,sender_group_members_id:$('sGroupMembers').value,sender_from_name:$('sFrom').value,sender_reply_to:$('sReply').value,subscriber_source:uisp?'manager':$('sSubscriberSource').value,footer_text:$('sFooter').value,footer_email:$('sFooterEmail').value,footer_website:$('sFooterWebsite').value,footer_address:$('sFooterAddress').value};
+  if($('sToken').value.trim())data.sender_api_token=$('sToken').value.trim();
+  await run(async()=>{const r=await api('saveSettings',data);state.settings=r.settings;if(r.tenant)state.tenant=r.tenant;$('sToken').value='';renderSettings();applyTenantTheme();renderAudienceMode();toast('Impostazioni salvate')});
+}
+
+function senderGroupOptions(groups,current){return'<option value="">Seleziona un gruppo...</option>'+groups.map(g=>{const id=String(g.id||g.group_id||''),title=String(g.title||g.name||g.label||id),active=(g.active_subscribers??g.recipient_count??''),suffix=active!==''?' · '+active+' attivi':'';return`<option value="${escAttr(id)}" ${id===current?'selected':''}>${esc(title+suffix)}</option>`}).join('')}
+
+async function loadSenderGroups(){
+  await run(async()=>{
+    const r=await api('getSenderGroups'),groups=Array.isArray(r.groups)?r.groups:[];
+    if(!groups.length){toast('Nessun gruppo Sender trovato',true);return}
+    if(isUispClient()){
+      const c=$('sGroupCompanies').value.trim(),m=$('sGroupMembers').value.trim(),cs=$('sGroupCompaniesSelect'),ms=$('sGroupMembersSelect');
+      cs.innerHTML=senderGroupOptions(groups,c);ms.innerHTML=senderGroupOptions(groups,m);cs.style.display='block';ms.style.display='block';$('uispSenderGroupsHelp').textContent='Seleziona il gruppo corretto per ciascun archivio UISP. I due gruppi devono essere diversi.';
+    }else{
+      const current=$('sGroup').value.trim(),sel=$('sGroupSelect');sel.innerHTML=senderGroupOptions(groups,current);sel.style.display='block';$('senderGroupsHelp').textContent='Seleziona il gruppo: il relativo ID verrà inserito automaticamente.';
+    }
+    toast(groups.length+' gruppi Sender caricati');
+  });
+}
+
+function selectUispSenderGroup(kind,id){if(!id)return;if(kind==='members')$('sGroupMembers').value=id;else $('sGroupCompanies').value=id}
+
+async function testSender(){
+  await run(async()=>{
+    const r=await api('testSenderConnection');
+    if(isUispClient()){
+      const groups=r.groups||[];const text=groups.length?groups.map(g=>`${g.audienceLabel}: ${g.activeSubscribers} attivi`).join(' · '):'Connessione Sender attiva · gruppi UISP da configurare';
+      $('senderStatus').className='notice '+(groups.length>=2?'good':'warn');$('senderStatus').textContent=text;toast(r.message);return;
+    }
+    $('senderStatus').className='notice good';$('senderStatus').textContent=r.group?`Sender attivo · ${r.group.title||'gruppo'} · ${r.group.activeSubscribers} destinatari attivi`:r.message;toast(r.message);
+  });
+}
+</script>
+
+<script>const DEMO_LOGO="data:image/png;base64,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", DEMO_KEY='uisp_bolzano_demo_v2021_1';
+const clone=v=>JSON.parse(JSON.stringify(v));
+let demoDB;
+const eligible=c=>c.Consent==='SI'&&c.Status!=='DISISCRITTO'&&c.Type!=='TEST';
+function freshDemo(){
+ const names=['Aurora Sport','Insieme in Movimento','Orizzonte Volley','Passo Libero','Nuoto Arcobaleno','Sport Senza Barriere','Gruppo Pedali','Atletica Primavera'];
+ const contacts=names.map((n,i)=>({ID:'c'+i,Organization:n+' · DEMO',FirstName:['Marco','Elena','Luca','Sara','Andrea','Anna','Paolo','Giulia'][i],LastName:'Referente demo',Email:'societa'+(i+1)+'@example.com',Discipline:['Multisport','Ginnastica','Pallavolo','Cammino','Nuoto','Sport inclusivo','Ciclismo','Atletica'][i],Consent:i===7?'NO':'SI',Status:'ATTIVO',Type:'Società',ConsentDate:'2026-10-01',ConsentSource:'Esempio dimostrativo',UpdatedAt:'20/10/2026',Notes:'Società di fantasia'}));
+ const members=Array.from({length:16},(_,i)=>({ID:'m'+i,FirstName:['Giulia','Marco','Elena','Luca'][i%4],LastName:'Iscritto demo '+(i+1),Email:'iscritto'+(i+1)+'@example.com',Consent:i===15?'NO':'SI',Status:i===15?'DISISCRITTO':'ATTIVO',Type:'Iscritto',ConsentDate:'2026-10-01',ConsentSource:'Conferma dimostrativa',UpdatedAt:'20/10/2026'}));
+ const blocks=[{id:'b1',type:'heading',text:'Lo sport che ci unisce',level:'h2'},{id:'b2',type:'text',html:'<p>Care società, care socie e cari soci,</p><p>ogni attività è un’occasione per incontrarsi, stare bene e costruire una comunità più aperta. Ecco le prossime iniziative del nostro esempio di newsletter.</p>'},{id:'b3',type:'news',title:'Una giornata di sport per tutti',summary:'Un appuntamento dimostrativo dedicato a famiglie, associazioni e appassionati: movimento, condivisione e attività accessibili a ogni età.',imageUrl:'',linkUrl:'',linkText:'Scopri il programma'},{id:'b4',type:'news',title:'Spazio alle società',summary:'Raccogliamo proposte e notizie delle associazioni per dare visibilità alle attività del territorio. In questo esempio ogni contenuto è di fantasia.',imageUrl:'',linkUrl:'',linkText:''},{id:'b5',type:'divider'},{id:'b6',type:'text',html:'<p><strong>UISP Bolzano · Sportpertutti</strong><br>Contenuto dimostrativo, non una comunicazione ufficiale.</p>'}];
+ const templates=[['Novità dal territorio','Aggiornamenti e attività delle società','Le novità della nostra comunità sportiva'],['Invito a un evento','Programma, partecipazione e informazioni utili','Una giornata di sport per tutti'],['Comunicazione alle società','Avvisi e aggiornamenti organizzativi','Informazioni utili per le società']].map((a,i)=>({ID:'t'+i,Name:a[0],Description:a[1],Subject:a[2],Preheader:'UISP Bolzano · Esempio dimostrativo',ContentHtml:'<h2>'+a[2]+'</h2><p>Care società, care socie e cari soci,</p><p>inserisci qui il contenuto della comunicazione e le informazioni utili per partecipare.</p><p><em>Testo dimostrativo.</em></p>',CTA_Text:'',CTA_URL:''}));
+ return {version:'2.0.21',tenant:{id:'uisp',name:'UISP Bolzano',brandColor:'#087d35',accentColor:'#95c84b'},tenants:[],session:{role:'ADMIN',displayName:'Presentazione UISP · DEMO'},settings:{brand_name:'UISP Bolzano',brand_primary_color:'#087d35',brand_accent_color:'#95c84b',brand_logo_url:DEMO_LOGO,brand_logo_name:'UISP Bolzano',sender_group_companies_id:'demo-societa',sender_group_members_id:'demo-iscritti',sender_from_name:'UISP Bolzano',sender_reply_to:'newsletter@example.com',subscriber_source:'manager',footer_text:'UISP Bolzano · Sportpertutti · DEMO',footer_email:'newsletter@example.com',footer_website:'',footer_address:'Bolzano · Presentazione dimostrativa',sender_api_token_set:false},contacts,members,templates,importBatches:[],newsletters:[{ID:'n1',Title:'Sportpertutti · Newsletter di esempio',Subject:'Lo sport che ci unisce: notizie e iniziative',Preheader:'Società, persone e nuove occasioni per muoversi insieme.',Segment:'UISP_ENTRAMBI',ContentJson:JSON.stringify(blocks),Status:'BOZZA'},{ID:'n0',Title:'Benvenuti nella comunità · Esempio storico',Subject:'Insieme, lo sport è per tutti',Segment:'UISP_ENTRAMBI',ContentJson:JSON.stringify(blocks.slice(0,2)),Status:'INVIATA',SentAt:'2026-10-10 10:00'}]};
+}
+function demoMetrics(){demoDB.dashboard={contacts:demoDB.contacts.length,members:demoDB.members.length,activeConsent:demoDB.contacts.filter(eligible).length,memberActiveConsent:demoDB.members.filter(eligible).length,drafts:demoDB.newsletters.filter(n=>n.Status!=='INVIATA').length,sent:demoDB.newsletters.filter(n=>n.Status==='INVIATA').length};}
+function persistDemo(){demoMetrics();try{localStorage.setItem(DEMO_KEY,JSON.stringify(demoDB))}catch(e){toast('Memoria del browser non disponibile: la demo resta utilizzabile fino alla chiusura.',true)}}
+function demoResult(extra={}){persistDemo();return clone({...demoDB,ok:true,...extra})}
+function findN(id){const n=demoDB.newsletters.find(n=>n.ID===id);if(!n)throw Error('Newsletter non trovata');return n;}
+function audienceRows(n){return n.Segment==='UISP_ISCRITTI'?demoDB.members:n.Segment==='UISP_ENTRAMBI'?[...demoDB.contacts,...demoDB.members]:demoDB.contacts;}
+function countFor(n){return new Set(audienceRows(n).filter(eligible).map(c=>c.Email.toLowerCase())).size}
+async function api(name,...args){
+ const a=args[0];
+ switch(name){
+ case 'getBootstrapData':return demoResult();
+ case 'getContacts':return clone(demoDB.contacts);
+ case 'getMembers':return clone(demoDB.members);
+ case 'getImportBatches':return [];
+ case 'saveContact':case 'saveMember':{
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(a.Email||''))throw Error('Inserisci un indirizzo email valido, preferibilmente @example.com.');
+  const rows=name==='saveMember'?demoDB.members:demoDB.contacts;
+  if(rows.some(c=>c.Email.toLowerCase()===a.Email.toLowerCase()&&c.ID!==a.ID))throw Error('Questo indirizzo è già presente.');
+  const c={...a,ID:a.ID||'demo'+Date.now(),UpdatedAt:new Date().toLocaleDateString('it-IT')};const i=rows.findIndex(c=>c.ID===a.ID);if(i<0)rows.push(c);else rows[i]=c;return demoResult();}
+ case 'deleteContact':case 'deleteMember':{let key=name==='deleteMember'?'members':'contacts';demoDB[key]=demoDB[key].filter(c=>c.ID!==a);return demoResult();}
+ case 'importContacts':case 'importMembers':{
+  const key=name==='importMembers'?'members':'contacts';let added=0,updated=0,skipped=0;
+  for(const row of a){const email=String(row.Email||row.email||'').trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){skipped++;continue}const i=demoDB[key].findIndex(c=>c.Email.toLowerCase()===email.toLowerCase());const c={...row,Email:email,ID:i>=0?demoDB[key][i].ID:'import'+Date.now()+'_'+added,Consent:row.Consent==='SI'?'SI':'NO',Status:row.Status||'ATTIVO',UpdatedAt:new Date().toLocaleDateString('it-IT')};if(i>=0){demoDB[key][i]=c;updated++}else{demoDB[key].push(c);added++}}
+  return demoResult({added,updated,skipped});}
+ case 'saveNewsletter':{
+  if(!a.Title.trim()||!a.Subject.trim())throw Error('Inserisci titolo interno e oggetto della newsletter.');
+  const i=demoDB.newsletters.findIndex(n=>n.ID===a.ID);
+  if(i>=0&&demoDB.newsletters[i].Status!=='BOZZA')throw Error('Duplica questa campagna per modificarla.');
+  const n={...a,ID:a.ID||'n'+Date.now(),Status:'BOZZA'};if(i<0)demoDB.newsletters.unshift(n);else demoDB.newsletters[i]=n;return demoResult({newsletter:n});}
+ case 'duplicateNewsletter':{const n=clone(findN(a));n.ID='n'+Date.now();n.Title+=' · Copia';n.Status='BOZZA';n.SentAt='';demoDB.newsletters.unshift(n);return demoResult({newsletter:n});}
+ case 'deleteNewsletter':{const n=findN(a);if(['INVIATA','PROGRAMMATA'].includes(n.Status))throw Error('Questa campagna non può essere eliminata.');demoDB.newsletters=demoDB.newsletters.filter(n=>n.ID!==a);return demoResult();}
+ case 'preflightSenderCampaign':{const n=findN(a),count=countFor(n),aud=n.Segment==='UISP_ISCRITTI'?'members':n.Segment==='UISP_ENTRAMBI'?'both':'companies';return {ok:count>0,subscriberSource:'manager',audience:aud,audienceLabel:audienceLabelFromSegment(n.Segment),localEligible:count,senderActive:count,groupChecks:(aud==='both'?['companies','members']:[aud]).map(k=>({title:(k==='members'?'Iscritti':'Società')+' · SIMULATO',localEligible:demoDB[k==='members'?'members':'contacts'].filter(eligible).length,senderActive:demoDB[k==='members'?'members':'contacts'].filter(eligible).length,matches:true}))};}
+ case 'createSenderDraft':{const n=findN(a);if(!countFor(n))throw Error('Nessun destinatario autorizzato.');n.Status='SENDER_DRAFT';return demoResult();}
+ case 'sendSenderCampaign':{if(args[1]!=='INVIA')throw Error('Digita INVIA per confermare la simulazione.');const n=findN(a);if(n.Status!=='SENDER_DRAFT')throw Error('Prima crea una bozza Sender simulata.');n.Status='INVIATA';n.SentAt=new Date().toISOString();return demoResult();}
+ case 'scheduleSenderCampaign':{if(new Date(args[1])<=new Date()||!Number.isFinite(new Date(args[1]).getTime()))throw Error('Seleziona una data futura.');const n=findN(a);n.Status='PROGRAMMATA';n.SentAt=args[1];return demoResult({scheduledAt:args[1]});}
+ case 'cancelScheduledCampaign':{findN(a).Status='SENDER_DRAFT';findN(a).SentAt='';return demoResult();}
+ case 'refreshSenderCampaignStatuses':return demoResult({updated:0});
+ case 'syncAudienceToSender':case 'syncContactsToSender':return {synced:demoDB[a==='members'?'members':'contacts'].filter(eligible).length,failed:0};
+ case 'importMembersFromSender':return demoResult({added:0,updated:0,inactive:0});
+ case 'testSenderConnection':return {message:'SIMULAZIONE: nessuna connessione a Sender.',groups:[{audienceLabel:'Società · demo',activeSubscribers:demoDB.contacts.filter(eligible).length},{audienceLabel:'Iscritti · demo',activeSubscribers:demoDB.members.filter(eligible).length}]};
+ case 'getSenderGroups':return {groups:[{id:'demo-societa',title:'UISP Società · SIMULATO',active_subscribers:demoDB.contacts.filter(eligible).length},{id:'demo-iscritti',title:'UISP Iscritti · SIMULATO',active_subscribers:demoDB.members.filter(eligible).length}]};
+ case 'saveTemplate':{const i=demoDB.templates.findIndex(t=>t.ID===a.ID);demoDB.templates[i]={...demoDB.templates[i],...a};return demoResult();}
+ case 'saveSettings':{delete a.sender_api_token;demoDB.settings={...demoDB.settings,...a};return demoResult();}
+ case 'uploadLogo':demoDB.settings.brand_logo_url='data:'+a.mimeType+';base64,'+a.dataBase64;demoDB.settings.brand_logo_name=a.name;return demoResult();
+ case 'removeLogo':demoDB.settings.brand_logo_url='';return demoResult();
+ case 'uploadAsset':case 'uploadNewsletterImage':return {url:'data:'+a.mimeType+';base64,'+a.dataBase64,fileId:'demo-image'};
+ default:throw Error('Funzione non inclusa nella presentazione offline.');
+ }
+}
+async function rawApi(){throw Error('Accesso remoto non disponibile nella demo.');}
+function openDemoExample(){go('newsletter');editNewsletterById('n1')}
+async function duplicateNewsletter(id){const r=await api('duplicateNewsletter',id);state.newsletters=r.newsletters;state.dashboard=r.dashboard;renderMetrics();renderNewsletters();editNewsletter(r.newsletter);toast('Copia dimostrativa creata')}
+function resetDemo(){if(!confirm('Ripristinare tutti i dati dimostrativi? Le modifiche fatte nella demo saranno cancellate.'))return;demoDB=freshDemo();persistDemo();state=clone(demoDB);renderAll();newNewsletter();go('dashboard');toast('Demo ripristinata')}
+async function startDemo(){state=clone(demoDB);bindUi();hideAllScreens();$('app').style.display='';renderAll();newNewsletter();go('dashboard');$('senderStatus').textContent='Modalità dimostrativa · Sender simulato';}
+function logoutApp(){showDemoCover()}
+function showDemoCover(){hideAllScreens();$('loginScreen').style.display='flex';$('loginScreen').innerHTML='<div class="login-card"><img class="demo-cover-logo" src="'+DEMO_LOGO+'" alt="UISP Bolzano"><div class="eyebrow">P&S NEWSLETTER MANAGER · V2.0.21</div><h1>La vostra comunità.<br>Una comunicazione organizzata.</h1><p>Demo del gestionale esistente, personalizzata per UISP Bolzano. Contatti, contenuti e storico sono fittizi.</p><button class="btn primary" onclick="startDemo()">Entra nella demo →</button><p style="font-size:13px;margin-top:20px;margin-bottom:0">Demo interattiva. Gli invii sono simulati.<br>Le modifiche restano in questo browser, se la memoria locale è disponibile.</p></div>';}
+const originalRenderAll=renderAll;
+renderAll=function(){originalRenderAll();$('sToken').disabled=true;$('sToken').placeholder='Non necessario nella demo';$('tokenState').textContent='Connessione simulata: nessuna credenziale richiesta.';['dbLink','folderLink','currentPassword','newPassword','newPassword2'].forEach(id=>{const el=$(id);if(el){const card=el.closest('.card');if(card&&card.id!=='projectSettingsCard')card.style.display='none';else el.style.display='none'}});$('sideAppVersion').textContent='v2.0.21 · DEMO UISP 1.0';$('dashboardAppVersion').textContent='v2.0.21 · DEMO';};
+// No external navigation or network operations are allowed in this presentation.
+document.addEventListener('click',e=>{const a=e.target.closest('a');if(a){e.preventDefault();toast('Link dimostrativo: navigazione esterna disattivata.')}},true);
+window.addEventListener('load',()=>{try{demoDB=JSON.parse(localStorage.getItem(DEMO_KEY))}catch(e){}if(!demoDB||demoDB.version!=='2.0.21')demoDB=freshDemo();demoMetrics();showDemoCover()});
+const baseDialog=showAppDialog;
+showAppDialog=function(opts={}){return baseDialog({...opts,message:'DEMO · '+(opts.message||'')})};
+</script></body>
+</html>
