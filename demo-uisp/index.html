@@ -51,6 +51,15 @@
 .grid.cards{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:800px){.grid.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 :root{--blue:#087d35;--navy:#07582e;--accent:#95c84b} aside{background:linear-gradient(180deg,#07582e,#063c26)}
 .demo-banner{background:#e6f3e9;color:#124f2a;padding:12px 30px;border-bottom:1px solid #bfdcc6;font-size:13px;display:flex;align-items:center;gap:16px;justify-content:space-between}.demo-banner button{background:white;border:1px solid #b5d5bd;border-radius:6px;padding:6px 12px}.demo-tag{font-weight:800;letter-spacing:1px}.demo-hero{padding:25px;background:linear-gradient(120deg,#edf6ee,#fff);margin-bottom:20px;border:1px solid #d6e7d9;border-radius:12px}.demo-hero h2{margin:0 0 8px;font-size:26px}.demo-hero p{line-height:1.6;max-width:750px}.demo-hero .eyebrow{color:#087d35;margin-bottom:10px}.brand{flex-direction:column;align-items:flex-start}.brand-badge{width:170px;height:108px}.brand-badge img{max-width:152px;max-height:96px}#previewHead{background:white!important;padding:18px}#previewHead img{max-height:110px!important}.login-screen{background:linear-gradient(140deg,#043721,#0c8741)}.login-card{width:min(580px,100%);padding:40px}.demo-cover-logo{width:230px;height:auto;margin-bottom:24px}.login-card h1{font-size:32px;margin-bottom:16px}.login-card .btn{padding:14px 24px} .side-foot{color:#d0e4d6} @media(max-width:800px){.demo-banner{padding:10px;flex-wrap:wrap}.brand{flex-direction:row}.brand-badge{width:85px;height:60px}.brand-badge img{max-width:75px;max-height:50px}.demo-hero h2{font-size:22px}}
+</style><style>
+.brand-color-control{display:flex;align-items:center;gap:16px;border:1px solid var(--line);border-radius:10px;padding:14px;background:#fff;min-height:88px}
+.brand-color-control input[type=color]{display:block;flex:0 0 72px;width:72px;height:54px;min-height:54px;padding:4px;border:1px solid #c7d0ca;border-radius:8px;background:#fff;cursor:pointer;box-sizing:border-box;appearance:auto}
+.brand-color-control input[type=color]::-webkit-color-swatch-wrapper{padding:0}
+.brand-color-control input[type=color]::-webkit-color-swatch{border:0;border-radius:4px}
+.brand-color-control input[type=color]::-moz-color-swatch{border:0;border-radius:4px}
+.brand-color-control output{display:block;font:700 17px ui-monospace,Consolas,monospace;letter-spacing:.4px;color:var(--text)}
+.brand-color-control span{display:block;font-size:12px;color:var(--muted);margin-top:5px}
+.brand-color-control input:focus-visible{outline:3px solid #087d35;outline-offset:3px}
 </style></head>
 <body><div class="demo-banner"><span><span class="demo-tag">DEMO UISP BOLZANO</span> · Dati fittizi · Sender simulato · Nessuna email inviata</span><button onclick="resetDemo()">Ripristina demo</button></div>
   <div class="login-screen" id="loginScreen">
@@ -163,10 +172,13 @@
     </section>
 
     <section class="section" id="settings">
-      <div id="projectSettingsCard" class="card settings"><div class="notice warn" style="margin-bottom:16px"><b>Impostazioni del progetto.</b> Le impostazioni sono separate per ogni cliente.</div>
+      <div id="projectSettingsCard" class="card settings">
         <h3 class="panel-title">Identità del progetto</h3>
         <div class="field"><label>Nome brand</label><input id="sBrandName" class="input"></div>
-        <div class="two"><div class="field"><label>Colore principale</label><input id="sPrimaryColor" class="input" type="color"></div><div class="field"><label>Colore accento</label><input id="sAccentColor" class="input" type="color"></div></div>
+        <div class="two brand-color-fields">
+<div class="field"><label for="sPrimaryColor">Colore principale</label><div class="brand-color-control"><input id="sPrimaryColor" type="color" aria-describedby="primaryColorHelp" oninput="syncColorControls()"><div><output id="primaryColorCode" for="sPrimaryColor"></output><span>Scegli il colore</span></div></div><div class="help" id="primaryColorHelp">Colore dei pulsanti principali e dei pulsanti nella newsletter.</div></div>
+<div class="field"><label for="sAccentColor">Colore dei dettagli</label><div class="brand-color-control"><input id="sAccentColor" type="color" aria-describedby="accentColorHelp" oninput="syncColorControls()"><div><output id="accentColorCode" for="sAccentColor"></output><span>Scegli il colore</span></div></div><div class="help" id="accentColorHelp">Linea colorata sopra il logo nell’anteprima della newsletter.</div></div>
+</div><div class="help" style="margin:-4px 0 20px">Clicca sul riquadro colorato per modificarlo, poi premi «Salva impostazioni».</div>
         <div class="field"><label>Logo</label><div id="logoBox" style="border:1px solid var(--line);border-radius:10px;padding:14px;background:#f8fafc"><div id="logoEmpty" class="muted" style="font-size:13px">Nessun logo caricato.</div><div id="logoPreviewWrap" style="display:none;align-items:center;gap:14px;flex-wrap:wrap"><div style="width:180px;min-height:76px;background:#fff;border:1px solid var(--line);border-radius:8px;display:flex;align-items:center;justify-content:center;padding:10px"><img id="logoPreview" alt="Logo" style="max-width:160px;max-height:70px;object-fit:contain"></div><div><div id="logoName" style="font-size:13px;font-weight:700;margin-bottom:8px"></div><button class="btn small" type="button" onclick="document.getElementById('logoFile').click()">Sostituisci logo</button><button class="btn small danger" type="button" onclick="removeLogo()">Rimuovi</button></div></div><div id="logoUploadActions" style="margin-top:10px"><button class="btn" type="button" onclick="document.getElementById('logoFile').click()">Carica logo</button><input id="logoFile" type="file" accept="image/png,image/jpeg,image/webp" hidden onchange="uploadLogo(this.files[0])"><div class="help">PNG, JPG o WEBP. Massimo 2 MB.</div></div></div></div>
 
         <h3 class="panel-title" style="margin-top:24px">Collegamento Sender</h3>
@@ -1147,5 +1159,14 @@ document.addEventListener('click',e=>{const a=e.target.closest('a');if(a){e.prev
 window.addEventListener('load',()=>{try{demoDB=JSON.parse(localStorage.getItem(DEMO_KEY))}catch(e){}if(!demoDB||demoDB.version!=='2.0.21')demoDB=freshDemo();demoMetrics();showDemoCover()});
 const baseDialog=showAppDialog;
 showAppDialog=function(opts={}){return baseDialog({...opts,message:'DEMO · '+(opts.message||'')})};
+</script><script>
+function syncColorControls(){
+ for(const [inputId,outputId] of [['sPrimaryColor','primaryColorCode'],['sAccentColor','accentColorCode']]){
+  const input=document.getElementById(inputId),output=document.getElementById(outputId);
+  if(input&&output)output.value=input.value.toUpperCase();
+ }
+}
+const renderSettingsWithColorControls=renderSettings;
+renderSettings=function(){renderSettingsWithColorControls();syncColorControls()};
 </script></body>
 </html>
