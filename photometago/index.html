@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhotoMetaGo | Workflow fotografico FTP, IPTC/XMP e consegna</title>
+  <meta name="description" content="PhotoMetaGo porta il workflow fotografico dalla fotocamera Android alla consegna: ricezione FTP, preset IPTC/XMP, gestione foto e invio verso Google Drive, FTP, FTPS o SFTP.">
+  <meta name="theme-color" content="#082A61">
+  <meta property="og:title" content="PhotoMetaGo | Dalla fotocamera alla consegna">
+  <meta property="og:description" content="Ricevi JPEG dalla fotocamera, applica metadati IPTC/XMP e consegna le immagini direttamente dal dispositivo Android.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.paolosavio.eu/photometago/">
+  <meta property="og:image" content="https://www.paolosavio.eu/photometago/icon.svg">
+  <link rel="canonical" href="https://www.paolosavio.eu/photometago/">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],display:['Playfair Display','serif']},colors:{pmg:'#55C2F2',pmgnavy:'#082A61'}}}}</script>
+  <style>
+    html{scroll-behavior:smooth}body{background:#09090b}::selection{background:#55C2F2;color:#082A61}
+    .glass{background:rgba(24,24,27,.70);backdrop-filter:blur(18px)}
+    .focus-ring:focus-visible{outline:2px solid #55C2F2;outline-offset:3px}
+    .grid-glow{background-image:linear-gradient(rgba(85,194,242,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(85,194,242,.05) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 88%)}
+    .phone{box-shadow:0 35px 90px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08)}
+    .card-lift{transition:transform .3s ease,border-color .3s ease}.card-lift:hover{transform:translateY(-4px);border-color:rgba(85,194,242,.4)}
+    .flow-line:after{content:"";position:absolute;left:50%;top:100%;height:28px;width:1px;background:linear-gradient(#55C2F2,transparent)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"PhotoMetaGo",
+    "applicationCategory":"PhotographyApplication",
+    "operatingSystem":"Android 8.0+",
+    "softwareVersion":"1.0.0",
+    "description":"Workflow fotografico mobile per ricezione FTP da fotocamera, metadati IPTC/XMP e consegna delle immagini.",
+    "url":"https://www.paolosavio.eu/photometago/",
+    "downloadUrl":"https://play.google.com/store/apps/details?id=eu.paolosavio.photometago",
+    "author":{"@type":"Person","name":"Paolo Savio","url":"https://www.paolosavio.eu/"}
+  }
+  </script>
+</head>
+<body class="font-sans text-white antialiased overflow-x-hidden">
+  <nav class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-zinc-950/90 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+      <a href="/" class="focus-ring flex items-center gap-3 rounded-xl">
+        <img src="icon.svg" alt="PhotoMetaGo" class="h-9 w-9 rounded-xl">
+        <div><p class="text-sm font-semibold leading-none">PhotoMetaGo</p><p class="mt-1 text-[10px] uppercase tracking-[.18em] text-zinc-500">by Paolo Savio</p></div>
+      </a>
+      <div class="hidden items-center gap-6 text-sm text-zinc-300 md:flex">
+        <a href="#workflow" class="hover:text-white">Workflow</a>
+        <a href="#funzioni" class="hover:text-white">Funzioni</a>
+        <a href="#faq" class="hover:text-white">FAQ</a>
+        <a href="/digital/" class="hover:text-white">Digital Tools</a>
+      </div>
+      <a href="https://play.google.com/store/apps/details?id=eu.paolosavio.photometago" target="_blank" rel="noopener" class="focus-ring inline-flex items-center gap-2 rounded-full bg-pmg px-4 py-2.5 text-sm font-semibold text-pmgnavy hover:bg-white sm:px-5"><i class="fa-brands fa-google-play"></i><span class="hidden sm:inline">Google Play</span><span class="sm:hidden">Scarica</span></a>
+    </div>
+  </nav>
+
+  <main>
+    <header class="relative overflow-hidden pt-24">
+      <div class="grid-glow absolute inset-0"></div>
+      <div class="absolute left-[62%] top-20 h-[34rem] w-[34rem] rounded-full bg-pmg/10 blur-3xl"></div>
+      <div class="relative mx-auto grid min-h-[86vh] max-w-7xl items-center gap-14 px-5 py-20 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-7">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-pmg/25 bg-pmg/10 px-4 py-2 text-xs font-medium uppercase tracking-[.18em] text-cyan-100"><span class="h-2 w-2 rounded-full bg-pmg"></span>Disponibile su Google Play · Android</div>
+          <p class="mb-4 text-sm font-semibold uppercase tracking-[.22em] text-pmg">Professional Photography Workflow</p>
+          <h1 class="font-display max-w-5xl text-5xl font-semibold leading-[.98] tracking-tight sm:text-6xl lg:text-8xl">Dallo scatto alla consegna. Senza passare dal computer.</h1>
+          <p class="mt-7 max-w-3xl text-lg leading-relaxed text-zinc-300 sm:text-xl">PhotoMetaGo riceve i JPEG dalla fotocamera via FTP, applica preset IPTC/XMP e prepara le immagini per il flusso editoriale direttamente da Android.</p>
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a href="https://play.google.com/store/apps/details?id=eu.paolosavio.photometago" target="_blank" rel="noopener" class="focus-ring inline-flex items-center gap-3 rounded-full bg-white px-6 py-4 font-semibold text-zinc-950 hover:bg-pmg"><i class="fa-brands fa-google-play"></i> Scarica da Google Play</a>
+            <a href="#workflow" class="focus-ring inline-flex items-center gap-3 rounded-full border border-white/20 px-6 py-4 font-semibold hover:border-pmg/60 hover:bg-pmg/5">Scopri il workflow <i class="fa-solid fa-arrow-down text-sm"></i></a>
+          </div>
+          <div class="mt-12 flex flex-wrap gap-x-8 gap-y-4 border-t border-white/10 pt-6 text-sm text-zinc-400">
+            <span><strong class="text-white">FTP</strong> camera → Android</span>
+            <span><strong class="text-white">IPTC/XMP</strong> preset e metadati</span>
+            <span><strong class="text-white">Delivery</strong> Drive · FTP · FTPS · SFTP</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="phone mx-auto max-w-[390px] rounded-[2.6rem] border border-white/10 bg-black p-3">
+            <div class="overflow-hidden rounded-[2rem] border border-white/10 bg-[#0b1116]">
+              <div class="flex items-center justify-between border-b border-white/10 px-5 py-4"><div class="flex items-center gap-3"><img src="icon.svg" class="h-10 w-10 rounded-xl" alt=""><div><p class="font-semibold">PhotoMetaGo</p><p class="text-xs text-zinc-500">Camera → metadata → delivery</p></div></div><span class="h-2.5 w-2.5 rounded-full bg-emerald-400"></span></div>
+              <div class="space-y-4 p-5">
+                <div class="rounded-2xl border border-pmg/20 bg-pmg/10 p-4"><p class="text-xs font-semibold uppercase tracking-[.16em] text-pmg">Camera / FTP receiver</p><div class="mt-3 flex items-center justify-between"><div><p class="font-semibold">READY</p><p class="mt-1 text-xs text-zinc-400">Sony A7 IV · FTP 2121</p></div><span class="rounded-full bg-emerald-400/15 px-3 py-1 text-xs font-semibold text-emerald-300">ONLINE</span></div></div>
+                <div class="rounded-2xl border border-white/10 bg-zinc-900 p-4"><p class="text-xs uppercase tracking-[.16em] text-zinc-500">Preset attivo</p><p class="mt-2 font-semibold">Evento / partita</p><p class="mt-1 text-xs text-zinc-400">Headline · Caption · Creator · Copyright · Location · Keywords</p></div>
+                <div class="grid grid-cols-3 gap-2 text-center text-xs"><div class="rounded-xl border border-white/10 bg-zinc-900 px-2 py-3"><i class="fa-solid fa-camera text-pmg"></i><p class="mt-2 text-zinc-300">Ricevi</p></div><div class="rounded-xl border border-white/10 bg-zinc-900 px-2 py-3"><i class="fa-solid fa-tags text-pmg"></i><p class="mt-2 text-zinc-300">Metadata</p></div><div class="rounded-xl border border-white/10 bg-zinc-900 px-2 py-3"><i class="fa-solid fa-paper-plane text-pmg"></i><p class="mt-2 text-zinc-300">Invia</p></div></div>
+                <div class="rounded-2xl bg-pmg px-4 py-3 text-center font-semibold text-pmgnavy">START SESSION / FTP</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="border-y border-white/10 bg-black">
+      <div class="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-white/10 sm:grid-cols-4">
+        <div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Camera</p><p class="mt-2 font-semibold">FTP receiver</p></div>
+        <div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Metadata</p><p class="mt-2 font-semibold">IPTC + XMP</p></div>
+        <div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Output</p><p class="mt-2 font-semibold">JPEG preservato</p></div>
+        <div class="bg-black px-5 py-7 text-center"><p class="text-xs uppercase tracking-[.18em] text-zinc-500">Delivery</p><p class="mt-2 font-semibold">Cloud + server</p></div>
+      </div>
+    </section>
+
+    <section id="workflow" class="bg-zinc-950 py-24 sm:py-28">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="max-w-4xl"><p class="text-sm font-semibold uppercase tracking-[.2em] text-pmg">Workflow</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-6xl">Pensata per quando il tempo tra scatto e pubblicazione conta.</h2><p class="mt-5 text-lg leading-relaxed text-zinc-400">PhotoMetaGo nasce da un flusso reale di fotografia sportiva: ricevere, identificare, descrivere e consegnare velocemente le immagini senza interrompere il lavoro sul campo.</p></div>
+        <div class="mt-14 grid gap-4 md:grid-cols-4">
+          <article class="card-lift relative rounded-3xl border border-white/10 bg-black p-6"><span class="text-xs font-bold text-pmg">01</span><i class="fa-solid fa-camera-retro mt-8 block text-2xl text-pmg"></i><h3 class="mt-5 text-xl font-semibold">Scatta</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">La fotocamera invia il JPEG tramite FTP sulla rete locale.</p></article>
+          <article class="card-lift rounded-3xl border border-white/10 bg-black p-6"><span class="text-xs font-bold text-pmg">02</span><i class="fa-solid fa-mobile-screen-button mt-8 block text-2xl text-pmg"></i><h3 class="mt-5 text-xl font-semibold">Ricevi</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">PhotoMetaGo riceve il file direttamente sul dispositivo Android.</p></article>
+          <article class="card-lift rounded-3xl border border-white/10 bg-black p-6"><span class="text-xs font-bold text-pmg">03</span><i class="fa-solid fa-tags mt-8 block text-2xl text-pmg"></i><h3 class="mt-5 text-xl font-semibold">Metadati</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Applica preset IPTC/XMP e modifica i dati della singola fotografia quando serve.</p></article>
+          <article class="card-lift rounded-3xl border border-white/10 bg-black p-6"><span class="text-xs font-bold text-pmg">04</span><i class="fa-solid fa-cloud-arrow-up mt-8 block text-2xl text-pmg"></i><h3 class="mt-5 text-xl font-semibold">Consegna</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Invia verso Google Drive o server FTP, FTPS e SFTP.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="funzioni" class="bg-black py-24 sm:py-28">
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-12">
+          <div class="lg:col-span-5"><p class="text-sm font-semibold uppercase tracking-[.2em] text-pmg">Funzioni</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Un flusso editoriale dentro un dispositivo Android.</h2><p class="mt-5 leading-relaxed text-zinc-400">Non è una gallery generica: è uno strumento verticale pensato per fotografi che devono lavorare con metadati e consegne durante un evento.</p></div>
+          <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+            <article class="card-lift rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-network-wired text-pmg"></i><h3 class="mt-5 text-xl font-semibold">FTP dalla fotocamera</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Server FTP locale integrato per ricevere JPEG dalla fotocamera sulla stessa rete Wi-Fi/LAN.</p></article>
+            <article class="card-lift rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-pen-to-square text-pmg"></i><h3 class="mt-5 text-xl font-semibold">Preset IPTC/XMP</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Headline, caption, autore, copyright, località, keyword e altri campi pronti per il flusso editoriale.</p></article>
+            <article class="card-lift rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-images text-pmg"></i><h3 class="mt-5 text-xl font-semibold">Gestione fotografia</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Gallery, swipe, rotazione, selezione e modifica dei metadati anche sulla singola immagine.</p></article>
+            <article class="card-lift rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-file-image text-pmg"></i><h3 class="mt-5 text-xl font-semibold">JPEG senza ricompressione</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Il flusso metadata è progettato per preservare il JPEG e i dati EXIF originali senza una nuova compressione dell'immagine.</p></article>
+            <article class="card-lift rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-brands fa-google-drive text-pmg"></i><h3 class="mt-5 text-xl font-semibold">Google Drive</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Selezione della cartella di destinazione e invio delle fotografie verso Drive.</p></article>
+            <article class="card-lift rounded-3xl border border-white/10 bg-zinc-950 p-6"><i class="fa-solid fa-server text-pmg"></i><h3 class="mt-5 text-xl font-semibold">FTP · FTPS · SFTP</h3><p class="mt-3 text-sm leading-relaxed text-zinc-400">Consegna verso server e redazioni utilizzando protocolli adatti ai diversi workflow.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-pmgnavy py-24 sm:py-28">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-7"><p class="text-sm font-semibold uppercase tracking-[.2em] text-pmg">Born on the field</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-6xl">Sviluppata da un fotografo per un problema da fotografo.</h2><p class="mt-6 max-w-3xl text-lg leading-relaxed text-blue-100/75">PhotoMetaGo nasce dal lavoro quotidiano di Paolo Savio nella fotografia sportiva: ridurre i passaggi tra fotocamera, metadata, selezione e consegna quando ogni minuto conta.</p></div>
+        <div class="glass rounded-[2rem] border border-white/10 p-7 lg:col-span-5 lg:p-8"><p class="text-xs font-semibold uppercase tracking-[.18em] text-pmg">Configurazione di riferimento</p><div class="mt-6 space-y-4 text-sm"><div class="flex justify-between gap-4 border-b border-white/10 pb-4"><span class="text-blue-100/60">Fotocamera</span><strong>Sony A7 IV</strong></div><div class="flex justify-between gap-4 border-b border-white/10 pb-4"><span class="text-blue-100/60">Trasferimento</span><strong>FTP passivo</strong></div><div class="flex justify-between gap-4 border-b border-white/10 pb-4"><span class="text-blue-100/60">Sistema</span><strong>Android 8.0+</strong></div><div class="flex justify-between gap-4"><span class="text-blue-100/60">Release</span><strong>1.0.0</strong></div></div><p class="mt-6 text-xs leading-relaxed text-blue-100/50">Ottimizzata e verificata sul workflow Sony A7 IV. La compatibilità con altri modelli dipende dal supporto FTP della fotocamera.</p></div>
+      </div>
+    </section>
+
+    <section id="faq" class="bg-zinc-950 py-24 sm:py-28">
+      <div class="mx-auto max-w-5xl px-5 lg:px-8">
+        <div class="text-center"><p class="text-sm font-semibold uppercase tracking-[.2em] text-pmg">FAQ</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">Domande essenziali.</h2></div>
+        <div class="mt-12 space-y-4">
+          <details class="rounded-2xl border border-white/10 bg-black p-6"><summary class="cursor-pointer font-semibold">PhotoMetaGo modifica la qualità del JPEG?</summary><p class="mt-4 leading-relaxed text-zinc-400">Il flusso di scrittura dei metadati è progettato per inserire IPTC/XMP senza ricomprimere l'immagine JPEG e preservando i dati EXIF originali.</p></details>
+          <details class="rounded-2xl border border-white/10 bg-black p-6"><summary class="cursor-pointer font-semibold">Serve un computer durante la sessione?</summary><p class="mt-4 leading-relaxed text-zinc-400">No per il flusso principale: ricezione dalla fotocamera, metadata e gestione possono avvenire direttamente sul dispositivo Android.</p></details>
+          <details class="rounded-2xl border border-white/10 bg-black p-6"><summary class="cursor-pointer font-semibold">È solo per Sony A7 IV?</summary><p class="mt-4 leading-relaxed text-zinc-400">La configurazione di riferimento e i test sono stati sviluppati sulla Sony A7 IV. Altri modelli possono funzionare se supportano un flusso FTP compatibile, ma vanno verificati singolarmente.</p></details>
+          <details class="rounded-2xl border border-white/10 bg-black p-6"><summary class="cursor-pointer font-semibold">Dove posso scaricarla?</summary><p class="mt-4 leading-relaxed text-zinc-400">PhotoMetaGo è disponibile su Google Play. Usa il pulsante qui sotto per aprire direttamente la scheda dell'app.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-pmg py-20 text-pmgnavy sm:py-24">
+      <div class="mx-auto grid max-w-7xl items-end gap-10 px-5 lg:grid-cols-12 lg:px-8">
+        <div class="lg:col-span-8"><p class="text-sm font-semibold uppercase tracking-[.2em]">Photo workflow, mobile</p><h2 class="font-display mt-3 text-4xl font-semibold tracking-tight sm:text-6xl">Porta PhotoMetaGo sul campo.</h2><p class="mt-5 max-w-2xl text-lg leading-relaxed text-pmgnavy/75">Scarica l'app, configura il trasferimento FTP della fotocamera e costruisci il tuo preset metadata prima della sessione.</p></div>
+        <div class="flex flex-wrap gap-3 lg:col-span-4 lg:justify-end"><a href="https://play.google.com/store/apps/details?id=eu.paolosavio.photometago" target="_blank" rel="noopener" class="focus-ring inline-flex items-center gap-3 rounded-full bg-pmgnavy px-6 py-4 font-semibold text-white hover:bg-black"><i class="fa-brands fa-google-play"></i>Google Play</a><a href="mailto:info@paolosavio.eu?subject=PhotoMetaGo" class="focus-ring inline-flex items-center gap-2 rounded-full border border-pmgnavy/30 px-6 py-4 font-semibold hover:bg-pmgnavy hover:text-white"><i class="fa-regular fa-envelope"></i>Supporto</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 bg-black">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+      <p>© <span id="year"></span> Paolo Savio · PhotoMetaGo</p>
+      <div class="flex flex-wrap gap-5"><a href="/" class="hover:text-white">Paolo Savio</a><a href="/digital/" class="hover:text-white">Digital Tools</a><a href="/privacy/photometago/" class="hover:text-white">Privacy</a><a href="/privacy/photometago/delete-account/" class="hover:text-white">Elimina account</a></div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
