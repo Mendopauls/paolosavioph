@@ -23,6 +23,15 @@
 @media(max-width:1000px){.hero{gap:35px}.preview{grid-template-columns:1fr}.looks{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.wrap{width:calc(100% - 30px)}.top-inner{min-height:70px}.top nav a:not(:last-child){display:none}.hero{grid-template-columns:1fr;padding:65px 0}.hero-art img{aspect-ratio:16/11}.stats .wrap{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border:0}.stat:nth-child(3){padding-left:0}.section{padding-top:68px}.section-head{display:block}.section-head p{margin-top:17px}.looks{grid-template-columns:1fr}.preview{padding:13px}.pricing{margin-top:70px}.pricing .wrap,.faq{grid-template-columns:1fr;gap:25px;padding-block:63px}.footer .wrap{display:block}.hero h1{font-size:61px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+/* Comparison always visible before script execution */
+.stage #after{clip-path:inset(0 50% 0 0)}
+.comparison-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:19px 0 0}
+.comparison-pair figure{margin:0;border:1px solid var(--line);background:#18181b;overflow:hidden;border-radius:16px}
+.comparison-pair figcaption{font-size:12px;font-weight:800;letter-spacing:.06em;padding:15px 19px;background:#18181b}
+.comparison-pair figcaption span{color:var(--yellow);margin-right:10px}
+.comparison-pair img{aspect-ratio:16/10;width:100%;object-fit:cover}
+@media(max-width:700px){.comparison-pair{grid-template-columns:1fr;gap:12px}.comparison-pair img{aspect-ratio:16/10}}
 </style>
 </head>
 <body>
@@ -42,50 +51,58 @@
 <button class="look" type="button" data-look="4" aria-pressed="false"><img src="/sport-football.webp" alt="Partita di calcio" loading="lazy"><span class="inner"><small>05 / OUTDOOR</small><b>Outdoor Match</b><span class="desc">Calcio e competizioni all'aperto.</span></span></button>
 <button class="look" type="button" data-look="5" aria-pressed="false"><img src="/sport-futsal.webp" alt="Fotografia di futsal" loading="lazy"><span class="inner"><small>06 / EDITORIALE</small><b>Editorial Sport</b><span class="desc">Atleti, storytelling e reportage.</span></span></button>
 </div></section>
-<section class="wrap section" id="test"><div class="section-head"><div><div class="eyebrow">02 / Anteprima interattiva</div><h2>VEDI LA<br>DIFFERENZA.</h2></div><p>Un confronto reale sulla fotografia: il browser applica la trasformazione colore che ha generato le LUT del pacchetto.</p></div>
-<div class="preview"><div><div class="stage" id="stage"><img id="before" src="/sport-basketball.webp" alt="Fotografia originale"><canvas id="after" aria-label="Fotografia con la colorazione selezionata"></canvas><div class="line" id="split"></div><span class="lab left">DOPO</span><span class="lab right">PRIMA</span></div><label for="compareRange" style="display:block;margin-top:14px;font-size:12px;font-weight:700;color:#d4d4d8">SPOSTA IL CONFRONTO PRIMA / DOPO</label><input class="range" id="compareRange" type="range" min="0" max="100" value="50" aria-label="Posizione comparatore"></div>
-<div class="preview-side"><div class="eyebrow" id="lookNumber">LOOK 01 / 06</div><h3 id="lookName">INDOOR COURT</h3><p id="lookText">Per le scene sportive indoor, con contrasto e cromie controllate.</p><div class="eyebrow" style="margin-top:20px">Intensità</div><div class="options" id="strength"><button type="button" data-strength="0.45" aria-pressed="false">SOFT</button><button type="button" data-strength="0.72" aria-pressed="true">SIGNATURE</button><button type="button" data-strength="1" aria-pressed="false">BOLD</button></div><span class="status" role="status" id="renderStatus"></span><p class="micro">Il confronto usa foto originali del portfolio e il modello matematico con cui sono stati generati i file .cube. L'effetto finale può variare leggermente secondo l'applicazione, la gestione colore e il materiale di partenza. È ancora in corso il collaudo del prodotto.</p></div>
+<section class="wrap section" id="test"><div class="section-head"><div><div class="eyebrow">02 / Anteprima interattiva</div><h2>VEDI LA<br>DIFFERENZA.</h2></div><p>Il confronto è sempre visibile: prima e dopo affiancati, più lo slider. Le colorazioni mostrate sono simulazioni indicative del look, non rendering esatti dei file .cube.</p></div>
+<div class="preview"><div><div class="stage" id="stage"><img id="before" src="/sport-basketball.webp" alt="Fotografia originale"><img id="after" src="/sport-basketball.webp" style="filter:contrast(1.23) saturate(1.30);clip-path:inset(0 50% 0 0)" alt="Fotografia con trattamento colore simulato"><div class="line" id="split"></div><span class="lab left">DOPO</span><span class="lab right">PRIMA</span></div><label for="compareRange" style="display:block;margin-top:14px;font-size:12px;font-weight:700;color:#d4d4d8">SPOSTA IL CONFRONTO PRIMA / DOPO</label><input class="range" id="compareRange" type="range" min="0" max="100" value="50" aria-label="Posizione comparatore"></div>
+<div class="preview-side"><div class="eyebrow" id="lookNumber">LOOK 01 / 06</div><h3 id="lookName">INDOOR COURT</h3><p id="lookText">Per le scene sportive indoor, con contrasto e cromie controllate.</p><div class="eyebrow" style="margin-top:20px">Intensità</div><div class="options" id="strength"><button type="button" data-strength="0.45" aria-pressed="false">SOFT</button><button type="button" data-strength="0.72" aria-pressed="true">SIGNATURE</button><button type="button" data-strength="1" aria-pressed="false">BOLD</button></div><span class="status" role="status" id="renderStatus"></span><p class="micro">Le foto provengono dal portfolio. Il DOPO è una simulazione cromatica immediata in browser, non il risultato numerico della LUT .cube. Le LUT sono ancora in collaudo.</p></div>
+</div><div class="comparison-pair" aria-label="Confronto prima e dopo sempre visibile">
+  <figure><figcaption><span>01</span> PRIMA / FOTO ORIGINALE</figcaption><img id="sideBefore" src="/sport-basketball.webp" alt="Prima: fotografia originale di Paolo Savio" loading="eager"></figure>
+  <figure><figcaption><span>02</span> DOPO / LOOK SIMULATO</figcaption><img id="sideAfter" src="/sport-basketball.webp" style="filter:contrast(1.23) saturate(1.30)" alt="Dopo: la stessa fotografia con simulazione colore" loading="eager"></figure>
 </div></section>
 <section class="pricing" id="shop"><div class="wrap"><div><div class="eyebrow">03 / Collezione digitale</div><h2>UN PACK.<br>PER RACCONTARE<br>LO SPORT.</h2><p>LUT originali progettate per un workflow SDR Rec.709. Tre livelli per ciascuno dei sei stili. Il materiale è in fase di prova; prima del lancio saranno completati test, licenza commerciale e distribuzione digitale protetta.</p></div><div class="price-card"><b>SPORT COLOR LUTs — VOLUME 01</b><div class="price-number">€24,90 <small>prezzo indicativo</small></div><ul><li>18 file .cube originali</li><li>6 look sportivi, ciascuno in Soft / Signature / Bold</li><li>Compatibili con software che supportano LUT 3D</li><li>Per materiali SDR Rec.709; Log da normalizzare prima</li><li>Sei mini-pack tematici previsti a €6,90 ciascuno</li></ul><a class="btn primary" href="mailto:info@paolosavio.eu?subject=Color%20Lab%20%E2%80%94%20Sport%20Color%20LUTs">Chiedi informazioni sul lancio ↗</a><p class="micro">Anteprima non acquistabile: nessun pagamento o download automatico attivo.</p></div></div></section>
 <section class="wrap faq"><div><div class="eyebrow">04 / Informazioni</div><h2>DOMANDE<br>FREQUENTI.</h2></div><div><details><summary>Con quali programmi posso usare le LUT?</summary><p>Con gli editor che supportano LUT 3D .cube, fra cui DaVinci Resolve, Adobe Premiere Pro, Final Cut Pro e Photoshop. I file non sono preset .XMP di Lightroom.</p></details><details><summary>Funzionano con S-Log, V-Log e altri formati Log?</summary><p>Le LUT sono creative e pensate per SDR Rec.709. Prima è necessaria una conversione tecnica corretta dal formato Log o HDR.</p></details><details><summary>Posso usarle per lavori commerciali?</summary><p>La bozza di licenza è pensata per l'uso su lavori per clienti. I termini definitivi saranno pubblicati al lancio, prima di ogni eventuale acquisto.</p></details><details><summary>Posso acquistarle ora?</summary><p>Non ancora. Questa è una demo pubblica: pagamenti, licenza e consegna privata verranno attivati soltanto al completamento dei collaudi.</p></details></div></section>
 </main>
 <footer class="footer"><div class="wrap"><div><strong>Paolo Savio · Color Lab</strong><p>Fotografia · Video · Creative Tools</p><p>© 2026 Paolo Savio</p></div><div><p><a href="/">paolosavio.eu</a> · <a href="/digital/">Digital Tools</a> · <a href="mailto:info@paolosavio.eu">Contatti</a></p><p>Anteprima pubblica — vendite non ancora attive</p></div></div></footer>
 <script>
-(()=>{'use strict';
-const cfg=[
-{name:'INDOOR COURT',desc:'Contrasto equilibrato per sport indoor, pallamano e basket.',src:'/sport-basketball.webp',contrast:1.11,gamma:.995,saturation:1.035,shadows:[.005,-.004,.013],highlights:[.008,0,-.005],greens:-.055,blues:.04,warmth:.004,lift:0},
-{name:'AQUATIC BLUE',desc:'Una tonalità più definita per nuoto, pallanuoto e acqua.',src:'/sport-swimming.webp',contrast:1.070,gamma:.985,saturation:1.04,shadows:[-.006,.010,.024],highlights:[-.010,.015,.010],greens:-.035,blues:.095,warmth:-.005,lift:.004},
-{name:'BROADCAST NEUTRAL',desc:'Una correzione sobria per riprese, interviste e reportage.',src:'/sport-table-tennis.webp',contrast:1.035,gamma:1,saturation:.98,shadows:[.001,.002,.001],highlights:[.004,.003,0],greens:-.015,blues:-.015,warmth:.001,lift:.002},
-{name:'ACTION CONTRAST',desc:'Un look più incisivo per highlights e azioni sportive.',src:'/sport-boxing.webp',contrast:1.190,gamma:.977,saturation:1.10,shadows:[-.004,-.004,.006],highlights:[.015,.008,-.002],greens:-.030,blues:.035,warmth:.004,lift:-.005},
-{name:'OUTDOOR MATCH',desc:'Verdi più controllati e luci bilanciate per campi da gioco.',src:'/sport-football.webp',contrast:1.095,gamma:.980,saturation:1.04,shadows:[0,.002,.008],highlights:[.016,.008,-.006],greens:-.095,blues:.016,warmth:.006,lift:.002},
-{name:'EDITORIAL SPORT',desc:'Toni editoriali per il racconto degli atleti e dei club.',src:'/sport-futsal.webp',contrast:1.130,gamma:1.017,saturation:.925,shadows:[-.011,.007,.013],highlights:[.023,.009,-.012],greens:-.060,blues:-.020,warmth:.008,lift:.017}
-];let active=0,strength=.72,serial=0;const img=document.getElementById('before'),canvas=document.getElementById('after'),status=document.getElementById('renderStatus'),stage=document.getElementById('stage'),split=document.getElementById('split');const clamp=n=>Math.max(0,Math.min(1,n));
-const range=document.getElementById('compareRange');
-function position(){const n=Number(range.value);canvas.style.clipPath='inset(0 '+(100-n)+'% 0 0)';split.style.left=n+'%'}
-range.addEventListener('input',position);position();
-async function update(){
-let task=++serial,c=cfg[active];status.textContent='Elaborazione anteprima…';document.getElementById('lookNumber').textContent='LOOK '+String(active+1).padStart(2,'0')+' / 06';document.getElementById('lookName').textContent=c.name;document.getElementById('lookText').textContent=c.desc;document.querySelectorAll('[data-look]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.look)===active)));document.querySelectorAll('[data-strength]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.strength)===strength)));
-let photo=new Image();photo.decoding='async';photo.src=c.src;
-try{await photo.decode();if(task!==serial)return;
-const w=Math.min(1050,photo.naturalWidth),h=Math.round(w*photo.naturalHeight/photo.naturalWidth);
-canvas.width=w;canvas.height=h;const ctx=canvas.getContext('2d',{willReadFrequently:true});if(!ctx)throw Error('Canvas non disponibile');
-ctx.drawImage(photo,0,0,w,h);const id=ctx.getImageData(0,0,w,h),p=id.data;const s=c.shadows,hi=c.highlights;
-for(let i=0;i<p.length;i+=4){
-const v=[p[i]/255,p[i+1]/255,p[i+2]/255];
-const l=v[0]*.2126+v[1]*.7152+v[2]*.0722,sh=Math.pow(clamp(1-l),1.7),light=Math.pow(clamp(l),1.4);
-let x=v.map(t=>{let a=(t-.5)*c.contrast+.5;return Math.sign(a)*Math.pow(Math.abs(a)+1e-10,c.gamma)+c.lift*(1-l)});
-const neu=x[0]*.2126+x[1]*.7152+x[2]*.0722;x=x.map((q,j)=>neu+(q-neu)*c.saturation+sh*s[j]+light*hi[j]);
-const green=clamp((x[1]-.5*(x[0]+x[2]))*2);
-const blue=Math.max(0,Math.min(.6,x[2]-x[0]))/.6;
-const shift=[green*c.greens*.06+blue*c.blues*(-.13)+c.warmth*light,green*c.greens+blue*c.blues*.10-.13*c.warmth*light,green*c.greens*.04+blue*c.blues*.90-.80*c.warmth*light];
-for(let j=0;j<3;j++)p[i+j]=Math.round(255*clamp(v[j]*(1-strength)+clamp(x[j]+shift[j])*strength));
+(function(){
+"use strict";
+const looks=[
+ {name:"INDOOR COURT",photo:"/sport-basketball.webp",desc:"Pallamano, basket e sport nei palazzetti.",f:["contrast(1.10) saturate(1.12) brightness(1.025)","contrast(1.24) saturate(1.32) brightness(1.045)","contrast(1.38) saturate(1.52) brightness(1.055)"]},
+ {name:"AQUATIC BLUE",photo:"/sport-swimming.webp",desc:"Nuoto, pallanuoto e piscine.",f:["contrast(1.09) saturate(1.14) hue-rotate(3deg)","contrast(1.20) saturate(1.34) hue-rotate(7deg)","contrast(1.34) saturate(1.50) hue-rotate(10deg)"]},
+ {name:"BROADCAST NEUTRAL",photo:"/sport-table-tennis.webp",desc:"Resa naturale per interviste e broadcast.",f:["contrast(1.06) saturate(.97) brightness(1.02)","contrast(1.11) saturate(.92) brightness(1.04)","contrast(1.18) saturate(.87) brightness(1.05)"]},
+ {name:"ACTION CONTRAST",photo:"/sport-boxing.webp",desc:"Toni intensi per highlights e foto d'azione.",f:["contrast(1.15) saturate(1.12)","contrast(1.32) saturate(1.26) brightness(.99)","contrast(1.50) saturate(1.4) brightness(.98)"]},
+ {name:"OUTDOOR MATCH",photo:"/sport-football.webp",desc:"Sport all'aperto, terreni di gioco e luce diurna.",f:["contrast(1.10) saturate(1.09) sepia(.045)","contrast(1.23) saturate(1.15) sepia(.09)","contrast(1.35) saturate(1.20) sepia(.13)"]},
+ {name:"EDITORIAL SPORT",photo:"/sport-futsal.webp",desc:"Interpretazione editoriale per storytelling sportivo.",f:["contrast(1.12) saturate(.94) sepia(.07)","contrast(1.28) saturate(.85) sepia(.15)","contrast(1.43) saturate(.79) sepia(.23)"]}
+];
+let active=0,strength=1;
+const byId=id=>document.getElementById(id);
+const original=byId("before"),processed=byId("after"),left=byId("sideBefore"),right=byId("sideAfter"),range=byId("compareRange"),split=byId("split");
+function position(){
+ const pct=Math.max(0,Math.min(100,Number(range.value)||0));
+ processed.style.clipPath="inset(0 "+(100-pct)+"% 0 0)";
+ split.style.left=pct+"%";
 }
-if(task!==serial)return;ctx.putImageData(id,0,0);img.src=c.src;status.textContent='Anteprima pronta — '+(strength===.45?'Soft':strength===.72?'Signature':'Bold');
-}catch(e){if(task!==serial)return;status.textContent='Anteprima non disponibile su questo browser';canvas.width=0;canvas.height=0;img.src=c.src;console.warn(e)}
+function draw(){
+ const item=looks[active],filter=item.f[strength];
+ original.src=item.photo;processed.src=item.photo;left.src=item.photo;right.src=item.photo;
+ processed.style.filter=filter;right.style.filter=filter;
+ byId("lookNumber").textContent="LOOK "+String(active+1).padStart(2,"0")+" / 06";
+ byId("lookName").textContent=item.name;
+ byId("lookText").textContent=item.desc;
+ document.querySelectorAll("[data-look]").forEach(node=>node.setAttribute("aria-pressed",String(Number(node.dataset.look)===active)));
+ const values=[.45,.72,1];
+ document.querySelectorAll("[data-strength]").forEach(node=>node.setAttribute("aria-pressed",String(Math.abs(Number(node.dataset.strength)-values[strength])<.01)));
+ byId("renderStatus").textContent="Simulazione pronta · "+["Soft","Signature","Bold"][strength]+" · immagini affiancate sotto";
+ position();
 }
-document.querySelectorAll('[data-look]').forEach(b=>b.addEventListener('click',()=>{active=Number(b.dataset.look);update();document.getElementById('test').scrollIntoView({behavior:'smooth',block:'start'})}));
-document.querySelectorAll('[data-strength]').forEach(b=>b.addEventListener('click',()=>{strength=Number(b.dataset.strength);update()}));
-update();
+document.querySelectorAll("[data-look]").forEach(node=>node.addEventListener("click",()=>{
+ active=Number(node.dataset.look);draw();byId("test").scrollIntoView({behavior:"smooth",block:"start"});
+}));
+document.querySelectorAll("[data-strength]").forEach(node=>node.addEventListener("click",()=>{
+ const v=Number(node.dataset.strength);strength=v<.6?0:v<.9?1:2;draw();
+}));
+range.addEventListener("input",position);
+for (const image of [original,processed,left,right]) image.addEventListener("error",()=>{byId("renderStatus").textContent="Impossibile caricare una fotografia. Aggiorna la pagina o contattaci.";});
+draw();
 })();
 </script>
 </body></html>
