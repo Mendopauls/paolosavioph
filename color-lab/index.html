@@ -38,121 +38,115 @@
 .comparison-pair figcaption span{color:var(--yellow);margin-right:10px}
 .comparison-pair img{aspect-ratio:16/10;width:100%;object-fit:cover}
 @media(max-width:700px){.comparison-pair{grid-template-columns:1fr;gap:12px}.comparison-pair img{aspect-ratio:16/10}}
+
+.atlas-tile{display:block;background-image:url('/color-lab/assets/sport-lut-v11-all.webp');background-size:400% 600%;background-repeat:no-repeat;background-position:0 0;background-color:#15151a}
+.stage .compare-image{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.look-visual{width:100%;aspect-ratio:16/10}
+.comparison-pair .compare-side{width:100%;aspect-ratio:16/10}
+.mini-packs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding-top:26px}
+.mini-pack{border:1px solid var(--line);background:#18181b;padding:24px;border-radius:17px;display:flex;flex-direction:column;gap:8px}
+.mini-pack b{font-size:21px;letter-spacing:-.04em}
+.mini-pack p{font-size:13px;color:var(--soft);margin:0;flex:1}
+.mini-pack .amount{font-size:30px;font-weight:900;letter-spacing:-.05em;margin-top:10px}
+.mini-pack .amount small{font-size:12px;color:var(--soft);font-weight:500}
+.mini-pack a{margin-top:12px;text-align:center}
+.prelaunch{margin:50px 0 0;padding:32px;border-radius:17px;border:1px solid #facc1560;background:#facc1511;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.prelaunch h3{margin:0 0 8px;font-size:26px;letter-spacing:-.05em}
+.prelaunch p{color:#c4c4cb;margin:0;font-size:14px}
+@media(max-width:820px){.mini-packs{grid-template-columns:repeat(2,1fr)}.prelaunch{flex-direction:column;align-items:flex-start}}
+@media(max-width:560px){.mini-packs{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap top-inner"><a href="/" class="brand"><span class="brand-mark">PS</span><span>Paolo Savio<small>COLOR LAB</small></span></a><nav aria-label="Navigazione"><a href="#looks">I look</a><a href="#test">Prima / Dopo</a><a href="#shop">La collezione</a><a href="/">Torna al sito ↗</a></nav></div></header>
 <main>
 <div class="wrap">
-<div class="notice">ANTEPRIMA · La collezione è in fase di collaudo. Pagamenti e download clienti non ancora attivi.</div>
-<section class="hero"><div><div class="eyebrow">Creative tools · Sport photography & video</div><h1>IL COLORE<br>DELL'<span>AZIONE.</span></h1><p>Sport Color LUTs / Volume 01. Una raccolta originale di 18 look cromatici, sviluppata per fotografia sportiva e produzione video: palazzetti, piscine, stadi, reportage e highlights.</p><div class="hero-actions"><a href="#test" class="btn primary">Prova il confronto ↗</a><a href="#shop" class="btn secondary">Scopri il pack</a></div></div><div class="hero-art"><img src="/sport-boxing.webp" alt="Fotografia sportiva di Paolo Savio" fetchpriority="high"><div class="photo-tag"><strong>SPORT<br>COLOR LUTs</strong><p>VOLUME 01 · PAOLO SAVIO</p></div></div></section>
+<div class="notice">ANTEPRIMA V1.1 · Fotografie reali con LUT .cube applicate. Pagamenti e download clienti ancora disattivati.</div>
+<section class="hero"><div><div class="eyebrow">Creative tools · Sport photography & video</div><h1>IL COLORE<br>DELL'<span>AZIONE.</span></h1><p>Sport Color LUTs / Volume 01. 18 LUT originali in formato .cube, collaudate preliminarmente su sei fotografie sportive del mio archivio: palazzetti, piscine, stadi, reportage e highlights.</p><div class="hero-actions"><a href="#test" class="btn primary">Prova il confronto ↗</a><a href="#shop" class="btn secondary">Scopri il pack</a></div></div><div class="hero-art"><img src="/sport-boxing.webp" alt="Fotografia sportiva di Paolo Savio" fetchpriority="high"><div class="photo-tag"><strong>SPORT<br>COLOR LUTs</strong><p>VOLUME 01 · PAOLO SAVIO</p></div></div></section>
 </div>
 <div class="stats"><div class="wrap"><div class="stat"><b>18</b><span>LUT originali</span></div><div class="stat"><b>06</b><span>Famiglie colore</span></div><div class="stat"><b>03</b><span>Intensità per look</span></div><div class="stat"><b>.CUBE</b><span>LUT 3D 33 punti</span></div></div></div>
-<section class="wrap section" id="looks"><div class="section-head"><div><div class="eyebrow">01 / La collezione</div><h2>SEI LOOK.<br>UNA DIREZIONE.</h2></div><p>Seleziona una categoria per confrontare l'originale con l'elaborazione e cambiare l'intensità. Le foto provengono dal portfolio di Paolo Savio.</p></div>
+<section class="wrap section" id="looks"><div class="section-head"><div><div class="eyebrow">01 / La collezione</div><h2>SEI LOOK.<br>UNA DIREZIONE.</h2></div><p>Seleziona una categoria per confrontare la fotografia originale con la versione realmente elaborata tramite LUT V1.1.</p></div>
 <div class="looks" id="lookCards">
-<button class="look" type="button" data-look="0" aria-pressed="true"><img src="/sport-basketball.webp" alt="Basket e sport indoor" loading="lazy"><span class="inner"><small>01 / PALAZZETTI</small><b>Indoor Court</b><span class="desc">Pallamano, basket e illuminazione indoor.</span></span></button>
-<button class="look" type="button" data-look="1" aria-pressed="false"><img src="/sport-swimming.webp" alt="Nuoto e piscine" loading="lazy"><span class="inner"><small>02 / PISCINA</small><b>Aquatic Blue</b><span class="desc">Nuoto, pallanuoto e ambienti acquatici.</span></span></button>
-<button class="look" type="button" data-look="2" aria-pressed="false"><img src="/sport-table-tennis.webp" alt="Fotografia di tennis tavolo" loading="lazy"><span class="inner"><small>03 / BROADCAST</small><b>Broadcast Neutral</b><span class="desc">Video e reportage con tonalità naturali.</span></span></button>
-<button class="look" type="button" data-look="3" aria-pressed="false"><img src="/sport-boxing.webp" alt="Fotografia sportiva di pugilato" loading="lazy"><span class="inner"><small>04 / AZIONE</small><b>Action Contrast</b><span class="desc">Highlights, sport dinamico e social.</span></span></button>
-<button class="look" type="button" data-look="4" aria-pressed="false"><img src="/sport-football.webp" alt="Partita di calcio" loading="lazy"><span class="inner"><small>05 / OUTDOOR</small><b>Outdoor Match</b><span class="desc">Calcio e competizioni all'aperto.</span></span></button>
-<button class="look" type="button" data-look="5" aria-pressed="false"><img src="/sport-futsal.webp" alt="Fotografia di futsal" loading="lazy"><span class="inner"><small>06 / EDITORIALE</small><b>Editorial Sport</b><span class="desc">Atleti, storytelling e reportage.</span></span></button>
+<button class="look" type="button" data-look="0" aria-pressed="true"><span class="atlas-tile look-visual" style="background-position:66.6667% 0%" aria-hidden="true"></span><span class="inner"><small>01 / PALAZZETTI</small><b>Indoor Court</b><span class="desc">Pallamano, basket e illuminazione indoor.</span></span></button>
+<button class="look" type="button" data-look="1" aria-pressed="false"><span class="atlas-tile look-visual" style="background-position:66.6667% 20%" aria-hidden="true"></span><span class="inner"><small>02 / PISCINA</small><b>Aquatic Blue</b><span class="desc">Nuoto, pallanuoto e ambienti acquatici.</span></span></button>
+<button class="look" type="button" data-look="2" aria-pressed="false"><span class="atlas-tile look-visual" style="background-position:66.6667% 40%" aria-hidden="true"></span><span class="inner"><small>03 / BROADCAST</small><b>Broadcast Neutral</b><span class="desc">Video e reportage con tonalità naturali.</span></span></button>
+<button class="look" type="button" data-look="3" aria-pressed="false"><span class="atlas-tile look-visual" style="background-position:66.6667% 60%" aria-hidden="true"></span><span class="inner"><small>04 / AZIONE</small><b>Action Contrast</b><span class="desc">Highlights, sport dinamico e social.</span></span></button>
+<button class="look" type="button" data-look="4" aria-pressed="false"><span class="atlas-tile look-visual" style="background-position:66.6667% 80%" aria-hidden="true"></span><span class="inner"><small>05 / OUTDOOR</small><b>Outdoor Match</b><span class="desc">Calcio e competizioni all'aperto.</span></span></button>
+<button class="look" type="button" data-look="5" aria-pressed="false"><span class="atlas-tile look-visual" style="background-position:66.6667% 100%" aria-hidden="true"></span><span class="inner"><small>06 / EDITORIALE</small><b>Editorial Sport</b><span class="desc">Atleti, storytelling e reportage.</span></span></button>
 </div></section>
-<section class="wrap section" id="test"><div class="section-head"><div><div class="eyebrow">02 / Anteprima interattiva</div><h2>VEDI LA<br>DIFFERENZA.</h2></div><p>Il confronto è sempre visibile: prima e dopo affiancati, più lo slider. Le colorazioni mostrate sono simulazioni indicative del look, non rendering esatti dei file .cube.</p></div>
-<div class="preview"><div><div class="stage" id="stage" role="slider" tabindex="0" aria-label="Trascina per confrontare la fotografia prima e dopo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50 percento di foto elaborata"><img id="before" src="/sport-basketball.webp" alt="Fotografia originale"><img id="after" src="/sport-basketball.webp" style="filter:contrast(1.23) saturate(1.30);clip-path:inset(0 50% 0 0)" alt="Fotografia con trattamento colore simulato"><div class="line" id="split"></div><span class="lab left">DOPO</span><span class="lab right">PRIMA</span></div><label for="compareRange" style="display:block;margin-top:14px;font-size:12px;font-weight:700;color:#d4d4d8">TRASCINA LA LINEA SULLA FOTO O USA IL CURSORE QUI SOTTO</label><input class="range" id="compareRange" type="range" min="0" max="100" value="50" aria-label="Posizione comparatore"></div>
-<div class="preview-side"><div class="eyebrow" id="lookNumber">LOOK 01 / 06</div><h3 id="lookName">INDOOR COURT</h3><p id="lookText">Per le scene sportive indoor, con contrasto e cromie controllate.</p><div class="eyebrow" style="margin-top:20px">Intensità</div><div class="options" id="strength"><button type="button" data-strength="0.45" aria-pressed="false">SOFT</button><button type="button" data-strength="0.72" aria-pressed="true">SIGNATURE</button><button type="button" data-strength="1" aria-pressed="false">BOLD</button></div><span class="status" role="status" id="renderStatus"></span><p class="micro">Le foto provengono dal portfolio. Il DOPO è una simulazione cromatica immediata in browser, non il risultato numerico della LUT .cube. Le LUT sono ancora in collaudo.</p></div>
+<section class="wrap section" id="test"><div class="section-head"><div><div class="eyebrow">02 / Anteprima interattiva</div><h2>VEDI LA<br>DIFFERENZA.</h2></div><p>Il confronto mostra fotografie del tuo archivio elaborate con i file LUT .cube V1.1. Trascina la linea direttamente sulla foto o scegli l’intensità.</p></div>
+<div class="preview"><div><div class="stage" id="stage" role="slider" tabindex="0" aria-label="Trascina per confrontare la fotografia prima e dopo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50 percento di foto elaborata"><div id="before" class="atlas-tile compare-image" role="img" aria-label="Fotografia originale dal portfolio di Paolo Savio"></div><div id="after" class="atlas-tile compare-image" role="img" style="background-position:66.6667% 0;clip-path:inset(0 50% 0 0)" aria-label="Fotografia elaborata con la LUT .cube selezionata"></div><div class="line" id="split"></div><span class="lab left">DOPO</span><span class="lab right">PRIMA</span></div><label for="compareRange" style="display:block;margin-top:14px;font-size:12px;font-weight:700;color:#d4d4d8">TRASCINA LA LINEA SULLA FOTO O USA IL CURSORE QUI SOTTO</label><input class="range" id="compareRange" type="range" min="0" max="100" value="50" aria-label="Posizione comparatore"></div>
+<div class="preview-side"><div class="eyebrow" id="lookNumber">LOOK 01 / 06</div><h3 id="lookName">INDOOR COURT</h3><p id="lookText">Per le scene sportive indoor, con contrasto e cromie controllate.</p><div class="eyebrow" style="margin-top:20px">Intensità</div><div class="options" id="strength"><button type="button" data-strength="0.45" aria-pressed="false">SOFT</button><button type="button" data-strength="0.72" aria-pressed="true">SIGNATURE</button><button type="button" data-strength="1" aria-pressed="false">BOLD</button></div><span class="status" role="status" id="renderStatus"></span><p class="micro">Anteprime JPEG prodotte applicando le LUT .cube V1.1 ai file fotografici del Drive. Il prodotto resta in collaudo e necessita di verifiche su video e altre condizioni di luce.</p></div>
 </div><div class="comparison-pair" aria-label="Confronto prima e dopo sempre visibile">
-  <figure><figcaption><span>01</span> PRIMA / FOTO ORIGINALE</figcaption><img id="sideBefore" src="/sport-basketball.webp" alt="Prima: fotografia originale di Paolo Savio" loading="eager"></figure>
-  <figure><figcaption><span>02</span> DOPO / LOOK SIMULATO</figcaption><img id="sideAfter" src="/sport-basketball.webp" style="filter:contrast(1.23) saturate(1.30)" alt="Dopo: la stessa fotografia con simulazione colore" loading="eager"></figure>
+  <figure><figcaption><span>01</span> PRIMA / FOTO ORIGINALE</figcaption><div class="atlas-tile compare-side" id="sideBefore" role="img" aria-label="Prima, foto originale dal Drive di Paolo Savio"></div></figure>
+  <figure><figcaption><span>02</span> DOPO / LUT .CUBE APPLICATA</figcaption><div class="atlas-tile compare-side" id="sideAfter" role="img" aria-label="Dopo, foto elaborata con il file LUT selezionato"></div></figure>
 </div></section>
 <section class="pricing" id="shop"><div class="wrap"><div><div class="eyebrow">03 / Collezione digitale</div><h2>UN PACK.<br>PER RACCONTARE<br>LO SPORT.</h2><p>LUT originali progettate per un workflow SDR Rec.709. Tre livelli per ciascuno dei sei stili. Il materiale è in fase di prova; prima del lancio saranno completati test, licenza commerciale e distribuzione digitale protetta.</p></div><div class="price-card"><b>SPORT COLOR LUTs — VOLUME 01</b><div class="price-number">€24,90 <small>prezzo indicativo</small></div><ul><li>18 file .cube originali</li><li>6 look sportivi, ciascuno in Soft / Signature / Bold</li><li>Compatibili con software che supportano LUT 3D</li><li>Per materiali SDR Rec.709; Log da normalizzare prima</li><li>Sei mini-pack tematici previsti a €6,90 ciascuno</li></ul><a class="btn primary" href="mailto:info@paolosavio.eu?subject=Color%20Lab%20%E2%80%94%20Sport%20Color%20LUTs">Chiedi informazioni sul lancio ↗</a><p class="micro">Anteprima non acquistabile: nessun pagamento o download automatico attivo.</p></div></div></section>
-<section class="wrap faq"><div><div class="eyebrow">04 / Informazioni</div><h2>DOMANDE<br>FREQUENTI.</h2></div><div><details><summary>Con quali programmi posso usare le LUT?</summary><p>Con gli editor che supportano LUT 3D .cube, fra cui DaVinci Resolve, Adobe Premiere Pro, Final Cut Pro e Photoshop. I file non sono preset .XMP di Lightroom.</p></details><details><summary>Funzionano con S-Log, V-Log e altri formati Log?</summary><p>Le LUT sono creative e pensate per SDR Rec.709. Prima è necessaria una conversione tecnica corretta dal formato Log o HDR.</p></details><details><summary>Posso usarle per lavori commerciali?</summary><p>La bozza di licenza è pensata per l'uso su lavori per clienti. I termini definitivi saranno pubblicati al lancio, prima di ogni eventuale acquisto.</p></details><details><summary>Posso acquistarle ora?</summary><p>Non ancora. Questa è una demo pubblica: pagamenti, licenza e consegna privata verranno attivati soltanto al completamento dei collaudi.</p></details></div></section>
+<section class="wrap section" id="mini-pack"><div class="section-head"><div><div class="eyebrow">04 / Sei mini-pack tematici</div><h2>SCEGLI IL<br>TUO SPORT.</h2></div><p>Ogni mini-pack include tre intensità del medesimo look. Il prezzo è indicativo: non è ancora possibile acquistare online.</p></div><div class="mini-packs"><article class="mini-pack"><div class="eyebrow">01 / Mini-pack</div><b>Indoor Court</b><p>Palazzetti · Pallamano · Basket. Tre LUT .cube: Soft, Signature e Bold.</p><div class="amount">€6,90 <small>prezzo indicativo</small></div><a class="btn secondary" href="mailto:info@paolosavio.eu?subject=Color%20Lab%20%E2%80%94%20Accesso%20anticipato%20Indoor%20Court">Richiedi il mini-pack</a></article>
+<article class="mini-pack"><div class="eyebrow">02 / Mini-pack</div><b>Aquatic Blue</b><p>Nuoto · Piscina · Pallanuoto. Tre LUT .cube: Soft, Signature e Bold.</p><div class="amount">€6,90 <small>prezzo indicativo</small></div><a class="btn secondary" href="mailto:info@paolosavio.eu?subject=Color%20Lab%20%E2%80%94%20Accesso%20anticipato%20Aquatic%20Blue">Richiedi il mini-pack</a></article>
+<article class="mini-pack"><div class="eyebrow">03 / Mini-pack</div><b>Broadcast Neutral</b><p>Riprese TV · Reportage. Tre LUT .cube: Soft, Signature e Bold.</p><div class="amount">€6,90 <small>prezzo indicativo</small></div><a class="btn secondary" href="mailto:info@paolosavio.eu?subject=Color%20Lab%20%E2%80%94%20Accesso%20anticipato%20Broadcast%20Neutral">Richiedi il mini-pack</a></article>
+<article class="mini-pack"><div class="eyebrow">04 / Mini-pack</div><b>Action Contrast</b><p>Highlights · Azione. Tre LUT .cube: Soft, Signature e Bold.</p><div class="amount">€6,90 <small>prezzo indicativo</small></div><a class="btn secondary" href="mailto:info@paolosavio.eu?subject=Color%20Lab%20%E2%80%94%20Accesso%20anticipato%20Action%20Contrast">Richiedi il mini-pack</a></article>
+<article class="mini-pack"><div class="eyebrow">05 / Mini-pack</div><b>Outdoor Match</b><p>Calcio · Gare all’aperto. Tre LUT .cube: Soft, Signature e Bold.</p><div class="amount">€6,90 <small>prezzo indicativo</small></div><a class="btn secondary" href="mailto:info@paolosavio.eu?subject=Color%20Lab%20%E2%80%94%20Accesso%20anticipato%20Outdoor%20Match">Richiedi il mini-pack</a></article>
+<article class="mini-pack"><div class="eyebrow">06 / Mini-pack</div><b>Editorial Sport</b><p>Atleti · Storytelling. Tre LUT .cube: Soft, Signature e Bold.</p><div class="amount">€6,90 <small>prezzo indicativo</small></div><a class="btn secondary" href="mailto:info@paolosavio.eu?subject=Color%20Lab%20%E2%80%94%20Accesso%20anticipato%20Editorial%20Sport">Richiedi il mini-pack</a></article></div><div class="prelaunch"><div><h3>Vuoi sapere quando saranno disponibili?</h3><p>Scrivimi per ricevere informazioni sulla disponibilità e sui test della collezione. Nessun acquisto richiesto.</p></div><a class="btn primary" href="mailto:info@paolosavio.eu?subject=Color%20Lab%20%E2%80%94%20Avvisami%20al%20lancio">Chiedi avviso al lancio ↗</a></div></section>
+<section class="wrap faq"><div><div class="eyebrow">05 / Informazioni</div><h2>DOMANDE<br>FREQUENTI.</h2></div><div><details><summary>Con quali programmi posso usare le LUT?</summary><p>Con gli editor che supportano LUT 3D .cube, fra cui DaVinci Resolve, Adobe Premiere Pro, Final Cut Pro e Photoshop. I file non sono preset .XMP di Lightroom.</p></details><details><summary>Funzionano con S-Log, V-Log e altri formati Log?</summary><p>Le LUT sono creative e pensate per SDR Rec.709. Prima è necessaria una conversione tecnica corretta dal formato Log o HDR.</p></details><details><summary>Posso usarle per lavori commerciali?</summary><p>La bozza di licenza è pensata per l'uso su lavori per clienti. I termini definitivi saranno pubblicati al lancio, prima di ogni eventuale acquisto.</p></details><details><summary>Posso acquistarle ora?</summary><p>Non ancora. Questa è una demo pubblica: pagamenti, licenza e consegna privata verranno attivati soltanto al completamento dei collaudi.</p></details></div></section>
 </main>
 <footer class="footer"><div class="wrap"><div><strong>Paolo Savio · Color Lab</strong><p>Fotografia · Video · Creative Tools</p><p>© 2026 Paolo Savio</p></div><div><p><a href="/">paolosavio.eu</a> · <a href="/digital/">Digital Tools</a> · <a href="mailto:info@paolosavio.eu">Contatti</a></p><p>Anteprima pubblica — vendite non ancora attive</p></div></div></footer>
 <script>
 (function(){
 "use strict";
-const looks=[
- {name:"INDOOR COURT",photo:"/sport-basketball.webp",desc:"Pallamano, basket e sport nei palazzetti.",f:["contrast(1.10) saturate(1.12) brightness(1.025)","contrast(1.24) saturate(1.32) brightness(1.045)","contrast(1.38) saturate(1.52) brightness(1.055)"]},
- {name:"AQUATIC BLUE",photo:"/sport-swimming.webp",desc:"Nuoto, pallanuoto e piscine.",f:["contrast(1.09) saturate(1.14) hue-rotate(3deg)","contrast(1.20) saturate(1.34) hue-rotate(7deg)","contrast(1.34) saturate(1.50) hue-rotate(10deg)"]},
- {name:"BROADCAST NEUTRAL",photo:"/sport-table-tennis.webp",desc:"Resa naturale per interviste e broadcast.",f:["contrast(1.06) saturate(.97) brightness(1.02)","contrast(1.11) saturate(.92) brightness(1.04)","contrast(1.18) saturate(.87) brightness(1.05)"]},
- {name:"ACTION CONTRAST",photo:"/sport-boxing.webp",desc:"Toni intensi per highlights e foto d'azione.",f:["contrast(1.15) saturate(1.12)","contrast(1.32) saturate(1.26) brightness(.99)","contrast(1.50) saturate(1.4) brightness(.98)"]},
- {name:"OUTDOOR MATCH",photo:"/sport-football.webp",desc:"Sport all'aperto, terreni di gioco e luce diurna.",f:["contrast(1.10) saturate(1.09) sepia(.045)","contrast(1.23) saturate(1.15) sepia(.09)","contrast(1.35) saturate(1.20) sepia(.13)"]},
- {name:"EDITORIAL SPORT",photo:"/sport-futsal.webp",desc:"Interpretazione editoriale per storytelling sportivo.",f:["contrast(1.12) saturate(.94) sepia(.07)","contrast(1.28) saturate(.85) sepia(.15)","contrast(1.43) saturate(.79) sepia(.23)"]}
-];
-let active=0,strength=1;
-const byId=id=>document.getElementById(id);
-const original=byId("before"),processed=byId("after"),left=byId("sideBefore"),right=byId("sideAfter"),range=byId("compareRange"),split=byId("split"),stage=byId("stage");
-function position(){
- const pct=Math.max(0,Math.min(100,Number(range.value)||0));
- processed.style.clipPath="inset(0 "+(100-pct)+"% 0 0)";
- split.style.left=pct+"%";
+const names=["INDOOR COURT","AQUATIC BLUE","BROADCAST NEUTRAL","ACTION CONTRAST","OUTDOOR MATCH","EDITORIAL SPORT"];
+const desc=["Pallamano, basket e sport indoor.","Nuoto e sport acquatici.","Hockey, riprese e reportage video.","Futsal, highlights e sport dinamici.","Calcio e sport all'aperto.","Sport e storytelling editoriale."];
+let current=0,intensity=2,pointerId=null;
+const $=id=>document.getElementById(id);
+const stage=$("stage"), slider=$("compareRange"),divider=$("split"),top=$("after");
+const tiles=[$("before"),top,$("sideBefore"),$("sideAfter")];
+function place(el,look,column){el.style.backgroundPosition=(column*100/3).toFixed(5)+"% "+(look*20)+"%";}
+function move(){
+ const pct=Number(slider.value);
+ top.style.clipPath="inset(0 "+(100-pct)+"% 0 0)";
+ divider.style.left=pct+"%";
  stage.setAttribute("aria-valuenow",String(pct));
  stage.setAttribute("aria-valuetext",pct+" percento di foto elaborata");
 }
-function draw(){
- const item=looks[active],filter=item.f[strength];
- original.src=item.photo;processed.src=item.photo;left.src=item.photo;right.src=item.photo;
- processed.style.filter=filter;right.style.filter=filter;
- byId("lookNumber").textContent="LOOK "+String(active+1).padStart(2,"0")+" / 06";
- byId("lookName").textContent=item.name;
- byId("lookText").textContent=item.desc;
- document.querySelectorAll("[data-look]").forEach(node=>node.setAttribute("aria-pressed",String(Number(node.dataset.look)===active)));
- const values=[.45,.72,1];
- document.querySelectorAll("[data-strength]").forEach(node=>node.setAttribute("aria-pressed",String(Math.abs(Number(node.dataset.strength)-values[strength])<.01)));
- byId("renderStatus").textContent="Simulazione pronta · "+["Soft","Signature","Bold"][strength]+" · immagini affiancate sotto";
- position();
+function render(){
+ place(tiles[0],current,0);place(tiles[1],current,intensity);
+ place(tiles[2],current,0);place(tiles[3],current,intensity);
+ $("lookNumber").textContent="LOOK "+String(current+1).padStart(2,"0")+" / 06";
+ $("lookName").textContent=names[current];
+ $("lookText").textContent=desc[current];
+ document.querySelectorAll("[data-look]").forEach(b=>b.setAttribute("aria-pressed",String(Number(b.dataset.look)===current)));
+ const vals=[.45,.72,1];
+ document.querySelectorAll("[data-strength]").forEach(b=>b.setAttribute("aria-pressed",String(Math.abs(Number(b.dataset.strength)-vals[intensity-1])<.01)));
+ $("renderStatus").textContent="LUT V1.1 applicata — "+["Soft","Signature","Bold"][intensity-1];
+ move();
 }
-document.querySelectorAll("[data-look]").forEach(node=>node.addEventListener("click",()=>{
- active=Number(node.dataset.look);draw();byId("test").scrollIntoView({behavior:"smooth",block:"start"});
-}));
-document.querySelectorAll("[data-strength]").forEach(node=>node.addEventListener("click",()=>{
- const v=Number(node.dataset.strength);strength=v<.6?0:v<.9?1:2;draw();
-}));
-range.addEventListener("input",position);
-// Keep slider position synchronized while dragging anywhere over the photo.
-let pointerId=null;
-function updateFromPointer(event){
- const rect=stage.getBoundingClientRect();
- if(!rect.width)return;
- const percentage=Math.max(0,Math.min(100,Math.round((event.clientX-rect.left)/rect.width*100)));
- range.value=String(percentage);
- position();
+function mousePos(e){
+ const box=stage.getBoundingClientRect();
+ if(!box.width)return;
+ slider.value=String(Math.max(0,Math.min(100,Math.round((e.clientX-box.left)/box.width*100))));
+ move();
 }
-stage.addEventListener("pointerdown",event=>{
- if(!event.isPrimary || (event.pointerType==="mouse" && event.button!==0))return;
- pointerId=event.pointerId;
- stage.setPointerCapture(event.pointerId);
- updateFromPointer(event);
+stage.addEventListener("pointerdown",e=>{
+ if(!e.isPrimary || (e.pointerType==="mouse"&&e.button!==0))return;
+ pointerId=e.pointerId;stage.setPointerCapture(pointerId);mousePos(e);
 });
-stage.addEventListener("pointermove",event=>{
- if(pointerId!==event.pointerId)return;
- updateFromPointer(event);
+stage.addEventListener("pointermove",e=>{if(pointerId===e.pointerId)mousePos(e);});
+function release(e){if(pointerId===e.pointerId){pointerId=null;if(stage.hasPointerCapture(e.pointerId))stage.releasePointerCapture(e.pointerId);}}
+stage.addEventListener("pointerup",release);stage.addEventListener("pointercancel",release);
+stage.addEventListener("lostpointercapture",e=>{if(pointerId===e.pointerId)pointerId=null;});
+stage.addEventListener("keydown",e=>{
+ let step=0,v=Number(slider.value);
+ if(e.key==="ArrowRight"||e.key==="ArrowUp")step=1;
+ else if(e.key==="ArrowLeft"||e.key==="ArrowDown")step=-1;
+ else if(e.key==="PageUp")step=10;
+ else if(e.key==="PageDown")step=-10;
+ else if(e.key==="Home"){step=-100;}else if(e.key==="End"){step=100;}else return;
+ e.preventDefault();slider.value=String(Math.min(100,Math.max(0,v+step)));move();
 });
-function releasePointer(event){
- if(pointerId!==event.pointerId)return;
- pointerId=null;
- if(stage.hasPointerCapture(event.pointerId))stage.releasePointerCapture(event.pointerId);
-}
-stage.addEventListener("pointerup",releasePointer);
-stage.addEventListener("pointercancel",releasePointer);
-stage.addEventListener("lostpointercapture",event=>{if(pointerId===event.pointerId)pointerId=null;});
-// Keyboard operation for users who do not drag.
-stage.addEventListener("keydown",event=>{
- const value=Number(range.value);
- let next=value;
- if(event.key==="ArrowLeft" || event.key==="ArrowDown")next=value-1;
- else if(event.key==="ArrowRight" || event.key==="ArrowUp")next=value+1;
- else if(event.key==="Home")next=0;
- else if(event.key==="End")next=100;
- else if(event.key==="PageDown")next=value-10;
- else if(event.key==="PageUp")next=value+10;
- else return;
- event.preventDefault();
- range.value=String(Math.max(0,Math.min(100,next)));
- position();
-});
-for (const image of [original,processed,left,right]) image.addEventListener("error",()=>{byId("renderStatus").textContent="Impossibile caricare una fotografia. Aggiorna la pagina o contattaci.";});
-draw();
+slider.addEventListener("input",move);
+document.querySelectorAll("[data-look]").forEach(b=>b.addEventListener("click",()=>{current=Number(b.dataset.look);render();$("test").scrollIntoView({behavior:"smooth",block:"start"});}));
+document.querySelectorAll("[data-strength]").forEach(b=>b.addEventListener("click",()=>{const n=Number(b.dataset.strength);intensity=n<.6?1:n<.9?2:3;render();}));
+render();
 })();
 </script>
 </body></html>
