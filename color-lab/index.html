@@ -24,6 +24,12 @@
 @media(max-width:700px){.wrap{width:calc(100% - 30px)}.top-inner{min-height:70px}.top nav a:not(:last-child){display:none}.hero{grid-template-columns:1fr;padding:65px 0}.hero-art img{aspect-ratio:16/11}.stats .wrap{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border:0}.stat:nth-child(3){padding-left:0}.section{padding-top:68px}.section-head{display:block}.section-head p{margin-top:17px}.looks{grid-template-columns:1fr}.preview{padding:13px}.pricing{margin-top:70px}.pricing .wrap,.faq{grid-template-columns:1fr;gap:25px;padding-block:63px}.footer .wrap{display:block}.hero h1{font-size:61px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
 
+/* Drag the comparison handle directly on the image, mouse and touch. */
+.stage{cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none;overscroll-behavior:contain}
+.stage>img{pointer-events:none;-webkit-user-drag:none}
+.stage .line,.stage .lab{pointer-events:none}
+.stage .line:after{height:52px;width:52px;border:2px solid #111;box-shadow:0 0 0 2px #fff,0 4px 20px rgba(0,0,0,.55);font-size:26px}
+.stage:focus-visible{outline:3px solid var(--yellow);outline-offset:4px}
 /* Comparison always visible before script execution */
 .stage #after{clip-path:inset(0 50% 0 0)}
 .comparison-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:19px 0 0}
@@ -52,7 +58,7 @@
 <button class="look" type="button" data-look="5" aria-pressed="false"><img src="/sport-futsal.webp" alt="Fotografia di futsal" loading="lazy"><span class="inner"><small>06 / EDITORIALE</small><b>Editorial Sport</b><span class="desc">Atleti, storytelling e reportage.</span></span></button>
 </div></section>
 <section class="wrap section" id="test"><div class="section-head"><div><div class="eyebrow">02 / Anteprima interattiva</div><h2>VEDI LA<br>DIFFERENZA.</h2></div><p>Il confronto è sempre visibile: prima e dopo affiancati, più lo slider. Le colorazioni mostrate sono simulazioni indicative del look, non rendering esatti dei file .cube.</p></div>
-<div class="preview"><div><div class="stage" id="stage"><img id="before" src="/sport-basketball.webp" alt="Fotografia originale"><img id="after" src="/sport-basketball.webp" style="filter:contrast(1.23) saturate(1.30);clip-path:inset(0 50% 0 0)" alt="Fotografia con trattamento colore simulato"><div class="line" id="split"></div><span class="lab left">DOPO</span><span class="lab right">PRIMA</span></div><label for="compareRange" style="display:block;margin-top:14px;font-size:12px;font-weight:700;color:#d4d4d8">SPOSTA IL CONFRONTO PRIMA / DOPO</label><input class="range" id="compareRange" type="range" min="0" max="100" value="50" aria-label="Posizione comparatore"></div>
+<div class="preview"><div><div class="stage" id="stage" role="slider" tabindex="0" aria-label="Trascina per confrontare la fotografia prima e dopo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50 percento di foto elaborata"><img id="before" src="/sport-basketball.webp" alt="Fotografia originale"><img id="after" src="/sport-basketball.webp" style="filter:contrast(1.23) saturate(1.30);clip-path:inset(0 50% 0 0)" alt="Fotografia con trattamento colore simulato"><div class="line" id="split"></div><span class="lab left">DOPO</span><span class="lab right">PRIMA</span></div><label for="compareRange" style="display:block;margin-top:14px;font-size:12px;font-weight:700;color:#d4d4d8">TRASCINA LA LINEA SULLA FOTO O USA IL CURSORE QUI SOTTO</label><input class="range" id="compareRange" type="range" min="0" max="100" value="50" aria-label="Posizione comparatore"></div>
 <div class="preview-side"><div class="eyebrow" id="lookNumber">LOOK 01 / 06</div><h3 id="lookName">INDOOR COURT</h3><p id="lookText">Per le scene sportive indoor, con contrasto e cromie controllate.</p><div class="eyebrow" style="margin-top:20px">Intensità</div><div class="options" id="strength"><button type="button" data-strength="0.45" aria-pressed="false">SOFT</button><button type="button" data-strength="0.72" aria-pressed="true">SIGNATURE</button><button type="button" data-strength="1" aria-pressed="false">BOLD</button></div><span class="status" role="status" id="renderStatus"></span><p class="micro">Le foto provengono dal portfolio. Il DOPO è una simulazione cromatica immediata in browser, non il risultato numerico della LUT .cube. Le LUT sono ancora in collaudo.</p></div>
 </div><div class="comparison-pair" aria-label="Confronto prima e dopo sempre visibile">
   <figure><figcaption><span>01</span> PRIMA / FOTO ORIGINALE</figcaption><img id="sideBefore" src="/sport-basketball.webp" alt="Prima: fotografia originale di Paolo Savio" loading="eager"></figure>
@@ -75,11 +81,13 @@ const looks=[
 ];
 let active=0,strength=1;
 const byId=id=>document.getElementById(id);
-const original=byId("before"),processed=byId("after"),left=byId("sideBefore"),right=byId("sideAfter"),range=byId("compareRange"),split=byId("split");
+const original=byId("before"),processed=byId("after"),left=byId("sideBefore"),right=byId("sideAfter"),range=byId("compareRange"),split=byId("split"),stage=byId("stage");
 function position(){
  const pct=Math.max(0,Math.min(100,Number(range.value)||0));
  processed.style.clipPath="inset(0 "+(100-pct)+"% 0 0)";
  split.style.left=pct+"%";
+ stage.setAttribute("aria-valuenow",String(pct));
+ stage.setAttribute("aria-valuetext",pct+" percento di foto elaborata");
 }
 function draw(){
  const item=looks[active],filter=item.f[strength];
@@ -101,6 +109,48 @@ document.querySelectorAll("[data-strength]").forEach(node=>node.addEventListener
  const v=Number(node.dataset.strength);strength=v<.6?0:v<.9?1:2;draw();
 }));
 range.addEventListener("input",position);
+// Keep slider position synchronized while dragging anywhere over the photo.
+let pointerId=null;
+function updateFromPointer(event){
+ const rect=stage.getBoundingClientRect();
+ if(!rect.width)return;
+ const percentage=Math.max(0,Math.min(100,Math.round((event.clientX-rect.left)/rect.width*100)));
+ range.value=String(percentage);
+ position();
+}
+stage.addEventListener("pointerdown",event=>{
+ if(!event.isPrimary || (event.pointerType==="mouse" && event.button!==0))return;
+ pointerId=event.pointerId;
+ stage.setPointerCapture(event.pointerId);
+ updateFromPointer(event);
+});
+stage.addEventListener("pointermove",event=>{
+ if(pointerId!==event.pointerId)return;
+ updateFromPointer(event);
+});
+function releasePointer(event){
+ if(pointerId!==event.pointerId)return;
+ pointerId=null;
+ if(stage.hasPointerCapture(event.pointerId))stage.releasePointerCapture(event.pointerId);
+}
+stage.addEventListener("pointerup",releasePointer);
+stage.addEventListener("pointercancel",releasePointer);
+stage.addEventListener("lostpointercapture",event=>{if(pointerId===event.pointerId)pointerId=null;});
+// Keyboard operation for users who do not drag.
+stage.addEventListener("keydown",event=>{
+ const value=Number(range.value);
+ let next=value;
+ if(event.key==="ArrowLeft" || event.key==="ArrowDown")next=value-1;
+ else if(event.key==="ArrowRight" || event.key==="ArrowUp")next=value+1;
+ else if(event.key==="Home")next=0;
+ else if(event.key==="End")next=100;
+ else if(event.key==="PageDown")next=value-10;
+ else if(event.key==="PageUp")next=value+10;
+ else return;
+ event.preventDefault();
+ range.value=String(Math.max(0,Math.min(100,next)));
+ position();
+});
 for (const image of [original,processed,left,right]) image.addEventListener("error",()=>{byId("renderStatus").textContent="Impossibile caricare una fotografia. Aggiorna la pagina o contattaci.";});
 draw();
 })();
