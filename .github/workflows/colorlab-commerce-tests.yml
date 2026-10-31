@@ -1,0 +1,30 @@
+name: Color Lab Commerce Tests
+on:
+  pull_request:
+    paths:
+      - 'colorlab-commerce/**'
+      - '.github/workflows/colorlab-commerce-tests.yml'
+  push:
+    branches:
+      - colorlab-commerce-stripe-staging
+    paths:
+      - 'colorlab-commerce/**'
+      - '.github/workflows/colorlab-commerce-tests.yml'
+permissions:
+  contents: read
+jobs:
+  core-security-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b163ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Verify Node runtime
+        run: node --version
+      - name: Verify JavaScript syntax
+        working-directory: colorlab-commerce
+        run: |
+          for file in api/*.js lib/*.js tests/*.js; do node --check "$file"; done
+      - name: Test security and catalogue
+        working-directory: colorlab-commerce
+        run: node --test tests/*.test.js
