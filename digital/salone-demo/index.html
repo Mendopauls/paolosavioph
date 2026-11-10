@@ -83,8 +83,12 @@ el("submit-request").addEventListener("click",function(ev){
 expirePending();
 var day=el("booking-date").value,name=el("booking-name").value.trim().slice(0,60),s=services.find(function(x){return x.id===bookingService});
 if(!name||!bookingTime||!dateValid(day)||busy(day,bookingTime,s.duration)){ev.preventDefault();refresh();renderAdmin();return}
+ev.preventDefault();
+var whatsappUrl=this.href;
 bookings.push({id:"demo-"+Date.now()+"-"+Math.random().toString(36).slice(2,8),name:name,service:s.id,date:day,time:bookingTime,state:"pending",createdAt:Date.now(),expiresAt:Date.now()+HOLD_MS});
 store();
+// Open during the actual user gesture, before refreshing the link's href.
+window.open(whatsappUrl,"_blank","noopener,noreferrer");
 el("request-status").textContent="Slot bloccato per 15 minuti solo in questa demo. Il salone può confermare o rifiutare dall'agenda. WhatsApp si apre con la richiesta già compilata: per spedirla, premi Invia su WhatsApp.";
 el("request-status").classList.add("active");
 bookingTime="";refresh();renderAdmin();
@@ -116,7 +120,7 @@ card.append(info,actions);parent.append(card)
 }
 el("reset-demo").addEventListener("click",function(){bookings=preset();store();hidePreview();bookingTime="";el("booking-name").value="Cliente Demo";el("booking-date").value=firstDate;refresh();renderAdmin()});
 el("year").textContent=new Date().getFullYear();load();expirePending();refresh();renderAdmin();
-setInterval(function(){if(expirePending())refresh();renderAdmin()},1000);
+setInterval(function(){if(expirePending())refresh();renderAdmin()},5000);
 document.addEventListener("visibilitychange",function(){if(!document.hidden){expirePending();refresh();renderAdmin()}})
 })();
 </script>
