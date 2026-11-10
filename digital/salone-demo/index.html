@@ -28,14 +28,14 @@
 <article class="service"><span class="num">04</span><h3>Taglio uomo</h3><p>Precisione, linee pulite e cura del dettaglio.</p><strong>30 min · da 24 €</strong></article>
 </div></div></section>
 <section id="studio" class="split"><div class="split-inner"><div class="split-photo" role="img" aria-label="Interno salone di bellezza"></div><div class="split-copy"><span class="eyebrow">L'esperienza</span><h2>Tempo dedicato<br>a te.</h2><p>Abbiamo immaginato uno spazio curato, accogliente ed essenziale, dove ogni appuntamento si trasforma in un momento da vivere con tranquillità.</p><p><strong>Questa è una dimostrazione:</strong> testi, immagini e servizi verranno adattati all'identità del tuo salone.</p><div><a href="#prenota" class="btn btn-outline">Scegli un appuntamento ↗</a></div></div></div></section>
-<section id="prenota" class="section booking"><div class="container"><span class="eyebrow">Booking online</span><h2>Prenota in pochi passaggi.</h2><p class="section-intro">Scegli il servizio, la data e un orario. Premi il pulsante e si aprirà direttamente WhatsApp in una nuova scheda con un messaggio di prova già compilato per Paolo Savio. Dovrai soltanto confermare l'invio in WhatsApp; nessun appuntamento reale sarà prenotato.</p><div class="book-grid"><div>
+<section id="prenota" class="section booking"><div class="container"><span class="eyebrow">Booking online</span><h2>Prenota in pochi passaggi.</h2><p class="section-intro">Scegli servizio, data e orario. La richiesta blocca lo slot per 15 minuti nella demo e apre WhatsApp direttamente. Il salone può confermare o rifiutare: se non conferma entro la scadenza, lo slot torna libero. È una simulazione locale, non una prenotazione reale.</p><div class="book-grid"><div>
 <div class="panel"><div class="steps" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div><div class="fieldhead"><h3>1. Seleziona il trattamento</h3><span class="pill">Step 01</span></div><div id="service-choices" class="service-select" role="group" aria-label="Scelta trattamento"></div></div>
 <div class="panel"><div class="fieldhead"><h3>2. Data e ora</h3><span class="pill">Step 02</span></div><div class="field"><label for="booking-date">Giorno dell'appuntamento</label><input id="booking-date" type="date" required><p class="muted" style="margin:7px 0 0">Aperto dal martedì al sabato · 09:00–13:00 / 14:00–18:30</p></div><div class="field"><label>Orari disponibili nella demo</label><div id="time-choices" class="times" role="group" aria-label="Orari disponibili"></div><p id="date-hint" class="muted" aria-live="polite"></p></div></div>
 <div class="panel"><div class="fieldhead"><h3>3. Richiesta appuntamento</h3><span class="pill">Step 03</span></div><div class="field" style="margin-top:4px"><label for="booking-name">Nome dimostrativo</label><input id="booking-name" value="Cliente Demo" maxlength="60" autocomplete="off"><p class="panel-help">Non inserire informazioni personali reali: questa pagina è una dimostrazione pubblica.</p></div><div class="status" id="request-status" role="status"></div></div></div>
-<aside class="summary" aria-label="Riepilogo selezione"><span class="eyebrow">La tua scelta</span><h3>Riepilogo</h3><dl><div><dt>Trattamento</dt><dd id="sum-service">—</dd></div><div><dt>Durata</dt><dd id="sum-duration">—</dd></div><div><dt>Data</dt><dd id="sum-date">—</dd></div><div><dt>Orario</dt><dd id="sum-time">Seleziona un orario</dd></div><div><dt>Prezzo indicativo</dt><dd id="sum-price">—</dd></div></dl><a class="btn btn-terra" id="submit-request" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">Invia prenotazione via WhatsApp ↗</a><small>Si apre WhatsApp con numero e testo precompilati. L'invio è manuale. L'agenda è solo dimostrativa.</small></aside>
+<aside class="summary" aria-label="Riepilogo selezione"><span class="eyebrow">La tua scelta</span><h3>Riepilogo</h3><dl><div><dt>Trattamento</dt><dd id="sum-service">—</dd></div><div><dt>Durata</dt><dd id="sum-duration">—</dd></div><div><dt>Data</dt><dd id="sum-date">—</dd></div><div><dt>Orario</dt><dd id="sum-time">Seleziona un orario</dd></div><div><dt>Prezzo indicativo</dt><dd id="sum-price">—</dd></div></dl><a class="btn btn-terra" id="submit-request" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">Invia prenotazione via WhatsApp ↗</a><small>Blocco temporaneo di 15 minuti, solo in questa sessione. WhatsApp si apre con testo precompilato; l'invio è manuale.</small></aside>
 </div></div></section>
 <section class="section" style="background:#f7f1eb"><div class="container"><span class="eyebrow">I dettagli contano</span><h2>Il tuo salone, online.</h2><p class="section-intro">Immagini, trattamenti, orari, listino e colori sono tutti personalizzabili. L'obiettivo è offrire una presenza digitale coerente con il tuo lavoro.</p><div class="gallery" aria-label="Immagini illustrative di capelli e saloni"><div role="img" aria-label="Capelli e styling"></div><div role="img" aria-label="Taglio professionale"></div><div role="img" aria-label="Salone di parrucchieri"></div></div></div></section>
-<section class="section admin" id="agenda"><div class="container"><span class="eyebrow">Vista operatore · Simulazione</span><h2>L'agenda del salone.</h2><p class="section-intro">Questa sezione mostra come il parrucchiere potrebbe gestire richieste e appuntamenti confermati. Nella versione definitiva sarebbe disponibile solo agli operatori autorizzati.</p><div class="admin-box"><div class="admin-header"><div><strong>Richieste demo</strong><p id="admin-count">Nessuna richiesta</p></div><div class="admin-actions"><button id="reset-demo" class="btn btn-outline" type="button">Ripristina demo ↺</button></div></div><div id="admin-items" class="admin-items" aria-live="polite"></div></div></div></section>
+<section class="section admin" id="agenda"><div class="container"><span class="eyebrow">Vista operatore · Simulazione</span><h2>L'agenda del salone.</h2><p class="section-intro">Conferma o rifiuta le richieste temporanee, prova a farne scadere una e verifica che l'orario torni disponibile. <strong>Solo demo:</strong> questa agenda è visibile pubblicamente e memorizzata nella sessione del browser, non è sincronizzata fra clienti. La versione reale avrà accesso riservato e database condiviso.</p><div class="admin-box"><div class="admin-header"><div><strong>Richieste demo</strong><p id="admin-count">Nessuna richiesta</p></div><div class="admin-actions"><button id="reset-demo" class="btn btn-outline" type="button">Ripristina demo ↺</button></div></div><div id="admin-items" class="admin-items" aria-live="polite"></div></div></div></section>
 <section class="section-small"><div class="container" style="text-align:center"><span class="eyebrow">Il prossimo passo</span><h2 style="font:normal clamp(30px,4vw,48px) Georgia,serif;margin:8px 0 18px">Il sito reale sarà il tuo.</h2><p style="color:var(--muted);max-width:590px;margin:0 auto 24px">Possiamo collegare WhatsApp Business e un calendario condiviso, aggiungere la scelta del parrucchiere e personalizzare l'intero sito. Questa pagina mostra soltanto l'esperienza proposta.</p><a href="mailto:info@paolosavio.eu?subject=Informazioni%20demo%20sito%20parrucchiere" class="btn">Richiedi una versione personalizzata ↗</a></div></section>
 </main>
 <footer class="footer"><div class="container"><div class="footergrid"><div><div class="brand">atelier<small style="color:#c9a48d">HAIR STUDIO</small></div><p>Salone immaginario creato per presentare un'esperienza di prenotazione online.</p></div><div><strong>Demo realizzata da Paolo Savio</strong><p>Design, siti web e soluzioni digitali su misura.</p><a href="/digital/" style="text-decoration:underline">Scopri Digital Tools ↗</a></div></div><div class="footnote">© <span id="year"></span> Atelier Studio — Demo dimostrativa · Nessun salone reale · Agenda simulata · Test WhatsApp al contatto professionale di Paolo Savio</div></div></footer>
@@ -44,18 +44,21 @@
 "use strict";
 var services=[{id:"taglio",name:"Taglio & styling",duration:60,price:"da 38 €"},{id:"piega",name:"Piega",duration:30,price:"da 25 €"},{id:"colore",name:"Colore & luce",duration:120,price:"da 80 €"},{id:"uomo",name:"Taglio uomo",duration:30,price:"da 24 €"}];
 var bookingService="taglio",bookingTime="",bookings=[];
+var HOLD_MS=15*60*1000,STORE_KEY="atelier-salone-demo-v2";
 var el=function(id){return document.getElementById(id)};
 var localISO=function(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
 var minutes=function(t){var p=t.split(":").map(Number);return p[0]*60+p[1]};
 var dateFmt=function(v){if(!v)return "—";var p=v.split("-").map(Number);return new Intl.DateTimeFormat("it-IT",{day:"2-digit",month:"long",year:"numeric"}).format(new Date(p[0],p[1]-1,p[2]))};
 var dateValid=function(v){if(!/^\d{4}-\d{2}-\d{2}$/.test(v))return false;var p=v.split("-").map(Number);var d=new Date(p[0],p[1]-1,p[2]);return localISO(d)===v&&d.getDay()!==0&&d.getDay()!==1&&v>=localISO(new Date())};
 var duration=function(id){var s=services.find(function(x){return x.id===id});return s?s.duration:30};
-var busy=function(date,t,dur){var start=minutes(t),end=start+dur;return bookings.some(function(b){return b.date===date&&b.state!=="cancelled"&&Math.max(start,minutes(b.time))<Math.min(end,minutes(b.time)+duration(b.service))})};
+var blocksSlot=function(b){return b.state==="confirmed"||(b.state==="pending"&&Number(b.expiresAt)>Date.now())};
+var busy=function(date,t,dur){var start=minutes(t),end=start+dur;return bookings.some(function(b){return b.date===date&&blocksSlot(b)&&Math.max(start,minutes(b.time))<Math.min(end,minutes(b.time)+duration(b.service))})};
 var nextOpen=function(){var d=new Date();d.setDate(d.getDate()+1);for(var i=0;i<7&&(d.getDay()===0||d.getDay()===1);i++)d.setDate(d.getDate()+1);return localISO(d)};
 var firstDate=nextOpen();
-var preset=function(){return [{id:"sample-1",name:"Cliente Demo A",service:"piega",date:firstDate,time:"10:00",state:"confirmed"},{id:"sample-2",name:"Cliente Demo B",service:"uomo",date:firstDate,time:"15:00",state:"pending"}]};
-var store=function(){try{sessionStorage.setItem("atelier-salone-demo-v1",JSON.stringify(bookings))}catch(e){}};
-var load=function(){try{var saved=JSON.parse(sessionStorage.getItem("atelier-salone-demo-v1"));if(Array.isArray(saved)){bookings=saved.filter(function(b){return b&&b.id&&b.name&&b.service&&b.date&&b.time&&["pending","confirmed","cancelled"].includes(b.state)}).slice(0,80);return}}catch(e){}bookings=preset();store()};
+var preset=function(){return [{id:"sample-1",name:"Cliente Demo A",service:"piega",date:firstDate,time:"10:00",state:"confirmed",expiresAt:null},{id:"sample-2",name:"Cliente Demo B",service:"uomo",date:firstDate,time:"15:00",state:"pending",expiresAt:Date.now()+HOLD_MS}]};
+var store=function(){try{sessionStorage.setItem(STORE_KEY,JSON.stringify(bookings))}catch(e){}};
+var load=function(){try{var saved=JSON.parse(sessionStorage.getItem(STORE_KEY));if(Array.isArray(saved)){bookings=saved.filter(function(b){return b&&b.id&&b.name&&b.service&&b.date&&b.time&&["pending","confirmed","cancelled","rejected","expired"].includes(b.state)}).slice(-80);return}}catch(e){}bookings=preset();store()};
+var expirePending=function(){var now=Date.now(),changed=false;bookings.forEach(function(b){if(b.state==="pending"&&Number(b.expiresAt||0)<=now){b.state="expired";changed=true}});if(changed)store();return changed};
 var form=document.getElementById("service-choices");
 services.forEach(function(s){var btn=document.createElement("button");btn.type="button";btn.className="service-option";btn.dataset.service=s.id;btn.setAttribute("aria-pressed",String(s.id===bookingService));var info=document.createElement("span"),b=document.createElement("b"),sm=document.createElement("small"),pr=document.createElement("span");b.textContent=s.name;sm.textContent=s.duration+" min";pr.className="price";pr.textContent=s.price;info.append(b,sm);btn.append(info,pr);btn.addEventListener("click",function(){bookingService=s.id;bookingTime="";hidePreview();refresh()});form.appendChild(btn)});
 el("booking-date").min=localISO(new Date());el("booking-date").value=firstDate;
@@ -77,26 +80,44 @@ setSummary()
 function waText(name,s,day,time){return "[TEST DEMO - NESSUNA PRENOTAZIONE REALE]\n\nCiao Paolo! Sto provando il sistema di prenotazione del sito demo Atelier Studio.\n\nTrattamento: "+s.name+"\nData: "+dateFmt(day)+"\nOra: "+time+"\nNome dimostrativo: "+name+"\n\nQuesto messaggio è una prova: nessun appuntamento reale è stato prenotato."}
 el("booking-name").addEventListener("change",setSummary);
 el("submit-request").addEventListener("click",function(ev){
+expirePending();
 var day=el("booking-date").value,name=el("booking-name").value.trim().slice(0,60),s=services.find(function(x){return x.id===bookingService});
-if(!name||!bookingTime||!dateValid(day)||busy(day,bookingTime,s.duration)){ev.preventDefault();refresh();return}
-bookings.push({id:"demo-"+Date.now()+"-"+Math.random().toString(36).slice(2,6),name:name,service:s.id,date:day,time:bookingTime,state:"pending"});store();
-el("request-status").textContent="Richiesta inserita nell'agenda demo. WhatsApp si apre in una nuova scheda con numero e testo precompilati: premi Invia dentro WhatsApp per spedire il messaggio.";
-el("request-status").classList.add("active");renderAdmin();
+if(!name||!bookingTime||!dateValid(day)||busy(day,bookingTime,s.duration)){ev.preventDefault();refresh();renderAdmin();return}
+bookings.push({id:"demo-"+Date.now()+"-"+Math.random().toString(36).slice(2,8),name:name,service:s.id,date:day,time:bookingTime,state:"pending",createdAt:Date.now(),expiresAt:Date.now()+HOLD_MS});
+store();
+el("request-status").textContent="Slot bloccato per 15 minuti solo in questa demo. Il salone può confermare o rifiutare dall'agenda. WhatsApp si apre con la richiesta già compilata: per spedirla, premi Invia su WhatsApp.";
+el("request-status").classList.add("active");
+bookingTime="";refresh();renderAdmin();
 });
 function renderAdmin(){
 var parent=el("admin-items");parent.replaceChildren();
-var active=bookings.filter(function(b){return b.state!=="cancelled"}).sort(function(a,b){return (a.date+a.time).localeCompare(b.date+b.time)});
-el("admin-count").textContent=active.length+" appuntamenti simulati · "+active.filter(function(b){return b.state==="pending"}).length+" da confermare";
-if(!active.length){var empty=document.createElement("div");empty.className="empty";empty.textContent="Agenda vuota. Prova una prenotazione dalla pagina e vedrai comparire qui la richiesta.";parent.append(empty);return}
-active.forEach(function(b){var s=services.find(function(x){return x.id===b.service});var card=document.createElement("article");card.className="appointment";
-var info=document.createElement("div"),tag=document.createElement("span"),who=document.createElement("b"),meta=document.createElement("small");tag.className="state"+(b.state==="confirmed"?" ok":"");tag.textContent=b.state==="confirmed"?"Confermato":"Da confermare";who.textContent=b.name;meta.textContent=dateFmt(b.date)+" · "+b.time+" · "+(s?s.name:"Servizio")+" ("+duration(b.service)+" min)";info.append(tag,who,meta);
+var items=bookings.slice().sort(function(a,b){return (a.date+a.time).localeCompare(b.date+b.time)}).sort(function(a,b){return Number(blocksSlot(b))-Number(blocksSlot(a))});
+var pending=items.filter(function(b){return b.state==="pending"}).length;
+var confirmed=items.filter(function(b){return b.state==="confirmed"}).length;
+el("admin-count").textContent=pending+" richieste in attesa · "+confirmed+" confermate · "+(items.length-pending-confirmed)+" concluse";
+if(!items.length){var empty=document.createElement("div");empty.className="empty";empty.textContent="Agenda demo vuota. Inserisci una richiesta dal modulo per provarla.";parent.append(empty);return}
+items.forEach(function(b){
+var s=services.find(function(x){return x.id===b.service}),card=document.createElement("article");card.className="appointment";
+var info=document.createElement("div"),tag=document.createElement("span"),who=document.createElement("b"),meta=document.createElement("small"),timer=document.createElement("small");
+var labels={pending:"In attesa",confirmed:"Confermato",rejected:"Rifiutato",expired:"Scaduto",cancelled:"Annullato"};
+tag.className="state"+(b.state==="confirmed"?" ok":(["expired","rejected","cancelled"].includes(b.state)?" no":""));
+tag.textContent=labels[b.state]||"Da verificare";who.textContent=b.name;
+meta.textContent=dateFmt(b.date)+" · "+b.time+" · "+(s?s.name:"Servizio")+" ("+duration(b.service)+" min)";
+info.append(tag,who,meta);
+if(b.state==="pending"){var seconds=Math.max(0,Math.ceil((Number(b.expiresAt)-Date.now())/1000));timer.textContent="Scade tra "+Math.floor(seconds/60)+"m "+String(seconds%60).padStart(2,"0")+"s · fascia temporaneamente occupata";info.append(timer)}
+if(b.state==="expired"){timer.textContent="La fascia è di nuovo prenotabile.";info.append(timer)}
 var actions=document.createElement("div");actions.className="controls";
-if(b.state==="pending"){var confirm=document.createElement("button");confirm.className="tiny";confirm.type="button";confirm.textContent="Conferma ✓";confirm.addEventListener("click",function(){b.state="confirmed";store();refresh();renderAdmin()});actions.append(confirm)}
-var cancel=document.createElement("button");cancel.className="tiny";cancel.type="button";cancel.textContent="Annulla ×";cancel.addEventListener("click",function(){b.state="cancelled";store();refresh();renderAdmin()});actions.append(cancel);card.append(info,actions);parent.append(card)
+function changeState(next){if(b.state==="pending"&&Date.now()>=Number(b.expiresAt)){expirePending();refresh();renderAdmin();return}b.state=next;store();refresh();renderAdmin()}
+function action(label,next){var button=document.createElement("button");button.className="tiny";button.type="button";button.textContent=label;button.addEventListener("click",function(){changeState(next)});actions.append(button)}
+if(b.state==="pending"){action("Conferma ✓","confirmed");action("Rifiuta ×","rejected");action("Simula scadenza ↻","expired")}
+if(b.state==="confirmed"){action("Annulla ×","cancelled")}
+card.append(info,actions);parent.append(card)
 })
 }
 el("reset-demo").addEventListener("click",function(){bookings=preset();store();hidePreview();bookingTime="";el("booking-name").value="Cliente Demo";el("booking-date").value=firstDate;refresh();renderAdmin()});
-el("year").textContent=new Date().getFullYear();load();refresh();renderAdmin()
+el("year").textContent=new Date().getFullYear();load();expirePending();refresh();renderAdmin();
+setInterval(function(){if(expirePending())refresh();renderAdmin()},1000);
+document.addEventListener("visibilitychange",function(){if(!document.hidden){expirePending();refresh();renderAdmin()}})
 })();
 </script>
 </body>
